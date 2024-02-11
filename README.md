@@ -38,7 +38,16 @@
 
       The type of interconnect technology one needs lies on what kind of system they are building and what kind of interconnect is compatible with the system. For our system, specefication and hardware is given above.
 
-      
+7. Power Management:
+   |      Components        |     Power Consumption (approx)       |       Description        |
+   |------------------------|-----------------------------|--------------------------|
+   |Asus CS-B Intel Core i3 4th Gen | 25W - 40W       | CPU Power Management can be handeled directly from BIOS. It provides subitems that allows to manipulate the CPU ratio and feature.|
+   |SAMSUNG V-NAND 500GB SSD| 3W (Active), 50mW (idle)|Each Motherboard will be connected to one of this SSD which can be powered by a same PSU.|  
+   |NVIDIA QUADRO           |    45W (Max.)           |Only one of the GPU will be used in the entire system which will be connected to the head node. |        
+
+   |Power Supply Unit (PSU)| Capacity | Description|
+   |---|---|---|
+   
 
 
 ## Description
