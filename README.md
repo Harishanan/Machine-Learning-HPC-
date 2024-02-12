@@ -48,6 +48,7 @@
    |Power Supply Unit (PSU)| Capacity | Description|
    |---|---|---|
    
+   * Conclusion to Power Management according to gathered information. 
 
 
 ## Description
