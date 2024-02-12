@@ -39,13 +39,29 @@
       The type of interconnect technology one needs lies on what kind of system they are building and what kind of interconnect is compatible with the system. For our system, specefication and hardware is given above.
 
 
-## Install Operating System in Head Node
-Hardware Setup
-Software Configuration:
+# Install Operating System in Head Node
+## Hardware Setup
+## Software Configuration:
 
 Initially, an attempt was made to determine which operating system the ASUS CS-B motherboard supports. However, the information available suggests that the ASUS CS-B is only compatible with Ubuntu 13.10, as indicated in the provided image.
 ![Os](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/85470428/3f1fbdae-3522-4e26-841c-ef19f4888d5a)
 Figure: OS Compatibility of Asus CS-B 
+
+1. Once the operating system was determined, below steps are followed to install ubuntu desktop 13.10:
+- Downloaded the Ubuntu Desktop from the official Ubuntu website (https://old-releases.ubuntu.com/releases/13.10/). As Intel processor is used, PC (Intel x86) desktop image is chosen when downloading the image.
+- Created a bootable USB drive using Rufus.
+- Booted the motherboard from the USB drive.
+- Followed the installation wizard to install Ubuntu Desktop on the system.
+
+2. After the installation process, the system undergoes a series of commands to ensure it possesses the latest security patches and software updates:
+
+`sudo apt update
+
+sudo apt upgrade`
+
+3. Given its role as the head node in our setup, the desktop image is transformed into a server. Let's quickly delve into the significance of the head node within the realm of High-Performance Computing (HPC).
+
+The head node serves as a central control unit in an HPC environment, orchestrating and managing the entire cluster. Its primary purposes include task scheduling, resource allocation, and overall coordination of computational tasks within the cluster. By installing the Ubuntu Server (**sudo apt install ubuntu-server)** and setting the default target to multi-user mode using the command **sudo systemctl set-default multi-user.target**, we optimize resource allocation, conserving RAM and CPU resources by eschewing unnecessary graphical sessions. This ensures that the head node operates efficiently, enabling it to efficiently manage and oversee the computational workload of the entire HPC cluster.
 
 
 ## Description
