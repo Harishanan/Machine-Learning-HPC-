@@ -50,8 +50,9 @@
 
    |Power Supply Unit (PSU)| Capacity | Description|
    |---|---|---|
-   
-   * Conclusion to Power Management according to gathered information. 
+   |FSP220-50LC|220W (total output) | This PSU has a maximum wattage of 60W. And the sum of the power requirements for all the components connected to the PSU should not exceed 220W. |
+
+* The single PSU in our system will be connected to one motherboard, one SSD, and one graphics card. The combined power consumption of these components is estimated to be around 95W during active use and less than 90W when in idle state. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
 
 
 ## Description
