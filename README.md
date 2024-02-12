@@ -55,16 +55,16 @@ Figure: OS Compatibility of Asus CS-B
 
 2. After the installation process, the system undergoes a series of commands to ensure it possesses the latest security patches and software updates:
 
-                                                                           `(sudo apt update
-                                                                           
-                                                                           sudo apt upgrade)`
+                                                                  `(sudo apt update
+                                                                                                                                          
+                                                                  sudo apt upgrade)`
 
 3. Given its role as the head node in our setup, the desktop image is transformed into a server. Let's quickly delve into the significance of the head node within the realm of High-Performance Computing (HPC).
 
 - The head node serves as a central control unit in an HPC environment, orchestrating and managing the entire cluster. Its primary purposes include task scheduling, resource allocation, and overall coordination of computational tasks within the cluster. By installing      the Ubuntu Server and setting the default target to multi-user mode optimize resource allocation, conserving RAM and CPU resources by eschewing unnecessary graphical sessions. This ensures that the head node operates efficiently, enabling it to efficiently manage and    oversee the computational workload of the entire HPC cluster.
   
-                                                                  To install Ubuntu Server  : (`sudo apt install ubuntu-server`)
-                                                                  To disable GUI            : (`sudo systemctl set-default multi-user.target`)
+                                                To install Ubuntu Server  : (`sudo apt install ubuntu-server`)
+                                                To disable GUI            : (`sudo systemctl set-default multi-user.target`)
      
 
 
