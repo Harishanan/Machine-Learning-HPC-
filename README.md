@@ -38,7 +38,14 @@
 
       The type of interconnect technology one needs lies on what kind of system they are building and what kind of interconnect is compatible with the system. For our system, specefication and hardware is given above.
 
-      
+
+## Install Operating System in Head Node
+Hardware Setup
+Software Configuration:
+
+Initially, an attempt was made to determine which operating system the ASUS CS-B motherboard supports. However, the information available suggests that the ASUS CS-B is only compatible with Ubuntu 13.10, as indicated in the provided image.
+![Os](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/85470428/3f1fbdae-3522-4e26-841c-ef19f4888d5a)
+Figure: OS Compatibility of Asus CS-B 
 
 
 ## Description
@@ -47,6 +54,8 @@
 
 ## References
 1. https://hpc.uni.lu/infrastructure/network
+2. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
+3. 
 
 ## Authors
 
