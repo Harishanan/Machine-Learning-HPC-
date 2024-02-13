@@ -134,3 +134,29 @@ This assignment challenges your understanding of computer architecture, system d
 
 </div>
 
+_ **The HPC'S purpose** _
+
+_ **There are three sub-components to the HPC'S purpose in order for it to function fully.** _
+
+- _Background information on each selected crypto_
+- _Recent fluctuations in the price and trading patterns_
+- _Predicted outcomes and investment recommendation_
+- _Choose operating system for Hpc_
+
+_ **Background information on each selected crypto** _
+
+_Cryptocurrency is a digital asset that is secured by cryptography. This type of money allows for decentralized transactions, meaning that a central authority, such as a bank, does not handle, verify, or regulate the transactions. An example of the information that the HPC could collect are, when the currency was made, how much its currently worth and the advantage and disadvantages to it like where it is and isn't accepted_
+
+_ **Recent fluctuations in the price and trading patterns** _
+
+_It is not unusual for the price of Bitcoin (BTC 0.72%) to fluctuate by 5% or even 10% every day. Wider price fluctuations can occur with smaller coins. because supply and demand, investors and users' mood, laws, and media hype all have an impact. All these elements work together to cause price volatility. This will show use if the coin is on the right trajectory or if we should cut our losses_
+
+_ **Predicted outcomes and investment recommendation** _
+
+_In order for the HPC to figure out how to give suggestion that track with the current stats of the coin we will have to utilize machine learning.__A field of computer science and artificial intelligence (AI) called "machine learning" focuses on using data and algorithms to simulate human learning processes and progressively increase their accuracy. By using machine learning we can utilize the information we gathered in the first two step to create an algorithm that can not only get you when to invest but how to invest with the hope that this will limit the risk in error my taking out the human error possibility_
+
+_ **Combined step** _
+
+_Once all the above steps are combined, we should have a HPC that will be able to select and recommend cryptocurrency as well as improve itself the more and more the machine is used_
+
+
