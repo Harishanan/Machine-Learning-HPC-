@@ -159,4 +159,79 @@ _ **Combined step** _
 
 _Once all the above steps are combined, we should have a HPC that will be able to select and recommend cryptocurrency as well as improve itself the more and more the machine is used_
 
+_ **Software languages for a HPC** _
+
+_ **Fortran** _
+
+Fortran (Formula Translation) is one of the oldest high-performance programming languages and is widely used in scientific computing. It is designed to handle complex numerical calculations and has built-in support for parallel processing. Fortran is known for its excellent performance, especially for scientific applications.
+
+**Pros**
+
+- Built-in support for parallel processing
+- Can handle complex calculations
+- Mature and stable language with decades of development and optimization
+- Excellent performance in numerical computing
+
+**Cons**
+
+- Limited functionality for non-numerical tasks
+- The syntax may be difficult for beginners to learn
+- Limited libraries for non-scientific tasks.
+- Lack of modern features found in newer programming languages
+
+**C#/C++**
+
+C/C++ is another popular high-performance programming language used in scientific computing. It is a general-purpose language and is known for its speed, efficiency, and memory management/C++ is used extensively in scientific simulations and numerical computing.
+
+**Pros**
+
+- _High performance, efficient language._
+- _Compilable to run on multiple platforms._
+- _Numerous libraries and frameworks for scientific computing._
+- _Better performance than interpreted languages._
+
+_ **Cons** _
+
+- _No automatic garbage collection, leading to memory leaks if not managed properly._
+- _Prone to security vulnerabilities like buffer overflows._
+- _Development and maintenance require more time and effort than higher-level languages._
+- _Debugging can be more challenging and requires advanced programming skills._
+
+_ **Python** _
+
+_Python is a popular programming language used in scientific computing due to its simplicity, ease of use, and wide range of libraries. It is a high-level language and is widely used in data analysis, machine learning, and scientific computing. Python has built-in support for numerical calculations and visualization_.
+
+**Pros**
+
+- Easy to learn and use
+- Widely used in scientific computing, data analysis, and machine learning
+- Cross-platform compatibility
+- Built-in support for numerical calculations and visualization
+- A wide range of libraries and frameworks are available
+
+**Cons**
+
+- _Limited mobile app development support_
+- _Not suitable for low-level programming_
+- _Limited support for GUI development_
+
+_ **HPC most used language** _
+
+_The most popular high-productivity language in scientific computing is called Python. It's perfect for rapidly developing scalable apps because of its extensive library support and extremely easy syntax._
+
+_In contrast to Julia, Python is not at all HPC capable. The kinds of data structures and other characteristics required for quick computations are not natively supported by the language. But over time, Python interfaces to several C/C++ libraries have been created, and Python now includes data types and algorithms for incredibly effective array operations thanks to the NumPy extension._
+
+_Python today is the number one language for machine learning and many other demanding HPC applications._
+
+_Although languages like c# and java outperform phyton in terms of speed and runtime performance. Phyton is more regularly used as it is faster to development in projects due to its ease of uses and it readability its many libraries also give python access to the same algorithms and data types as java and c_
+
+_The next favorable language to use would be java.__Java code is consistently quicker than C code when program development is given the same window of operation. Java HPC makes perfect sense for code development and modification on a regular basis._
+
+_Fortran is a highly recommended language to use also and was the go-to language for HPC'S. It was first created in 1957 and went on to dominate the computer science field for many years. However, with newer languages being developed Fortran became outdated and does not have the capability to keep up efficiently with the likes of java or python anymore_
+
+_ **Other possibly relevant information** _
+
+[_ **https://www.scientific-computing.com/tech-focus/latest-software-tools-HPC** _](https://www.scientific-computing.com/tech-focus/latest-software-tools-HPC)
+
+[_ **https://www.hpe.com/uk/en/compute/hpc/hpc-software.html** _](https://www.hpe.com/uk/en/compute/hpc/hpc-software.html)
 
