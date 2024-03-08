@@ -73,8 +73,34 @@ In this representation:
 - Applications running on the Client Node can interact with the shared files through the mounted directory.
 
 
-#
-   
+### Configuring NFS In Head Node
+
+1. Install nfs-server in the head node.
+      
+         sudo apt update
+         sudo apt-get install nfs-server
+
+2. Establish a shared directory on the head node and modify the '/etc/exports' file to grant permission to all client nodes to access the '/nfs' directory.  
+
+         mkdir /nfs
+         sudo nano /etc/exports
+         # add the following line inside /etc/exports
+         /nfs *(rw,sync)
+
+3. Restart nfs-kernel-server
+         
+         sudo systemctl nfs-kernel-server restart
+
+4. Changing the ownership of '/nfs' from root to user
+
+         sudo chown #username /nfs
+
+5. Check the ownership of the file to be sure
+
+         ls -ld /nfs
+
+ 
+               
 #
 
 ## Helpful Resources
