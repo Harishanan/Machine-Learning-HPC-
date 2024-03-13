@@ -71,6 +71,52 @@ After noticing that Ubuntu 22.04 operated steadily on the ASUS CS-B motherboard,
 # Install Operating System in Compute Node
 The process of installing the operating system on a compute node is similar to that of the head node, with the exception that it is not required the installation of Ubuntu Server specifically.
 
+# Bash Script for installing packages across all nodes
+
+#!/bin/bash
+
+# The first argument is the package name to install.
+PACKAGE_NAME=$1
+
+# Client machine details (add more as needed).
+CLIENT_USERS=("username1" "username2" "username3" "username4" "username5")
+CLIENT_HOSTS=("192.2143" "client_host_address2" "client_host_address3" "client_host_address4" "client_host_address5")
+
+# Ensure the package name is provided
+if [ -z "$PACKAGE_NAME" ]; then
+    echo "Usage: $0 <package_name>"
+    exit 1
+fi
+
+# Install the package on the host machine.
+echo "Updating repositories and installing $PACKAGE_NAME on the host..."
+sudo apt-get update && sudo apt-get install -y $PACKAGE_NAME
+
+
+# Check if the package installed successfully on the host.
+if [ $? -eq 0 ]; then
+    echo "Package $PACKAGE_NAME installed successfully on the host."
+else
+    echo "Failed to install package $PACKAGE_NAME on the host."
+    exit 1
+fi
+
+# Loop through the client hosts and install the package on each.
+for i in "${!CLIENT_HOSTS[@]}"; do
+    CLIENT_USER=${CLIENT_USERS[$i]}
+    CLIENT_HOST=${CLIENT_HOSTS[$i]}
+
+    echo "Installing $PACKAGE_NAME on the client $CLIENT_HOST..."
+    ssh $CLIENT_USER@$CLIENT_HOST "sudo apt-get update && sudo apt-get install -y $PACKAGE_NAME" #Seb fork into background &, then add new while, with the command which ${PACKAGE_NAME}, when it returns package it is installed, maybe add a timer too?
+
+    # Check if the SSH command was successful.
+    if [ $? -eq 0 ]; then
+        echo "Package $PACKAGE_NAME installed successfully on the client $CLIENT_HOST."
+    else
+        echo "Failed to install package $PACKAGE_NAME on the client $CLIENT_HOST."
+    fi
+done
+
 ## References
 1. https://hpc.uni.lu/infrastructure/network
 2. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
