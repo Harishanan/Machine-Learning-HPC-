@@ -133,7 +133,27 @@ After setting up MUNGE, the following command can be used to check the status of
 
 **SLURM CONFIGURATION IN CLIENT NODE**
 
-  
+The process of configuring SLURM on the client node closely resembles that of the head node, with the primary distinction being the absence of the need to set up a database. Similar to the head node, MUNGE must be configured by creating MUNGE and SLURM groups, as well as MUNGE and SLURM users. Following this setup, MUNGE should be installed. The following command is employed to accomplish these tasks:
+
+      export MUNGEUSER=1001 
+      $ sudo groupadd -g $MUNGEUSER munge 
+      $ sudo useradd -m -c "MUNGE Uid 'N' Gid Emporium" -d /var/lib/munge -u $MUNGEUSER -g munge -s /sbin/nologin munge 
+      $ export SLURMUSER=1002 
+      $ sudo groupadd -g $SLURMUSER slurm 
+      $ sudo useradd -m -c "SLURM workload manager" -d /var/lib/slurm -u $SLURMUSER -g slurm -s /bin/bash slurm
+      sudo apt-get install -y munge
+
+Now, the munge.key file, previously copied to `/nfs/slurm`, can be further distributed to each client node by copying it to `/etc/munge/`. This can be achieved using the following command:
+
+      sudo scp /nfs/slurm/munge.key /etc/munge/
+      sudo chown munge:munge /etc/munge/munge.key
+      sudo chmod 400 /etc/munge/munge.key
+
+Once the key has been copied and permissions have been adjusted, the MUNGE service is ready to be enabled and started. This task can be accomplished using the following command:
+
+      sudo systemctl enable munge
+      sudo systemctl start munge
+
 
 
 ## References
