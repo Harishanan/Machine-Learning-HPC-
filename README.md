@@ -122,7 +122,12 @@ Following the configuration of MUNGE, the munge.key file is copied to the `/nfs/
 
       sudo scp /etc/munge/munge.key /nfs/slurm/
 
-Once MUNGE is set up, following command can be used to chec the status of munge:
+MUNGE services can be enabled and started utilising following command:
+
+      sudo systemctl enable munge
+      sudo systemctl start munge
+
+After setting up MUNGE, the following command can be used to check the status of MUNGE:
 
       sudo systemctl status munge 
 
