@@ -71,6 +71,11 @@ After noticing that Ubuntu 22.04 operated steadily on the ASUS CS-B motherboard,
 # Install Operating System in Compute Node
 The process of installing the operating system on a compute node is similar to that of the head node, with the exception that it is not required the installation of Ubuntu Server specifically.
 
+# SLURM Configuration
+
+SLURM stands for Simple Linux Utility for Resource Management. SLURM is a free and open source workload manager, which are specially designed for supercomputers or cluster computers based on LINUX. It has three core funcationality, the first one being allocation of exclusive and non-exclusive access of compute node resources from head node, so that head node can use the resources for performing tasks. Secondly, it provides framework for starting,executing and monitoring tasks on a set of allocated nodes.    
+
+
 ## References
 1. https://hpc.uni.lu/infrastructure/network
 2. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
