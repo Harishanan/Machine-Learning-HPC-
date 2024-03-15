@@ -73,7 +73,34 @@ The process of installing the operating system on a compute node is similar to t
 
 # SLURM Configuration
 
-SLURM stands for Simple Linux Utility for Resource Management. SLURM is a free and open source workload manager, which are specially designed for supercomputers or cluster computers based on LINUX. It has three core funcationality, the first one being allocation of exclusive and non-exclusive access of compute node resources from head node, so that head node can use the resources for performing tasks. Secondly, it provides framework for starting,executing and monitoring tasks on a set of allocated nodes.    
+SLURM, an acronym for Simple Linux Utility for Resource Management, is an open-source workload manager developed for supercomputers and Linux-based cluster systems. It offers three primary functions: 
+
+1. It allocates both exclusive and non-exclusive access to compute node resources from a central head node, allowing tasks to be executed efficiently.
+2. It furnishes a structured framework for initiating, executing, and overseeing tasks across a designated set of allocated nodes.
+3. It resolves resource contention by administering a queue of pending work, ensuring fair access to resources among multiple users or processes.  
+
+The primary commands for submitting, allocating, and monitoring jobs in SLURM are outlined as follows:
+
+1. **sbatch**: Employed to submit batch jobs, allowing users to send job requests to the SLURM scheduler. Job parameters and requirements are defined within a job script, and SLURM schedules and executes the job accordingly.
+
+2. **salloc**: Facilitates interactive resource allocation, enabling users to acquire compute resources in real-time. Once resources are allocated, users can execute commands within this dedicated resource environment.
+
+3. **srun**: Used to execute parallel tasks within allocated resource environments, whether obtained interactively through `salloc` or as part of a batch job submitted with `sbatch`. It manages the execution of parallel tasks across specified nodes.
+
+4. **squeue**: Utilized for monitoring the status of jobs in the SLURM job queue, providing details such as job ID, user, status, and resource utilization. This allows users to monitor job progress and identify queued or running jobs.
+
+5. **scancel**: Enables users to terminate running or queued jobs within the SLURM job queue by specifying the job ID(s) of the targeted jobs to be canceled.
+
+6. **scontrol**: Used for modifying or querying the configuration and state of the SLURM cluster, granting users the ability to manage SLURM resources by configuring nodes, partitions, and accounts, as well as accessing information about jobs and nodes.
+
+These commands serve as essential tools for effectively interacting with SLURM and managing job execution on high-performance computing clusters.
+
+**SLURM CONFIGURATION IN HEAD NODE**
+
+
+**SLURM CONFIGURATION IN CLIENT NODE**
+
+  
 
 
 ## References
