@@ -97,6 +97,34 @@ These commands serve as essential tools for effectively interacting with SLURM a
 
 **SLURM CONFIGURATION IN HEAD NODE**
 
+To begin configuring Slurm on the head node, the initial step involves defining and exporting an environment variable representing the user ID (UID) for the 'munge' group. This variable serves as a placeholder for the UID that will later be assigned to the 'munge' group. Additionally, a user account named 'munge' is established. MUNGE is employed as the default authentication mechanism. This process is accomplished using the following command:
+
+      export MUNGEUSER=1001 
+      sudo groupadd -g $MUNGEUSER munge 
+      sudo useradd -m -c "MUNGE Uid 'N' Gid Emporium" -d /var/lib/munge -u $MUNGEUSER -g munge -s /sbin/nologin munge 
+
+Likewise, an environment variable for SLURM is established, exported, and associated with the SLURM group. Concurrently, a user account named 'slurm' is created. This process is executed using the following command:
+
+      export SLURMUSER=1002 
+      sudo groupadd -g $SLURMUSER slurm 
+      sudo useradd -m -c "SLURM workload manager" -d /var/lib/slurm -u $SLURMUSER -g slurm -s /bin/bash slurm
+
+Finally MUNGE is installed using the following command:
+
+      sudo apt-get install -y munge 
+
+Upon installing MUNGE, ownership and permissions for MUNGE across various parts of the system are modified to "munge:munge". This task is accomplished using the following command:
+
+      sudo chown -R munge: /etc/munge/ /var/log/munge/ /var/lib/munge/ /run/munge/
+      sudo chmod 0700 /etc/munge/ /var/log/munge/ /var/lib/munge/ /run/munge/
+
+Following the configuration of MUNGE, the munge.key file is copied to the `/nfs/slurm` directory. This action facilitates the utilization of the same munge key for authentication purposes on the client node. The command utilized for this step is:
+
+      sudo scp /etc/munge/munge.key /nfs/slurm/
+
+Once MUNGE is set up, following command can be used to chec the status of munge:
+
+      sudo systemctl status munge 
 
 **SLURM CONFIGURATION IN CLIENT NODE**
 
