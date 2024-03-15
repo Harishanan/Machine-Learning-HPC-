@@ -96,7 +96,7 @@ The primary commands for submitting, allocating, and monitoring jobs in SLURM ar
 These commands serve as essential tools for effectively interacting with SLURM and managing job execution on high-performance computing clusters.
 
 **SLURM CONFIGURATION IN HEAD NODE**
-
+---
 To begin configuring Slurm on the head node, the initial step involves defining and exporting an environment variable representing the user ID (UID) for the 'munge' group. This variable serves as a placeholder for the UID that will later be assigned to the 'munge' group. Additionally, a user account named 'munge' is established. MUNGE is employed as the default authentication mechanism. This process is accomplished using the following command:
 
       export MUNGEUSER=1001 
@@ -132,7 +132,7 @@ After setting up MUNGE, the following command can be used to check the status of
       sudo systemctl status munge 
 
 **SLURM CONFIGURATION IN CLIENT NODE**
-
+--
 The process of configuring SLURM on the client node closely resembles that of the head node, with the primary distinction being the absence of the need to set up a database. Similar to the head node, MUNGE must be configured by creating MUNGE and SLURM groups, as well as MUNGE and SLURM users. Following this setup, MUNGE should be installed. The following command is employed to accomplish these tasks:
 
       export MUNGEUSER=1001 
