@@ -1,0 +1,1 @@
+/home/master/script.sh
