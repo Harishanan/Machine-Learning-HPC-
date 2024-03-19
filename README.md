@@ -154,6 +154,52 @@ Once the key has been copied and permissions have been adjusted, the MUNGE servi
       sudo systemctl enable munge
       sudo systemctl start munge
 
+After setting up Munge, SLURM should be installed in the compute node. To install SLURM on the compute node, you can use the following command:
+
+      sudo apt-get install slurm-wlm
+
+For compute node, the same configuration file should be used as headnode. Therefore, all the configuration file from headnode must be copied to `/nfs/slurm`, which then can be copied to `/etc/slurm/` directory in compute node. 
+
+**Copying `slurm.conf` and `slurmdbd.conf` to `/nfs/slurm` directory in headnode** 
+
+      sudo scp /etc/slurm/slurm.conf /nfs/slurm/
+      sudo scp /etc/slurm/slurmdbd.conf /nfs/slurm/
+
+**Copying `slurm.conf` and `slurmdbd.conf` from  `/nfs/slurm` to `/etc/slurm/` directory in compute node**
+
+      sudo scp /nfs/slurm/slurm.conf /etc/slurm
+      sudo scp /nfs/slurm/slurmdbd.conf /etc/slurm
+
+Once all the configuration files are copied, the following commands are used to set up the required directories and log files for SLURM, ensuring ownership and permissions are appropriately configured to collect SLURM messages.
+
+      mkdir /var/spool/slurmd 
+      chown slurm: /var/spool/slurmd
+      chmod 755 /var/spool/slurmd
+
+      mkdir /var/log/slurm/
+      touch /var/log/slurm/slurmd.log
+      chown -R slurm:slurm /var/log/slurm/slurmd.log
+      chmod 755 /var/log/slurm
+
+      mkdir /run/slurm
+      touch /run/slurm/slurmd.pid (For compute node)
+      chown slurm /run/slurm
+      chown slurm:slurm /run/slurm
+      chmod -R 770 /run/slurm
+
+After setting up the file, the path of slurmd.pid has to be changed inside slurmd.service file, slurmd.service can be accessed using following command:
+
+      nano /usr/lib/systemd/system/slurmd.service
+
+After completing the configuration of SLURM on the Compute Node, following commands is utilised to enable and start the SLURM services:
+
+      systemctl daemon-reload
+      systemctl enable slurmd
+      systemctl start slurmd
+
+Lastly, following command is employed to check the status of the SLURM services:
+
+      systemctl status slurmd
 
 
 ## References
