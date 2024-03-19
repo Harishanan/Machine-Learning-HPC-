@@ -30,13 +30,8 @@
 
 
  ### **3. Implementation**
- ---
 
-
-<br><br>
-
-
-7. Power Management:
+**Power Management**:
 
    Following a thorough examination of individual components, research has been conducted to determine the optimal power distribution among them. Initially, the plan was to utilize two 750W Power Supply Units (PSUs). However, due to technical malfunctions in one of the PSUs, the decision has been made to employ smaller PSUs for each motherboard separately. The power consumption of each hardware component is provided below for reference.
   
@@ -50,8 +45,32 @@
    |---|---|---|
    |FSP220-50LC|220W (total output) | This PSU has a maximum wattage of 60W. And the sum of the power requirements for all the components connected to the PSU should not exceed 220W. |
 
-* The single PSU in our system will be connected to one motherboard, one SSD, and one graphics card. The combined power consumption of these components is estimated to be around 95W during active use and less than 90W when in idle state. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
+* Active Power Consumption:
 
+        CPU: 25W - 40W
+        SSD: 3W
+        GPU: 45W
+        Total Active Power Consumption = CPU + SSD + GPU
+        = (25W - 40W) + 3W + 45W
+        = 73W - 88W
+
+* Idle Power Consumption (Assuming SSD and GPU are in idle state):
+
+        SSD: 50mW (0.05W)
+        Total Idle Power Consumption = CPU + SSD (Idle)
+        = (25W - 40W) + 0.05W
+        = 25.05W - 40.05W
+
+* Power Supply Unit (PSU) Capacity:
+
+        Total Output Capacity: 220W
+        Maximum Wattage: 60W
+
+* Conclusion:
+
+    The single PSU in our system will be connected to one motherboard, one SSD, and one graphics card. The total power consumption of the system should not exceed the PSU capacity.
+    
+    The system is expected to consume between 73W - 88W during active use and between 25.05W - 40.05W when idle. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
 
    
 # How to Create Machine Learning for Predict Crypto Currencies
