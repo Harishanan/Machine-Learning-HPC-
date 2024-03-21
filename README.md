@@ -71,6 +71,29 @@ After noticing that Ubuntu 22.04 operated steadily on the ASUS CS-B motherboard,
 # Install Operating System in Compute Node
 The process of installing the operating system on a compute node is similar to that of the head node, with the exception that it is not required the installation of Ubuntu Server specifically.
 
+# PXE Server Configuration on Ubuntu 
+
+PXE stands for Preboot Execution Environment is a set of guidelines that allow a computer to boot an operating system (OS) via a network connection. In this project, the PXE Server was initially considered but ultimately not utilized due to technical challenges. Despite multiple attempts to configure PXE, the plan had to be abandoned due to technical issues. Instead, the group opted for a Static Interface Configuration approach for data sharing. Even though PXE booting was unsuccessful, the configuration details of the PXE Server were documented for future reference.
+
+The basic topology for PXE Server is shown below:
+
+![access SSH](topology.png)<br>
+<b>Figure 1: Basic Topology for PXE</b>
+<br><br>
+
+The packages used for the configuration are given below in table:
+
+|   Protocol    |   Package Name    |   Description |
+|---------------|-------------------|-------------- |
+|  DHCP server  | dnsmasq           | DHCPD stands for Dynamic Host Configuration Protocol whcich allocates IP address to Client Node from a predefined pool. This ensures that the client nodes can communicate and access network resources.
+|  TFTP server  | tftpd-hpa         | TFTP stands for Trivial File Transfer Protocol which is used for transfering files between devices on a network. It is a lightweight protocol which lacks advanced features like authentication and directory listing. 
+|  FTP Server   | vsftpd            | File Transfer Protocol is similar to TFTP which supports various commands for navigating directories, uploading, downloading, renaming, and deleting files on the server. 
+|   HTTP        | apache2           |HTTP is a flexible and extensively used protocol that offers a convenient way to communicate and transfer data within cluster computing setups.
+|   NFS         | nfs-kernel-server | [NFS Configuration](https://github.com/TeachingMaterial/ace-2023_-team-0/tree/documentation/Configure-NFS-sameyr)
+
+
+
+
 ## References
 1. https://hpc.uni.lu/infrastructure/network
 2. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
