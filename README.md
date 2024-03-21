@@ -91,6 +91,64 @@ The packages used for the configuration are given below in table:
 |   HTTP        | apache2           |HTTP is a flexible and extensively used protocol that offers a convenient way to communicate and transfer data within cluster computing setups.
 |   NFS         | nfs-kernel-server | [NFS Configuration](https://github.com/TeachingMaterial/ace-2023_-team-0/tree/documentation/Configure-NFS-sameyr)
 
+**Step 1: Required Package Installation**
+
+Following command can be used to install DHCP, TFTP, FTP, HTTP:
+
+        sudo apt-get install dnsmasq nfs-kernel-server vsftpd apache2 samba
+
+**Step 2: Configuration of pxe.conf file**
+
+If the pxe.conf file does not exist, it should be created. If it already exists, it needs to be modified to specify the range of IP addresses that the DHCPD server should use when allocating addresses to compute nodes. the pxe.conf file can be accessed by using this command:
+
+        sudo nano /etc/dnsmasq.conf.d/pxe.conf
+
+The PXE configuration file should closely resemble the following according to the requirements:
+
+        interface=eno1
+        bind-interfaces
+        dhcp-range=192.168.0.100,192.168.0.200
+        dhcp-boot=pxelinux.0
+        dhcp-match=set:efi-x86_64,option:client-arch,7
+        dhcp-boot=tag:efi-x86_64,bootx64.efi
+        enable-tftp
+        tftp-root=/srv/tftp
+
+After changing the configuration file. dnsmasq service should be restarted using the following command:
+        
+        sudo systemctl restart dnsmasq.service
+    
+
+**Step 3: Required directories creation to store PXE boot file** 
+
+Following the configuration of the pxe.conf file, various directories will be created to store different files required for PXE booting. The following command can be used to make images, kernel, BIOS and UEFI directories:
+
+        mkdir -pv /tftpboot/{images,kernels,BIOS,UEFI}
+
+The image directory will store the Ubuntu image, while the kernel directory will store Ubuntu's kernel files. The UEFI/BIOS directory will contain PXE configuration files. Additionally, the permissions of the tftpboot directory should be adjusted to ensure accessibility to all client nodes in the future. 
+
+        sudo chmod 777 -R /tftpboot
+
+**Step 4: Installation of required pxe packages**
+
+This step is crucial as it involves installing all the necessary PXE bootable files. Failure to complete this step properly will result in the PXE boot process not functioning correctly.
+
+Command to install syslinux and pxelinux:
+
+        sudo apt-get install syslinux pxelinux
+
+All downloaded files that are required should be copied to the previously created directories.
+
+***UEFI FILES***
+
+        cp -av /usr/lib/syslinux/modules/efi64/{ldlinux.e64,libcom32.c32,libutil.c32,vesamenu.c32} /tftpboot/UEFI
+        
+        cp -av /usr/lib/SYSLINUX.EFI/efi64/syslinux.efi /tftpboot/UEFI
+
+***BIOS FILES***
+
+        cp -av /usr/lib/PXELINUX/pxelinux.0 /tftpboot/BIOS
+        cp -av /usr/lib/syslinux/modules/bios/{ldlinux.c32,libcom32.c32,libutil.c32,vesamenu.c32} /tftpboot/BIOS
 
 
 
