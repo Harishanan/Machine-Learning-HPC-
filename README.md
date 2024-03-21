@@ -4,6 +4,7 @@
 ## Introduction
 ---todo
 
+
 ## Step 1: Define Requirements
 
 1. Purpose of the HPC System
@@ -71,6 +72,151 @@ After noticing that Ubuntu 22.04 operated steadily on the ASUS CS-B motherboard,
 # Install Operating System in Compute Node
 The process of installing the operating system on a compute node is similar to that of the head node, with the exception that it is not required the installation of Ubuntu Server specifically.
 
+
+# Creatting Machine Learning for predict cryptocurrency
+
+## Getting Data
+The initial step in creating a Machine Learning model involves accessing historical data for the cryptocurrencies that will be utilised for making predictions. Initially, the use of an API to access this historical data was contemplated. However, due to the constraints imposed by APIs, the decision was ultimately made to employ data available from Yahoo Finance. This platform facilitates the acquisition of historical datasets for the most significant cryptocurrencies. For this project, data pertaining to Bitcoin and Ethereum will be used.
+
+## Processing the data
+To process the data, the pandas library is being utilised, which will enable us to manipulate the data as desired.
+
+```bash 
+
+import pandas as pd
+
+```
+
+``` bash
+self.BTC_data= pd.read_csv(file_path,index_col='Date', parse_dates=['Date'], dayfirst=True)
+```
+pd.read_csv(): This function is pandas' workhorse for loading CSV files. It's versatile and powerful, allowing for fine-tuning of the data ingestion process.
+
+index_col='Date': By setting the Date column as the index, you transform the dates into the DataFrame's row labels, making time-series data manipulation more intuitive.
+
+parse_dates=['Date']: This ensures the 'Date' column is treated as datetime objects, not strings, unlocking time-sensitive methods and functionality.
+
+dayfirst=True: This parameter is crucial for correctly interpreting dates when the day precedes the month in your data source, avoiding common pitfalls in date parsing.
+
+In order to facilitate predictions based on the Bitcoin dataset, parameters such as the high price and volume will be selected. However, since these may not be sufficient for accurate forecasting, technical indicators will also be incorporated to enhance the predictive capability.
+
+
+## Technincal Indicators
+The technical indicators RSI, EMA, SMA and MACD are generally used for financial analysis to understand market dynamics and generate trading signals. Those indicators will help ML model to identify complex patterns
+
+### Simple Moving Average (SMA)
+ The average price of a security or asset over a given length of time, it is determined by summing up the prices for a given number of periods and dividing those values by the same number of periods. Can assist in identifying both 11 short-term and long-term trends in the data
+
+ $$
+\text{SMA} = \frac{\sum_{i=1}^{N} P_i}{N}
+$$
+
+  Where:
+
+  - $N$ is the number of periods used in the calculation.
+  -  $P$<sub>i</sub> denotes the price of the asset at period $i$.
+
+
+
+### The Exponential Moving Average (EMA) 
+IT is a type of moving average that places a greater weight and significance on the most recent data points. It is also referred to as the exponentially weighted moving average. EMAs are commonly used to gauge the direction of the trend in the prices of financial assets such as stocks or cryptocurrencies.
+$$
+\text{EMA}_{\text{today}} = (\text{Price}_{\text{today}} \times \text{K}) + (\text{EMA}_{\text{yesterday}} \times (1 - \text{K}))
+$$
+
+where:
+
+- $\text{Price}_{\text{today}}$ is the current closing price,
+- $\text{EMA}_{\text{yesterday}}$ is the previous EMA value,
+- $K$ is the smoothing factor, calculated as $K = \frac{2}{(N+1)}$,
+- $N$ is the number of periods.
+
+In simpler terms:
+
+$$
+\text{EMA} = \text{Current Price} \times \text{Smoothing Factor} + \text{EMA}_{\text{previous day}} \times (1 - \text{Smoothing Factor})
+$$
+
+EMA involves two main components: the smoothing factor and the previous EMA value. The smoothing factor determines the weightage given to the most recent data point and is typically derived from a specified time period or the number of data points. Since it places more emphasis on recent data, the EMA reacts more quickly to price changes compared to the SMA.
+
+### The Moving Average Convergence Divergence (MACD)
+ MACD is a trend-following momentum indicator that shows the relationship between two moving averages of a security’s price. The MACD is calculated by subtracting the 26-period Exponential Moving Average (EMA) from the 12-period EMA.
+
+
+ $$
+\text{MACD} = \text{EMA}_{12} - \text{EMA}_{26}
+$$
+
+
+where:
+
+- $\text{EMA}_{12}$ :  The 12-period exponential moving average of the closing prices.
+- $\text{EMA}_{26}$: The 26-period exponential moving average of the closing prices.
+
+### The Relative Strength Index (RSI)
+RSI a momentum oscillator that measures the speed and change of price movements. The RSI oscillates between zero and 100 and is typically used to identify overbought or oversold conditions in trading assets, indicating a potential reversal in price.
+
+The RSI is calculated using the following formula:
+
+$$
+\text{RSI} = 100 - \frac{100}{1 + \text{RS}}
+$$
+
+Where RS (Relative Strength) is the average gain of the up periods divided by the average loss of the down periods over the specified time frame.
+
+$$
+\text{RS} = \frac{\text{Average Gain over N periods}}{\text{Average Loss over N periods}}
+$$
+
+
+
+### Intregation of technical indicators 
+To add those indiciators  to our dataset will be use function that will make all the calculations required and added to our orginal data set.
+
+
+```bash
+ def technical_indicators(self,dataset):
+           
+            # Create MACD
+            
+             dataset['26ema'] = dataset['Price'].ewm(span=26).mean()
+             dataset['12ema'] = dataset['Price'].ewm(span=12).mean()
+             dataset['MACD'] = dataset['12ema']-dataset['26ema']
+
+            
+    
+            # Create Exponential moving average
+               dataset['ema'] = dataset['Price'].ewm(com=0.5).mean()
+    
+           
+
+            # Calculate RSI
+            delta = dataset['Price'].diff(1)
+            gain = (delta.where(delta > 0, 0)).rolling(window=14).mean()
+            loss = (-delta.where(delta < 0, 0)).rolling(window=14).mean()
+
+            RS = gain / loss
+            RSI = 100 - (100 / (1 + RS))
+
+            dataset['RSI'] = RSI
+
+
+             
+            # Calculate SMA (Simple Moving Average)
+               dataset['SMA30'] = dataset['Price'].rolling(window=30).mean()  # 30-day SMA
+               dataset['SMA21'] = dataset['Price'].rolling(window=21).mean()  # 21-day SMA, if needed
+
+            
+            return dataset
+
+```
+After integreating the all technical indicators the next step will be to scale and split the data.
+
+## Scalign and Splitting
+
+
+
+  
 ## References
 1. https://hpc.uni.lu/infrastructure/network
 2. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
