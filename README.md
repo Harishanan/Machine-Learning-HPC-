@@ -150,6 +150,88 @@ All downloaded files that are required should be copied to the previously create
         cp -av /usr/lib/PXELINUX/pxelinux.0 /tftpboot/BIOS
         cp -av /usr/lib/syslinux/modules/bios/{ldlinux.c32,libcom32.c32,libutil.c32,vesamenu.c32} /tftpboot/BIOS
 
+**Step 5: Configuratio of DHCP & TFTP Server**
+
+Before setting up the DHCP, it's necessary to edit the '/etc/default/tftp-hpa' file to assign the LAN interface. To confirm the LAN interface, the following command can be used:
+
+                ip a
+
+This command displays all active interfaces, including their MAC addresses and IP addresses. In this project, the 'eno1' interface is being utilized.
+
+After identifying the interface name, modifications were made to the '/etc/default/tftp-hpa' file, adding the following configuration settings.
+
+
+        at << EOF > /etc/dnsmasq.conf
+        interface=eno1
+        bind-interfaces
+        
+        #dhcp-range=ens33,192.168.100.100,192.168.100.240,255.255.255.0,8h
+        dhcp-range=$ethInt,192.168.2.2,192.168.2.254,255.255.255.0,8h
+        dhcp-option=option:router,192.168.2.1
+        dhcp-option=option:dns-server,192.168.2.1
+        dhcp-option=option:dns-server,8.8.8.8
+        
+        enable-tftp
+        #tftp-root=/netboot/tftp
+        tftp-root=/tftpboot
+        #dhcp-boot=pxelinux.0,linuxhint-s20,192.168.2.1
+        dhcp-boot=pxelinux.0
+        pxe-prompt="Press F8 for PXE Network boot.", 2
+        # PXEClient:Arch:00000
+        pxe-service=X86PC, "Boot BIOS PXE", BIOS/pxelinux
+        # PXEClient:Arch:00007
+        pxe-service=BC_EFI, "Boot UEFI PXE-BC", UEFI/syslinux.efi
+        # PXEClient:Arch:00009
+        pxe-service=X86-64_EFI, "Boot UEFI PXE-64", UEFI/syslinux.efi
+        EOF
+
+After modifying the configuration file, it's crucial to restart the service; otherwise, the changes made to the configuration will not take effect. Following command can be utilized for restarting the dnsmasq services.
+
+        sudo systemctl restart dnsmasq
+        sudo systemctl status dnsmasq
+
+
+**Step 6. Downloading OS Image**
+
+To download the ubuntu image for PXE booting, ubuntu netboot image should be downloaded. Following command can be used for fetching ubuntu 20.04 netboot image form official Ubutnu arcive.  
+
+        wget http://archive.ubuntu.com/ubuntu/dists/focal/main/installer-amd64/current/legacy-images/netboot/mini.iso
+
+Upon acquiring the image, mounting it can be achieved using the subsequent command.
+
+        mout -o loop mini.iso /mnt
+
+Following the mounting of the netboot image, kernel files must be copied to their respective directories.
+
+        sudo mkdir -pv /tftpboot/kernels/ubuntu2004
+        sudo cp -av /mnt/casper/{initrd,vmliniuz} /tftpboot/kernels/ubuntu2004
+
+Subsequntly, entire OS imae can be copied to `/image` directory wich was created before:
+
+        mkdir -pv /tftpboot/images/ubuntu2004
+        rsync -av --progress /mnt/* /tftpboot/images/ubuntu2004
+        umount /mnt
+
+
+**Step 7. Adding PXE boot Menu**
+
+A PXE boot menu will be generated and displayed on the client node during the PXE boot process. This menu will provide options for downloading the operating system. To create a boot menu, a file should be created which will hold all the inormation hat will be shown to he user in client node. following command is used to create a boot menu.
+
+        sudo mkdir -vp /tftpboot/pxelinux.cfg/
+        touch /tftpboot/pxelinux.cfg/default
+
+After creating the default file, the following line can be added to display a message during the PXE booting process.
+
+        default menu.c32
+        prompt 0
+        timeout 300
+        TIMEOUT local
+        menu title ########## PXE Boot Menu ##########        
+
+**Note: The boot menu can be customized according to the user's preferences, and it is not necessary to replicate the exact configuration as above.*
+
+
+
 
 
 ## References
