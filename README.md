@@ -212,6 +212,29 @@ Subsequntly, entire OS imae can be copied to `/image` directory wich was created
         rsync -av --progress /mnt/* /tftpboot/images/ubuntu2004
         umount /mnt
 
+**Setting up FTP Server**
+
+OS image will be mounted under the image directory within FTP, a new directory can be created inside FTP using the following command. Subsequently, the required permissions should be assigned to the directory.
+
+        cd /srv/ftp
+        mkdir -pv pub
+
+        sudo chmod -R 777 /srv/ftp/pub
+
+Once a directory is created, the OS image can be mounted, making it easier to share with other compute nodes. The following command can be utilized for this process:
+
+        sudo mkdir /srv/ftp/pub/images
+
+        sudo mount --bind /tftp/images /srv/ftp/pub/images 
+
+FTP service shpuld be restarted to apply all the changes:
+
+        sudo systemctl enable vsftpd
+        sudo systemctl start vsftpd
+        sudo systemctl status vsftpd
+
+***NOTE: NFS configuration wont be provided in this file but can be followed goig to the link provided.*** [NFS Configuration](https://github.com/TeachingMaterial/ace-2023_-team-0/tree/documentation/Configure-NFS-sameyr)
+
 
 **Step 7. Adding PXE boot Menu**
 
@@ -228,16 +251,14 @@ After creating the default file, the following line can be added to display a me
         TIMEOUT local
         menu title ########## PXE Boot Menu ##########        
 
-**Note: The boot menu can be customized according to the user's preferences, and it is not necessary to replicate the exact configuration as above.*
-
-
+*Note: The boot menu can be customized according to the user's preferences, and it is not necessary to replicate the exact configuration as above.*
 
 
 
 ## References
 1. https://hpc.uni.lu/infrastructure/network
 2. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
-3. 
+3. https://medium.com/jacklee26/set-up-pxe-server-on-ubuntu20-04-and-window-10-e69733c1de87
 
 ## Authors
 
