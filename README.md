@@ -2,11 +2,13 @@
 ## Introduction
 
 ## 1. System Design And Architecture
---- Design the architecture, integrating 14 ASUS CS-8 motherboards and single-board computers. Provide critical reflections on the chosen design.
-## 2. Technology Research: 
---- Conduct comprehensive research on HPC technologies, power management, non-volatile storage, and RAM. Justify technology choices based on problem domain appropriateness. 
+***Design the architecture, integrating 14 ASUS CS-8 motherboards and single-board computers. Provide critical reflections on the chosen design.***
 
-### Power Management
+## 2. Technology Research: 
+***Conduct comprehensive research on HPC technologies, power management, non-volatile storage, and RAM. Justify technology choices based on problem domain appropriateness.*** 
+
+### 2.1. Power Management
+---
 
    Following a thorough examination of individual components, research has been conducted to determine the optimal power distribution among them. Initially, the plan was to utilize two 750W Power Supply Units (PSUs). However, due to technical malfunctions in one of the PSUs, the decision has been made to employ smaller PSUs for each motherboard separately. The power consumption of each hardware component is provided below for reference.
   
@@ -24,13 +26,18 @@
 
 
 ## 3. System Construction:
---- Assemble the HPC system, implementing power management and resource-efficient configurations. Configure non-volatile storage and RAM to meet performance requirements. 
+***Assemble the HPC system, implementing power management and resource-efficient configurations. Configure non-volatile storage and RAM to meet performance requirements.***
+
 ## 4. Housing and Cooling Solutions: 
--- Design and implement housing/structure using laser cutting or additive manufacturing. Discuss convection principles (natural and forced) for cooling. 
+***Design and implement housing/structure using laser cutting or additive manufacturing. Discuss convection principles (natural and forced) for cooling.***
+
 ## 5. Operating System Selection: 
--- Choose an operating system (e.g., Linux- Ubuntu or declarative system- NixOS). Justify the choice based on task requirements and overall design. 
-# Install Operating System in Head Node
+***Choose an operating system (e.g., Linux- Ubuntu or declarative system- NixOS). Justify the choice based on task requirements and overall design.***
+
+### 5.1. Install Operating System in Head Node
+---
 Initially, an attempt was made to determine which operating system the ASUS CS-B motherboard supports. However, the information available suggests that the ASUS CS-B is only compatible with Ubuntu 13.10, as indicated in the provided image.
+
 ![Os](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/85470428/3f1fbdae-3522-4e26-841c-ef19f4888d5a)
 Figure: OS Compatibility of Asus CS-B 
 
@@ -42,39 +49,43 @@ Figure: OS Compatibility of Asus CS-B
 
 2. After the installation process, the system undergoes a series of commands to ensure it possesses the latest security patches and software updates:
 
-                                                                  `(sudo apt update
-                                                                                                                                          
-                                                                  sudo apt upgrade)`
+                  sudo apt update                                           
+            
+                  sudo apt upgrade
 
 3. Given its role as the head node in our setup, the desktop image is transformed into a server. Let's quickly delve into the significance of the head node within the realm of High-Performance Computing (HPC).
 
 - The head node serves as a central control unit in an HPC environment, orchestrating and managing the entire cluster. Its primary purposes include task scheduling, resource allocation, and overall coordination of computational tasks within the cluster. By installing      the Ubuntu Server and setting the default target to multi-user mode optimize resource allocation, conserving RAM and CPU resources by eschewing unnecessary graphical sessions. This ensures that the head node operates efficiently, enabling it to efficiently manage and    oversee the computational workload of the entire HPC cluster.
   
-                                                To install Ubuntu Server  : (`sudo apt install ubuntu-server`)
-                                                To disable GUI            : (`sudo systemctl set-default multi-user.target`)
+            To install Ubuntu Server  : sudo apt install ubuntu-server
+            To disable GUI            : sudo systemctl set-default multi-user.target
      
 Although the documentation states that the ASUS CS-B motherboard can only run Ubuntu 13.10, a brief test was run to see how the motherboard would react to installing Ubuntu 22.04 (Jammy Jellyfish), a more recent version of the operating system. The Ubuntu 22.04       
 operating system ran on the system very well, with no noticeable glitches. This surprising finding prompted more investigation into the motherboard's compatibility with the latest Ubuntu versions. 
 Although documentation indicates otherwise, one plausible explanation for Ubuntu 22.04's successful running on the ASUS CS-B motherboard could be the hardware compatibility enhancements included in later Ubuntu editions. The Ubuntu operating system is continuously       improved and optimised by its developers throughout time to improve compatibility with a wider variety of hardware setups. Because of this, more recent versions of Ubuntu might by nature support a greater range of motherboards, including the ASUS CS-B. Moreover,         improvements in system libraries, kernel updates, and device drivers in Ubuntu 22.04 can also be responsible for its smooth operation on the ASUS CS-B motherboard. These updates might take care of any compatibility problems that earlier motherboard models might have     had, making it possible to use current Ubuntu editions more smoothly.
 After noticing that Ubuntu 22.04 operated steadily on the ASUS CS-B motherboard, the group chose to switch from Ubuntu 13.10 to this more recent version. This choice was driven by the goal of utilising Ubuntu 22.04's most recent software features, security updates,      and hardware compatibility changes to provide the best possible computing environment for the team's activities.
 
-# Install Operating System in Compute Node
+### 5.2 Install Operating System in Compute Node
+---
 The process of installing the operating system on a compute node is similar to that of the head node, with the exception that it is not required the installation of Ubuntu Server specifically.
 
 
 ## 6. Task Implementation:
-### How to Create Machine Learning for Predict Crypto Currencies
+### 6.1. How to Create Machine Learning for Predict Crypto Currencies
 
-#### Step 1: Get infomartion from API
+### Step 1: Get infomartion from API
+---
 The Alpha Vanatge API is going to be used to retrieve historical information from their database. The data will be imported in JSON format. Features to predict prices should be defined; some of them could include price, volume, and corresponding timestamps.
 
-#### Step 2: Processing Data
+### Step 2: Processing Data
+---
 After obtaining the information, it is possible to use panda libraries to convert the data to numeric or date formats. Using these data, technical indicators can be calculated . It is important to fill missing values with zeros and scale the data to ensure that it is on the same scale.
 
-#### Step 3: Define Techninal Indicators 
+### Step 3: Define Techninal Indicators 
+---
 The technical indicators RSI, EMA, and SMA are commonly employed in financial analysis to comprehend market dynamics and generate trading signals. Integrating these indicators into the ML model will assist in identifying complex patterns. Additionally, the inclusion of further technical indicators could enhance the model's analytical capabilities.
 
-##### SMA
+#### SMA
 The Simple Moving Average (SMA) calculates the average price of a security or asset over a specified period. It is derived by summing up the prices for a given number of periods and dividing the total by the same number of periods. This indicator can be instrumental in identifying both short-term and long-term trends in the data.
 <div style="text-align: center;">
 
@@ -83,7 +94,7 @@ The Simple Moving Average (SMA) calculates the average price of a security or as
 
 Where *N* is the number of periods used in the calculation, *Pi* denotes the price of the asset at period *i*.
 
-##### EMA 
+#### EMA 
 The Exponential Moving Average (EMA) is a type of moving average that assigns greater significance to recent price data. Its calculation involves two primary components: the smoothing factor and the previous EMA value. The smoothing factor determines the weightage allocated to the most recent data point and is usually derived from a specified time period or number of data points. Due to its focus on recent data, the EMA responds more rapidly to price changes in comparison to the Simple Moving Average (SMA).
 
 <div style="text-align: center;">
@@ -91,7 +102,7 @@ The Exponential Moving Average (EMA) is a type of moving average that assigns gr
 ![alt text](image-1.png)
 </div>
 
-##### RSI
+#### RSI
 The Relative Strength Index (RSI) evaluates the strength of price movements in financial assets. Typically, it is calculated by averaging gains and losses on an item over a specified time frame. The RSI can predict changes in momentum or impulse and signal potential trend reversals. Traders and analysts utilize the RSI to identify probable overbought or oversold conditions in an asset, as well as to anticipate potential price corrections or reversals.
 
 <div style="text-align: center;">
@@ -101,13 +112,15 @@ The Relative Strength Index (RSI) evaluates the strength of price movements in f
 
 Now the data set is ready with 6 features (Time, Price, Volume, SMA, EMA, RSI)
 
-#### Step 4: Split the data
+### Step 4: Split the data
+---
 
 The data should be split into training, validation, and testing sets with proportions of 70%, 10%, and 20%, respectively. The validation set is utilized to fine-tune the hyperparameters of the model and is considered part of the training process. The model solely evaluates this data but does not learn from it, ensuring an objective and unbiased evaluation of the model's performance.
 
 
-#### Step 5: Choosign ML model (proposals)
-### Random Forest Algorithm:
+### Step 5: Choosign ML model (proposals)
+---
+#### Random Forest Algorithm:
 
 The Random Forest Algorithm is commonly used for regression and classification problems. This technique entails creating a forest of decision trees, where each tree is trained on a different subset of the dataset using a distinct set of parameters. This approach aims to enhance diversity and mitigate overfitting.
 
@@ -130,7 +143,7 @@ To make predictions at a new point *x* , the following equation is used:
 
 *f_Jrf(x)*  represents the predicted value of the target variable for a given input variable *x*, *J* represents the number of decision trees in the forest, *T_j(x)* represents each decision tree in the forest.
 
-##### Gradient Boosting Algorithm
+#### Gradient Boosting Algorithm
 The ML method belongs to the ensemble approach family, which integrates several models to produce predictions that are more accurate than those of a single model. In simpler terms, it assembles a group of less effective learners, such as decision trees, and trains them to decrease the errors of the previous model.
 
 The residual error is utilized to train the subsequent decision tree. This process is repeated until the error is minimized. As each iteration aims to reduce errors, it also helps mitigate overfitting. Gradient Boosting (GB) can be applied to both classification and regression tasks.
@@ -166,7 +179,7 @@ The training process is described by:
 
 Where *x_t*  is the input at time step  *t* ,  *h_t*  is the hidden state at time  *t* , *c_t*  is the cell state at time step  *t* , and *i_t* ,  *f_t*, and  *o_t*  are the input gate, forget gate, and output gate, respectively, at time step *t* .  *W*  and  *b* are the weight matrices and bias vectors, respectively. The sigmoid function and the hyperbolic tangent function *tanh* are used to bound the output between 0 and 1, and between -1 and 1, respectively.
 
-##### Gated Recurrent Unit (GRU)
+#### Gated Recurrent Unit (GRU)
 RNN architecture is also used in sequential data analysis applications, such as price predictions. It processes sequential data by maintaining an internal state that is altered whenever new input is added to the sequence.
 In order to predict price trends in the crypto market, it is necessary to capture long-term dependencies and patterns in the time series data. The hidden state at time *t*, *h_t*, is updated based on the input at time *t*, *x_t*, and the previous hidden state, *h_t-1*, using the following equations:
 
@@ -175,9 +188,12 @@ In order to predict price trends in the crypto market, it is necessary to captur
 ![alt text](image-8.png)
 </div>
 
-#### Step 6: Evaluation Metrics
+### Step 6: Evaluation Metrics
+---
 Evaluation metrics can be utilised for comparing algorithms and determining which features in the dataset have the most significant impact on the predictions of each model.
-### RMSE
+
+#### RMSE
+
 Mean Squared Error (MSE) is a commonly used metric to evaluate the performance of a predictive model, particularly in regression analysis. It quantifies the disparity between the predicted and actual values of a dataset, offering a measure of the average deviation of predictions from actual values.
 
 <div style="text-align: center;">
@@ -186,7 +202,8 @@ Mean Squared Error (MSE) is a commonly used metric to evaluate the performance o
 </div>
 
 Where, *n* is the number of data points in the dataset, *predicted_i* is the predicted value for the i-th data point, *actual_i* is the actual value for the i-th data point.
-### MAE 
+
+#### MAE 
 Mean Absolute Error (MAE) is a commonly used metric for evaluating the accuracy of a predictive model. It calculates the average magnitude of errors in a set of predictions, without considering their direction.
 <div style="text-align: center;">
 
@@ -195,7 +212,7 @@ Mean Absolute Error (MAE) is a commonly used metric for evaluating the accuracy 
 
 Where, *Y_i* is the actual value,  *Y*^_i is the predicted value and *n* the number of observations.
 
-##### MSE
+#### MSE
 Mean Squared Error (MSE) is a commonly used metric to measure the disparity between the predicted and actual values in a regression problem. It is calculated by averaging the squared differences between the predicted and actual values. A lower MSE value indicates better performance
 <div style="text-align: center;">
 
@@ -204,7 +221,7 @@ Mean Squared Error (MSE) is a commonly used metric to measure the disparity betw
 
 Where, *Y_i* is the actual value,  *Y*^_i is the predicted value and *n* the number of observations.
 
-##### R-Squared
+#### R-Squared
 
 R-squared (R2) is a statistical measure that represents the proportion of the variance in the dependent variable that is predictable from the independent variable(s). In other words, it measures how well the independent variables explain the variability of the dependent variable. R-squared values range from 0 to 1, with higher values indicating a better fit of the model to the data.
 
@@ -219,7 +236,7 @@ Where,
  predicted values and the actual values.
  SST (Total Sum of Squares) is the sum of the squared differences between the actual values and the mean of the target variable.
 
-##### TWAP
+#### TWAP
  Time-Weighted Average Price or TWAP is a metric used to measure the averag e price of an asset over a specif period of time.
 The formula to calculte TWAP is:
 <div style="text-align: center;">
@@ -232,7 +249,7 @@ Where,
 
 
 
-##### VWAP
+#### VWAP
 VWAP stands for Volume-Weighted Average Price. It's a trading benchmark used primarily by institutional traders to measure the average price a stock has traded at throughout the trading day, based on both volume and price. VWAP is calculated by dividing the total value of all trades by the total volume traded over a specific time horizon, typically the entire trading day.
 
 The formula for VWAP is as follows:
@@ -248,31 +265,34 @@ Where:
 -  *n*  is the total number of time intervals or data points considered.
 
 
-#### Step 7: Create Prediction Model
+### Step 7: Create Prediction Model
+---
 RF and GB models can be created using the scikit-learn library. The LSTM model is constructed using the Keras library by invoking the Sequential() function and incorporating the LSTM units. The GRU model is built using the Keras library by employing the Sequential() function and adding the GRU units.
 
-#### Step 8: Selct Hypeparameters
+### Step 8: Selct Hypeparameters
+---
 Hyperparameters aid in fine-tuning machine learning models to fit well with unseen data and enhance performance. Hyperparameter tuning is accomplished with the assistance of a validation dataset.
-### Random Forest
+
+#### Random Forest
 1. Number of trees: The Random Forest Regressor has a hyperparameter called n_estimators, which specifies the number of decision trees that compose the forest. More trees increase the risk of overfitting but also enhace the model's conpelixity. 
 2. Maximum Depth of Trees (max_depth): The tree depth parameter controls the maximum depth of each tree in the ensemble. Deeper trees can capture more intricate patterns but may increase the risk of overfitting.
 3. Minimum Samples for a Split: This parameter determines the minimum number of samples needed to split an internal node. A higher value can mitigate the risk of overfitting by ensuring that nodes with insufficient samples are not split."
 
-##### GB
+#### GB
 1. Number of Trees (n_estimators): This hyperparameter specifies the number of decision trees to be built in the random forest. Increasing the number of trees generally improves the performance of the model, up to a certain point where further increases may not result in significant improvements but increase computational cost.
 
 2. Maximum Depth of Trees (max_depth): This hyperparameter controls the maximum depth of each decision tree in the random forest. Deeper trees can capture more complex relationships in the data but are more prone to overfitting. Setting an appropriate max_depth helps balance between model complexity and overfitting.
 
 3. Number of Features Considered for Split (max_features): This hyperparameter determines the maximum number of features to consider when looking for the best split at each node of the decision tree. It can be specified as an integer (considering a fixed number of features) or as a fraction (considering a fraction of total features). Choosing a lower value reduces the correlation between trees and helps improve the diversity of the ensemble, which can lead to better generalization performance.
 
-### LSTM
+#### LSTM
 1. Number of LSTM Units (units): This hyperparameter determines the number of memory cells or units in the LSTM layer. More units can help the model learn more complex patterns in the data, but it also increases the computational cost and the risk of overfitting.
 
 2. Dropout Rate (dropout): Dropout is a regularization technique used to prevent overfitting in neural networks. It randomly drops a proportion of the units (neurons) in the LSTM layer during training. The dropout rate hyperparameter controls the probability of dropping a unit. A common value for dropout rate is between 0.2 and 0.5.
 
 3. Sequence Length (input_length): In a sequence-to-sequence model like LSTM, the sequence length represents the length of input sequences fed into the network. It's important to choose an appropriate sequence length based on the nature of the problem and the characteristics of the data. A longer sequence length allows the model to capture more temporal dependencies but requires more memory and computational resources.
 
-### GRU 
+#### GRU 
 1. Number of Units (units): This hyperparameter determines the dimensionality of the hidden state and the output of the GRU cell. More units allow the model to capture more complex patterns in the data but increase computational cost. The number of units is a key factor in determining the capacity of the model to learn from sequential data.
 
 2. Dropout Rate (dropout): Dropout is a regularization technique used to prevent overfitting in neural networks. It randomly drops a proportion of the units (neurons) in the GRU layer during training. The dropout rate hyperparameter controls the probability of dropping a unit. A common value for dropout rate is between 0.2 and 0.5.
@@ -289,9 +309,12 @@ Testing assesses the performance of the ML model using a separate testing datase
 ## Step 11: Evaluation Metrics
 Evaluation metrics are crucial for assessing a model's performance and its suitability for addressing a specific problem. When comparing multiple machine learning models, analyzing metric values helps in selecting the most effective model.
 
-## 7. Performance Evaluation: Develop a strategy for evaluating HPC system performance. 
+## 7. Performance Evaluation:
+***Develop a strategy for evaluating HPC system performance.***
+
+
 ## 8. Software and OS Maintenance: 
---- Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.
+***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
 
 
    
@@ -318,7 +341,6 @@ Evaluation metrics are crucial for assessing a model's performance and its suita
 4. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
 5. https://hpc.uni.lu/infrastructure/network
 6. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
-
 
 
 
