@@ -3,21 +3,22 @@
 
 ## Table Of Contents
 - [Introduction](#Introduction)
-- [System Design And Architecture]
+- [System Design And Architecture](#System_Design_And_Architecture)
 - [Technology Research]
 - [Power Management]
 - [System Construction]
 - [Housing and Cooling Solutions]
-Operating System Selection
-Install Operating System in Head Node
-Install Operating System in Compute Node
-Task Implementation
-How to Create Machine Learning for Predict Crypto Currencies
-Performance Evaluation
-Software and OS Maintenance
-References
-Contributors
-License
+- [Operating System Selection]
+   - [Install Operating System in Head Node]
+   - [Install Operating System in Compute Node]
+- [Task Implementation]
+   - [How to Create Machine Learning for Predict Crypto Currencies]
+- [Performance Evaluation]
+- [Software and OS Maintenance]
+- [References]
+- [Contributors]
+- [License]
+  
 ## About The Project
 
 ## Built With
@@ -59,7 +60,12 @@ License
 
 ## 5. Operating System Selection: 
 ***Choose an operating system (e.g., Linux- Ubuntu or declarative system- NixOS). Justify the choice based on task requirements and overall design.***
-
+Software and Network Configuration
+Operating System: Overview of Ubuntu 24 installation across all nodes.
+Networking: Description of the networking setup, including challenges and solutions for node communication and internet sharing.
+Cluster Management: Configuration details for Slurm and challenges faced (e.g., PXE boot issues).
+Containerization: Implementation of Apptainer for application deployment.
+Monitoring: Setup of Node Exporter, Prometheus, and Grafana for system monitoring and performance tracking.
 ### 5.1. Install Operating System in Head Node
 ---
 Initially, an attempt was made to determine which operating system the ASUS CS-B motherboard supports. However, the information available suggests that the ASUS CS-B is only compatible with Ubuntu 13.10, as indicated in the provided image.
