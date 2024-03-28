@@ -1,3 +1,6 @@
+# How to Create Machine Learning Application for Predicting Crypto Currencies
+![bitcoin-price-chart-cryptocurrency-ethereum-ripple-getty](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/85470428/296676a3-38dd-41c7-8bba-0d32eb10e901)
+
 ### Step 1: Get infomartion from API
 ---
 The Alpha Vanatge API is going to be used to retrieve historical information from their database. The data will be imported in JSON format. Features to predict prices should be defined; some of them could include price, volume, and corresponding timestamps.
