@@ -107,7 +107,7 @@ The process of installing the operating system on a compute node is similar to t
 
 To predict cryptocurrency prices with machine learning, start by fetching historical data (prices, volumes, timestamps) using APIs like Alpha Vantage. Process this data, compute technical indicators (RSI, EMA, SMA), and normalize to ensure uniformity. Split the data into training, validation, and testing sets for model development and evaluation. Consider machine learning models such as Random Forest for its robustness, Gradient Boosting for error minimization, LSTM for capturing long-term dependencies, and GRU for efficient sequential data handling. Fine-tune models using the validation set and assess their performance with metrics like RMSE and MAE on the test set, aiming to select the model that best captures cryptocurrency market dynamics.
 
-
+[Access the detailed step-by-step guide here](Predicting_Cryptocurrency_Prices_with_ML.md)
 
 ## 7. Performance Evaluation:
 ***Develop a strategy for evaluating HPC system performance.***
