@@ -142,6 +142,73 @@ import yfinance as yf
 from datetime import datetime, timedelta
 
 ```
+## Libraries and Modules Documentation
+
+
+### Core Python Libraries
+
+- **`array`**: Provides space-efficient storage of basic C-style data types. Used for specific low-level data operations.
+- **`math`**: Essential for advanced mathematical operations, such as square roots or logarithms, beyond basic arithmetic.
+
+### Data Manipulation and Analysis
+
+- **`pandas`** (`pd`): A pivotal library for data manipulation and analysis, ideal for working with structured data.
+- **`numpy`** (`np`): The foundational package for numerical computing in Python, supporting array operations, mathematical functions, and more.
+- **`statistics`**: Offers functions for calculating mathematical statistics of numeric (real-valued) data.
+
+### Machine Learning and Neural Networks
+
+- **`sklearn.preprocessing.MinMaxScaler`**: Scales features to a specified range, usually between zero and one, crucial for many machine learning algorithms.
+- **`keras.models.Sequential`**: Allows for easy assembly of models where each layer has exactly one input tensor and one output tensor.
+- **`keras.layers`**: Contains various neural network layers, including:
+  - **`Dense`**: Standard fully connected neural network layer.
+  - **`LSTM`** (Long Short-Term Memory): A type of RNN layer important for sequence prediction problems.
+  - **`GRU`** (Gated Recurrent Unit): A streamlined version of LSTM, faster to train but similarly effective for sequence data.
+  - **`Dropout`**: Helps prevent overfitting by randomly setting input units to 0 at each update during training time.
+
+### Data Visualization
+
+- **`matplotlib.pyplot`** (`plt`): A comprehensive library for creating static, animated, and interactive visualizations in Python.
+
+### Financial Data
+
+- **`yfinance`** (`yf`): Enables access to Yahoo Finance's market data, useful for obtaining historical financial data for analysis.
+
+### Date and Time Management
+
+- **`datetime`**: Provides classes for manipulating dates and times, crucial for managing time series data effectively.
+
+### Performance Metrics
+
+- **`sklearn.metrics`**: Includes various metrics for evaluating the performance of machine learning models, such as:
+  - **`mean_squared_error, mean_absolute_error`**: Quantify the average errors between predicted and actual values.
+  - **`explained_variance_score, r2_score`**: Assess the explanatory power of regression models.
+  - **`mean_poisson_deviance, mean_gamma_deviance`**: Evaluate models for count data and positive continuous data, respectively.
+  - **`accuracy_score`**: Measure the accuracy of classification models.
+
+These libraries collectively support the processes of data preparation, modeling, evaluation, and visualization for this ML.
+
+```bash 
+
+# -*- coding: cp1252 -*-
+from array import array
+from ast import mod
+from pickletools import optimize
+import math
+from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score, r2_score 
+from sklearn.metrics import mean_poisson_deviance, mean_gamma_deviance, accuracy_score
+from statistics import mode
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+from keras.models import Sequential
+from keras.layers import Dense, LSTM, GRU
+from keras.layers import Dropout
+import yfinance as yf
+from datetime import datetime, timedelta
+
+```
 ## Getting Data
 The initial step in creating a Machine Learning model involves accessing historical data for the cryptocurrencies that will be utilised for making predictions. Initially, the use of an API to access this historical data was contemplated. However, due to the constraints imposed by APIs, the decision was ultimately made to employ data available from Yahoo Finance. This platform facilitates the acquisition of historical datasets for the most significant cryptocurrencies. For this project, data pertaining to Bitcoin and Ethereum will be used.
 
@@ -167,11 +234,15 @@ To process the data, the pandas library is being utilised, which will enable us 
 self.BTC_data= pd.read_csv(file_path,index_col='Date', parse_dates=['Date'], dayfirst=True)
 ```
 `pd.read_csv()`: This function is pandas' workhorse for loading CSV files. It's versatile and powerful, allowing for fine-tuning of the data ingestion process.
+`pd.read_csv()`: This function is pandas' workhorse for loading CSV files. It's versatile and powerful, allowing for fine-tuning of the data ingestion process.
 
+`index_col='Date'`: By setting the Date column as the index, you transform the dates into the DataFrame's row labels, making time-series data manipulation more intuitive.
 `index_col='Date'`: By setting the Date column as the index, you transform the dates into the DataFrame's row labels, making time-series data manipulation more intuitive.
 
 `parse_dates=['Date']`: This ensures the 'Date' column is treated as datetime objects, not strings, unlocking time-sensitive methods and functionality.
+`parse_dates=['Date']`: This ensures the 'Date' column is treated as datetime objects, not strings, unlocking time-sensitive methods and functionality.
 
+`dayfirst=True`: This parameter is crucial for correctly interpreting dates when the day precedes the month in your data source, avoiding common pitfalls in date parsing.
 `dayfirst=True`: This parameter is crucial for correctly interpreting dates when the day precedes the month in your data source, avoiding common pitfalls in date parsing.
 
 In order to facilitate predictions based on the Bitcoin dataset, parameters such as the high price and volume will be selected. However, since these may not be sufficient for accurate forecasting, technical indicators will also be incorporated to enhance the predictive capability.
