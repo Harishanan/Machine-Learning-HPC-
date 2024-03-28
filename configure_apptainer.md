@@ -36,6 +36,82 @@ Containers work by packaging an application along with all the parts it needs—
 - <b>Scalability:</b>
   Containers can be quickly spun up and down, which is beneficial for HPC workloads that may need to scale out to many nodes during peak times and scale back down when the demand decreases.
 
+# Installing Apptainer
+
+## Install System Dependencies
+
+On Ubuntu:
+
+```sh
+# Ensure repositories are up-to-date
+sudo apt-get update
+# Install debian packages for dependencies
+sudo apt-get install -y \
+    build-essential \
+    libseccomp-dev \
+    pkg-config \
+    uidmap \
+    squashfs-tools \
+    fakeroot \
+    cryptsetup \
+    tzdata \
+    curl wget git
+```
+
+## Install Go
+Apptainer is written in Go and the latest version of GO can be downloaded from [official binaries](https://golang.org/dl/) or you can download GO via terminal by doing:
+
+```sh
+export GOVERSION={VERSION} OS=linux ARCH=amd64
+
+wget -O /tmp/go${GOVERSION}.${OS}-${ARCH}.tar.gz \
+  https://dl.google.com/go/go${GOVERSION}.${OS}-${ARCH}.tar.gz ```
+```
+Then,
+
+```sh
+sudo tar -C /usr/local -xzf /tmp/go${GOVERSION}.${OS}-${ARCH}.tar.gz
+```
+The above line extracts the downloaded tar.gz file to /usr/local using tar. The options used are:
+
+- <b>C /usr/local:</b> </br> Changes the directory to /usr/local before extracting, effectively extracting the files into /usr/local.
+- <b>xzf</b>:
+  - x tells tar to extract files from an archive.
+  - z tells tar to decompress the archive using gzip (since the file is a .tar.gz).
+  - f specifies that the following argument is the filename of the archive to extract.
+
+Finally, add `/usr/local/go/bin` to the `PATH` environment variable:
+
+```sh
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
+source ~/.bashrc
+```
+
+## Clone the repo
+
+```sh
+git clone https://github.com/apptainer/apptainer.git
+cd apptainer
+```
+
+## Compiling Apptainer
+
+Configure, build, and install Apptainer using the following commands:
+
+```sh
+./mconfig
+cd $(/bin/pwd)/builddir
+make
+sudo make install
+```
+
+By doing the above commands, apptainer is installed. Check by doing: 
+
+```sh
+apptainer --version
+```
+
+https://apptainer.org/docs/admin/main/installation.html
 https://www.linuxjournal.com/content/everything-you-need-know-about-linux-containers-part-ii-working-linux-containers-lxc
 https://crunchtools.com/comparison-linux-container-images/
 https://apptainer.org/docs/user/main/introduction.html
