@@ -75,28 +75,89 @@ The process of installing the operating system on a compute node is similar to t
 
 # Creatting Machine Learning for predict cryptocurrency
 
+## Libraries and Modules Documentation
+
+
+### Core Python Libraries
+
+- **`array`**: Provides space-efficient storage of basic C-style data types. Used for specific low-level data operations.
+- **`math`**: Essential for advanced mathematical operations, such as square roots or logarithms, beyond basic arithmetic.
+
+### Data Manipulation and Analysis
+
+- **`pandas`** (`pd`): A pivotal library for data manipulation and analysis, ideal for working with structured data.
+- **`numpy`** (`np`): The foundational package for numerical computing in Python, supporting array operations, mathematical functions, and more.
+- **`statistics`**: Offers functions for calculating mathematical statistics of numeric (real-valued) data.
+
+### Machine Learning and Neural Networks
+
+- **`sklearn.preprocessing.MinMaxScaler`**: Scales features to a specified range, usually between zero and one, crucial for many machine learning algorithms.
+- **`keras.models.Sequential`**: Allows for easy assembly of models where each layer has exactly one input tensor and one output tensor.
+- **`keras.layers`**: Contains various neural network layers, including:
+  - **`Dense`**: Standard fully connected neural network layer.
+  - **`LSTM`** (Long Short-Term Memory): A type of RNN layer important for sequence prediction problems.
+  - **`GRU`** (Gated Recurrent Unit): A streamlined version of LSTM, faster to train but similarly effective for sequence data.
+  - **`Dropout`**: Helps prevent overfitting by randomly setting input units to 0 at each update during training time.
+
+### Data Visualization
+
+- **`matplotlib.pyplot`** (`plt`): A comprehensive library for creating static, animated, and interactive visualizations in Python.
+
+### Financial Data
+
+- **`yfinance`** (`yf`): Enables access to Yahoo Finance's market data, useful for obtaining historical financial data for analysis.
+
+### Date and Time Management
+
+- **`datetime`**: Provides classes for manipulating dates and times, crucial for managing time series data effectively.
+
+### Performance Metrics
+
+- **`sklearn.metrics`**: Includes various metrics for evaluating the performance of machine learning models, such as:
+  - **`mean_squared_error, mean_absolute_error`**: Quantify the average errors between predicted and actual values.
+  - **`explained_variance_score, r2_score`**: Assess the explanatory power of regression models.
+  - **`mean_poisson_deviance, mean_gamma_deviance`**: Evaluate models for count data and positive continuous data, respectively.
+  - **`accuracy_score`**: Measure the accuracy of classification models.
+
+These libraries collectively support the processes of data preparation, modeling, evaluation, and visualization for this ML.
+
+```bash 
+
+# -*- coding: cp1252 -*-
+from array import array
+from ast import mod
+from pickletools import optimize
+import math
+from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score, r2_score 
+from sklearn.metrics import mean_poisson_deviance, mean_gamma_deviance, accuracy_score
+from statistics import mode
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler
+from keras.models import Sequential
+from keras.layers import Dense, LSTM, GRU
+from keras.layers import Dropout
+import yfinance as yf
+from datetime import datetime, timedelta
+
+```
 ## Getting Data
 The initial step in creating a Machine Learning model involves accessing historical data for the cryptocurrencies that will be utilised for making predictions. Initially, the use of an API to access this historical data was contemplated. However, due to the constraints imposed by APIs, the decision was ultimately made to employ data available from Yahoo Finance. This platform facilitates the acquisition of historical datasets for the most significant cryptocurrencies. For this project, data pertaining to Bitcoin and Ethereum will be used.
 
 ## Processing the data
 To process the data, the pandas library is being utilised, which will enable us to manipulate the data as desired.
 
-```bash 
-
-import pandas as pd
-
-```
-
 ``` bash
 self.BTC_data= pd.read_csv(file_path,index_col='Date', parse_dates=['Date'], dayfirst=True)
 ```
-pd.read_csv(): This function is pandas' workhorse for loading CSV files. It's versatile and powerful, allowing for fine-tuning of the data ingestion process.
+`pd.read_csv()`: This function is pandas' workhorse for loading CSV files. It's versatile and powerful, allowing for fine-tuning of the data ingestion process.
 
-index_col='Date': By setting the Date column as the index, you transform the dates into the DataFrame's row labels, making time-series data manipulation more intuitive.
+`index_col='Date'`: By setting the Date column as the index, you transform the dates into the DataFrame's row labels, making time-series data manipulation more intuitive.
 
-parse_dates=['Date']: This ensures the 'Date' column is treated as datetime objects, not strings, unlocking time-sensitive methods and functionality.
+`parse_dates=['Date']`: This ensures the 'Date' column is treated as datetime objects, not strings, unlocking time-sensitive methods and functionality.
 
-dayfirst=True: This parameter is crucial for correctly interpreting dates when the day precedes the month in your data source, avoiding common pitfalls in date parsing.
+`dayfirst=True`: This parameter is crucial for correctly interpreting dates when the day precedes the month in your data source, avoiding common pitfalls in date parsing.
 
 In order to facilitate predictions based on the Bitcoin dataset, parameters such as the high price and volume will be selected. However, since these may not be sufficient for accurate forecasting, technical indicators will also be incorporated to enhance the predictive capability.
 
@@ -213,6 +274,106 @@ To add those indiciators  to our dataset will be use function that will make all
 After integreating the all technical indicators the next step will be to scale and split the data.
 
 ## Scalign and Splitting
+### Scaling features
+First, the feautes price, volumen and all the previus technical  are extracted form the DataFrame and then, scaled independently using the MinMaxScaler from the scikit-learn library. This scaler transforms each feature by scaling it to a given range, here defaulting to [0, 1], which is the typical range for MinMaxScaler without specifying any arguments. This normalization step is crucial for neural network models to converge more quickly and efficiently during training.
+
+```bash
+
+    # Separate the features
+   prices = self.BTC_data[['Price']].values
+   volumes = self.BTC_data[['Volume'].values
+   EMA = self.BTC_data[['ema']].values
+   SMA= self.BTC_data[['SMA30']].values
+   RSI=self.BTC_data[['RSI']].values
+   MACD=self.BTC_data[['MACD']].values
+
+   # Scale each feature independently
+   scaler_price = MinMaxScaler()
+   scaler_volume = MinMaxScaler()
+   scaler_EMA = MinMaxScaler()
+   scaler_SMA= MinMaxScaler()
+   scaler_RSI= MinMaxScaler()
+   scaler_MACD= MinMaxScaler()
+
+   prices_scaled = scaler_price.fit_transform(prices)
+   volumes_scaled = scaler_volume.fit_transform(volumes)
+   EMA_scaled = scaler_EMA.fit_transform(EMA)
+   SMA_scaled = scaler_SMA.fit_transform(SMA)
+   RSI_scaled= scaler_RSI.fit_transform(RSI)
+   MACD_scaled=scaler_MACD.fit_transform(MACD)
+
+
+```
+
+After scaling, all features are concatenated horizontally (axis=1) to form a single array, scaled_features, where each row represents a timestamp, and each column represents a scaled feature.
+
+```bash
+# Concatenate the scaled features
+caled_features = np.concatenate([prices_scaled, volumes_scaled, EMA_scaled,SMA_scaled,RSI_scaled,MACD_scaled], axis=1)
+```
+
+### Spliting the Dataset
+#### Setting Parameters
+Now is required to prepare the scaled features for training, validation, and testing by splitting the dataset according to specified ratios.
+For that task it is goin to set:
+- `time_step`: This parameter specifies the window size for each input sequence to the model. In this context, a time_step of 60 means that each input sequence will consist of data from 60 consecutive time steps.
+- `num_features`: Indicates the number of features used in the dataset, which is 6 in this case. 
+  
+- `split_ratio`: A dictionary that defines the proportion of the dataset to be used for training, validation, and testing. Here, 60% of the data is allocated for training, 20% for validation, and the remaining 20% for testing.
+
+####  Trimming the Dataset
+To ensure that the dataset can be divided evenly by the `time_step`,  the code trims the dataset to a size that is divisible by 60. This step ensures that every sequence used for training or testing is complete and contains exactly 60 time steps.
+```bash
+trimmed_size = len(scaled_features) - (len(scaled_features) % time_step)
+trimmed_data = scaled_features[:trimmed_size]
+```
+
+#### Calculate Spliting Indices
+```bash
+train_size = int(trimmed_size * split_ratio['train'])
+validation_size = int(trimmed_size * split_rati['validation'])
+test_size = trimmed_size - train_size - validation_size
+```
+
+
+The dataset is split into training, validation, and test sets using the calculated sizes:
+```bash
+train_data = scaled_features[:train_size]
+validation_data = scaled_features[train_size:train_size + validation_size]
+test_data = scaled_features[-test_size:]
+```
+
+- `train_data`: Used for training the model.
+- `validation_data`: Used for validating the model's performance during training.
+- `test_data`: Used for evaluating the model's performance on unseen data.
+
+Once all these paramters has been defines everthing is ready to split de dataset, for this purpose it is going to be used the function `create_dataset` :
+```bash
+ def create_dataset(self,data, time_step):
+            X, Y = [], []
+            for i in range(len(data) - time_step):
+               X.append(data[i:(i + time_step), :])
+               Y.append(data[i + time_step, 0]) 
+            
+               return np.array(X), np.array(Y)
+```
+This method iterates over the data array, constructing input sequences (X) and the corresponding labels (Y) for the model:
+
+Input Sequences (X): For each iteration i, a slice of the data array from i to `i + time_step` is taken. This slice represents a sequence of `time_step` consecutive time steps, which serves as one input example for the model. These sequences are appended to the list `X`.
+
+Labels (Y): The label for each input sequence is the value immediately following the sequence in the dataset. Specifically, `data[i + time_step, 0]` is used as the label for the sequence ending at `i + time_step - 1`. This means the model is trained to predict the next value in the series based on the preceding `time_step` values. The labels are appended to the list `Y`.
+
+
+
+
+
+
+
+  
+
+
+
+
 
 
 
