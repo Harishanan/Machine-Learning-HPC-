@@ -71,11 +71,41 @@ After noticing that Ubuntu 22.04 operated steadily on the ASUS CS-B motherboard,
 # Install Operating System in Compute Node
 The process of installing the operating system on a compute node is similar to that of the head node, with the exception that it is not required the installation of Ubuntu Server specifically.
 
+# Original Design For The HPC Case
+The original design for the case consisted of 3D printing of all components needed. This included the shelves, floor, roof, and side/back panels of the case. Multiple aspects have to be considered when designing the case such as the components requirements, ventilation, and accessibility. All original shelf and case piece that have been uploaded were designed to be durable and well ventilated and were easily connected together using a pin system
+
+## Problems Encountered
+While waiting to receive the initial components from 3d printing I was informed that it would take to long to 3d print all my required components as there were many other students looking to 3d print components at this time Aswell. To solve this issue, we decided to order the shell of our case and print the brackets and laser cut the shelves as well as the front and back panels in stead of printing all the components
+
+# Chosen Shell  
+The case we ordered was a 21U tall server racking system which was perfect for the purpose of our projects. It came with slots all down the left and ride side of the case which ensured enough ventilation for the fans to disperse the heat 
+
+![Shell](case.jpeg)<br>
+<b>Figure 1:Case</b>
+<br><br>
+
+The 1U brackets were 3d printed in order to hold the acrylic shelves that were laser cut. They were mounted in the holes that were ment for the racking system of the case. An extension cord was placed at the back and mounted to the top of the case. Whis acted as a way to limit the amount of cables that would exit the case. Instead, we could power each of the motherboards power sources internally 
+
+![Push button](brackets.jpeg)<br>
+<b>Figure 1:3D printed brakets </b>
+<br><br>
+
+The front and back of the case was laser cut in acrylic with 120x120 fan holes at the base and the top in order to mount the fan to then in a way that allowed them to get a strong enough air pull. Hence the small circles that fill the 120x120 frame. the back panel was made to be slightly smaller to allow room for the extension cord 
+
+
+![Push button](panels.jpeg)<br>
+<b>Figure 1:3D back panel of case  </b>
+<br><br>
+
+# Other alterations
+Rubber feet will be used on the motherboards and the SSDs to limit the directs contact onto the shelves to allow air underneath the boards when necessary. The extension cable will run down the side of the case into an outlet. The power button will drill through the roof of the case to allow Instant power to the application we have also decided to cover the back of the case to limit the light inside the case to utilize the led fans. All power supply will plug directly into the extension cord build into the case
+
 ## References
 1. https://hpc.uni.lu/infrastructure/network
 2. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
 3. 
 
 ## Authors
+
 
 
