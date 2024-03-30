@@ -123,7 +123,10 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 
 
    
+## Create Man Page
+The creation of manual pages, or "man pages," serves as a cornerstone in documenting software within Unix and Unix-like operating systems. Their primary purpose is to offer users, system administrators, and developers a comprehensive, accessible, and standardized documentation format. Man pages provide an indispensable quick reference for commands, system calls, configuration files, and beyond, detailing usage, options, examples, and environmental considerations. They adhere to a specific structure, ensuring information is consistently organized and easily retrievable. This standardization not only aids in quick learning and reference but also ensures documentation is readily accessible directly from the command line, eliminating the need for internet access or external resources. Beyond serving as a practical guide, man pages play an educational role, helping new users navigate the complexities of the command line and offering developers detailed insights into system programming interfaces. Additionally, they document system behaviors and configurations, contributing to a deeper understanding and more effective management of Unix-like systems. Man pages, therefore, are more than just documentation; they are an integral part of the Unix ecosystem, fostering a culture of self-sufficiency and informed usage among its user base.
 
+[Step-By-Step Guide can be found here](CreateManPage/createManPage.md)
 
 
 
