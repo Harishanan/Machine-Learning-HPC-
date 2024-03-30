@@ -54,7 +54,7 @@
 
 * The single PSU in our system will be connected to one motherboard, one SSD, and one graphics card. The combined power consumption of these components is estimated to be around 95W during active use and less than 90W when in idle state. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
 
-# Configure Network File System (NFS)
+# Network File System (NFS)
 The Network File System (NFS) is a networking protocol designed for distributed file sharing. A file system organizes and stores data in the form of files, typically on Hard Disk Drives (HDDs) or Solid-State Drives (SSDs). NFS operates on a similar principle, allowing files to be stored and accessed over a network, enabling multiple devices within the same network to retrieve and share data.
 
 NFS is a widely utilized protocol for file sharing servers, offering compatibility across a broad spectrum of operating systems. In this project, NFS will play a crucial role in facilitating seamless file sharing among all client nodes. In this project, the functionality of NFS can be illustrated using a visualization similar to Figure 1:
@@ -72,64 +72,7 @@ In this representation:
 - The shared directory is mounted on the Client Node, allowing  seamless access to files.
 - Applications running on the Client Node can interact with the shared files through the mounted directory.
 
-
-### Configuring NFS In Head Node
-
-1. Install nfs-server in the head node.
-      
-         sudo apt update
-         sudo apt-get install nfs-server
-
-2. Establish a shared directory on the head node and modify the '/etc/exports' file to grant permission to all client nodes to access the '/nfs' directory.  
-
-         mkdir /nfs
-         sudo nano /etc/exports
-         # add the following line inside /etc/exports
-         /nfs *(rw,sync)
-
-3. Restart nfs-kernel-server
-         
-         sudo systemctl nfs-kernel-server restart
-
-4. Changing the ownership of '/nfs' from root to user
-
-         sudo chown #username /nfs
-
-5. Check the ownership of the file to be sure
-
-         ls -ld /nfs
-
-### Configuring NFS In Client Node
-
-1. Install nfs-client in the client node 
-
-         sudo apt update
-         sudo apt-get install nfs-client
-
-2. Create a similar shared directory '/nfs' as headnode
-
-         mkdir /nfs 
-
-3. Navigate to the '/etc/fstab' file and add the file system to be mounted on the client node.
-   
-         sudo nano /etc/fstab
-         #add the following line to mount /nfs 
-         headnode_username:/nfs /nfs nfs
-
-      #### NOTE: if you get an error while unmounting the file in client node, you can use ip-address of headnode instead of username 
-
-4. Restart daemon if necessary 
-
-         sudo systemctl daemon-reload
-
-5. Mount all file partitions.
-
-         sudo mount -a
-
-
-After following the steps provided above, users will be able to configure NFS on their cluster computers. After configuring NFS, the resource management system should be set up to handle processes.
-
-
+Step by Step NFS configuration Guide Can be found here: [NFS Configuration](NFS.md)
                
 #
 
