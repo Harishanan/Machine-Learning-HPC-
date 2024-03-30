@@ -81,8 +81,11 @@ To view the man page, use the man command followed by the name of the man page w
 ```sh
 man HPC_GUIDE
 ```
+The above command will display the below:
 
 ## Additional Information
 
 ### File Locations: 
 The example file paths given in the man page (~/ExampleFile/allApplicationPackages.def and ~/ExampleFile/slurmScriptFile.slurm) should be replaced with actual paths where these files can be found.
+### Example file can be seen here
+[allApplicationPackages.def](Create)
