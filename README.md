@@ -377,11 +377,23 @@ Once all these paramters has been defines everthing is ready to split de dataset
 ```
 This method iterates over the data array, constructing input sequences (X) and the corresponding labels (Y) for the model:
 
-Input Sequences (X): For each iteration i, a slice of the data array from i to `i + time_step` is taken. This slice represents a sequence of `time_step` consecutive time steps, which serves as one input example for the model. These sequences are appended to the list `X`.
+X: For each iteration i, a slice of the data array from i to `i + time_step` is taken. This slice represents a sequence of `time_step` consecutive time steps, which serves as one input example for the model. These sequences are appended to the list `X`.
 
-Labels (Y): The label for each input sequence is the value immediately following the sequence in the dataset. Specifically, `data[i + time_step, 0]` is used as the label for the sequence ending at `i + time_step - 1`. This means the model is trained to predict the next value in the series based on the preceding `time_step` values. The labels are appended to the list `Y`.
+ Y: The label for each input sequence is the value immediately following the sequence in the dataset. Specifically, `data[i + time_step, 0]` is used as the label for the sequence ending at `i + time_step - 1`. This means the model is trained to predict the next value in the series based on the preceding `time_step` values. The labels are appended to the list `Y`.
+
+ Now using this function, it is goin to bre created the three data set and and give them the shape that  our ML require as input, that will be a threedimensional array with the batch size, time step and the number of features.
+
+```bash
+ X_train, Y_train = self.create_dataset(train_data, time_step)
+ X_train = np.reshape((X_train.shape[0], time_step, num_features))
+ X_validation, Y_validation = self.create_dataset(validation_data, time_step)
+ X_validation = np.reshape(X_validation, (X_validation.shape[0],  time_step, num_features))
+ X_test = np.reshape(X_test, (X_test.shape[0],  time_step, num_features))
+ ```
+Now the data set is ready to be intrepreted by the machine learning models.
 
 ## Machine Learning 
+ ### Deep Learning
 In order to understand the implementation of machine learning, it is required first to grasp what Deep Learning encompasses. Deep Learning is a subset of machine learning that employs algorithms inspired by the structure and function of the brain called artificial neural networks. It has revolutionized various fields by providing solutions to complex problems that were previously considered intractable.
 
 Some of the most popular DL architectures ara Convolutiona Neural Networks (CNN) for image or video processing and Recurrent Neural Networks (RNN) for sequential data processing, 
@@ -407,7 +419,8 @@ To overcome these limitations, two advanced architectures have been developed: L
 These gates collectively decide which information should be passed through the network, which should be retained in the network's long-term memory, and which should be forgotten. This architecture allows LSTMs to maintain a balance between the short-term and long-term information, enabling them to capture dependencies that span across long sequences of data effectively.
 The LSTM's ability to maintain a memory and selectively update it through these mechanisms enables it to handle various sequence learning tasks with high efficiency.
 
-![alt text](<LSTM machine learnig.png>)
+
+![Architecture of  LSTM](<LSTM 2.png>)
   
 
 This adragam represents a architecture of the LSTM unit features:
@@ -416,7 +429,7 @@ This adragam represents a architecture of the LSTM unit features:
   
   1. **Forget Gate (`f_t`)**: Uses the sigmoid function (σ) to decide what information is discarded from the cell state, based on the previous hidden state `h_{t-1}` and the current input `X_t`.
   
-  2. **Input Gate (`i_t`) and Candidate Layer (`\tilde{C}_t`)**: Determine which new information is added to the cell state. The input gate controls the values to be updated, and the candidate layer proposes new candidate values.
+  2. **Input Gate (`i_t`) and Candidate Layer (`C_t`)**: Determine which new information is added to the cell state. The input gate controls the values to be updated, and the candidate layer proposes new candidate values.
   
   3. **Output Gate (`o_t`)**: Decides the next hidden state (`h_t`), which is the filtered cell state. The sigmoid gate's output is multiplied by the `tanh` of the cell state to produce the hidden state `h_t`.
 
@@ -428,6 +441,160 @@ This adragam represents a architecture of the LSTM unit features:
 ### GRU (Gated Recurrent Unit): 
 
 GRUs simplify the LSTM architecture while retaining its ability to handle long-term dependencies. GRUs combine the forget and input gates into a single update gate and merge the cell state and hidden state, resulting in a more streamlined model that requires fewer parameters. Despite their simplicity, GRUs have demonstrated a capability comparable to LSTMs for many tasks, making them a popular choice due to their efficiency and effectiveness.
+It is composed by the two gates (update gate and reset gate).
+
+- The update gate determines how much of the past state should be kept and how much new input should be added to the existing state
+- The reset gate regulates how much of the prior state is forgotten before absorbing the incoming input.
+
+![Architecure of GRU](GRU.png)
+
+The diagram above represents the achitecture of a GRU: 
+
+1. **Update Gate (`z[t]`):** 
+   - Uses the sigmoid function `σ` to determine how much of the past hidden state `h_{t-1}` should be retained.
+   - It influences the extent to which the new hidden state `h_t` is just the old state `h_{t-1}` and how much it is the new candidate hidden state `~h_t`.
+
+2. **Reset Gate (`r[t]`):**
+   - Also utilizes the sigmoid function `σ` to control how much of the past hidden state `h_{t-1}` should be considered in creating the new candidate hidden state.
+   - It can effectively remove the influence of the previous hidden state by setting its output close to 0.
+
+3. **Candidate Hidden State (`~h_t`):**
+   - Combines the current input `X_t` with the reset gate-modified previous hidden state.
+   - The combination goes through a `tanh` function, proposing what the new hidden state could be.
+
+4. **Hidden State (`h[t]`):**
+   - Is the final state for the current timestep, calculated as a weighted average of the previous hidden state and the candidate hidden state, where weights are given by the update gate `z[t]`.
+   - It represents the memory of the GRU cell at the current timestep.
+
+The GRU uses element-wise operations:
+- Element-wise multiplication (×) for the gating mechanisms (`z[t]` and `r[t]` gates).
+- Element-wise addition (+) for updating the hidden state to get `h[t]`.
+
+
+### Initialize LSTM 
+
+- An LSTM model is instantiated using the Sequential class, which allows for the linear stacking of layers.
+- The LSTM layer is added with na units (neurons), where na=50. This parameter defines the dimensionality of the output space or the number of hidden units in the LSTM layer. The input shape is specified as (time_step, num_features), indicating the dimensions of the input sequences.
+- A Dropout layer with a rate of 0.2 is included to prevent overfitting by randomly setting 20% of the input units to 0 at each update during training.
+Two Dense layers are added subsequently:
+  - The first Dense layer has a single unit and is typically used for regression tasks or as a precursor to a final classification layer.
+  - The second Dense layer, defined by units=dim_exit (where dim_exit=1), suggests the model's output dimension. In this context, it's configured to output a single value, fitting the regression task's requirements.
+- The model is compiled with the Adam optimizer and mean squared error (mse) as the loss function, setting up the model for training.
+
+```bash
+#LSTM
+ LSTM_model = Sequential()
+ LSTM_model.add(LSTM(units=na, input_shape=(time_step, num_features)))
+ LSTM_model.add(Dropout(0.2))  
+ LSTM_model.add(Dense(1))
+ LSTM_model.add(Dense(units=dim_exit))
+LSTM_model.compile(optimizer='adam',loss='mse')
+```
+  
+### Initialize GRU 
+
+The GRU model architecture is similar to the LSTM's but utilizes GRU layers. GRUs offer a simplified mechanism with fewer parameters compared to LSTMs, potentially leading to quicker training times while effectively capturing time-dependent information.
+
+- Constructs a `Sequential` GRU model, beginning with a GRU layer of 50 units and the specified input shape.
+- Follows the same structure with Dropout and Dense layers as the LSTM model for consistency.
+- Compiles with the same `adam` optimizer and `mse` loss function, aligning with the regression objective.
+
+```bash
+ #GRU
+RU_model= Sequential()
+GRU_model.add(GRU(units=na, input_shape=(time_step, num_features)),)
+GRU_model.add(Dropout(0.2))
+GRU_model.add(Dense(1))
+GRU_model.add(Dense(units=dim_exit))
+GRU_model.compile(optimizer='adam',loss='mse')
+```
+
+ 
+### Training
+The training process is the same for both models
+- Trains using the `fit` method on `X_train` and `Y_train` for training data and labels, respectively.
+- Training runs for 50 epochs (`epochs=50`) with a batch size of 64 (`batch_size=64`).
+- Employs `validation_data` for performance evaluation on a separate dataset after each epoch.
+- Sets `verbose=1` for detailed logging of the training progress.
+- Utilizes `callbacks` for training monitoring
+
+```bash
+# LSTM training
+ history_LSTM=LSTM_model.fit(X_train,Y_train,epochs=epochs,batch_size=batch_size,validation_data=(X_validation, Y_validation),callbacks=callbacks,verbose=1)
+
+# GRU trainin
+history_GRU=GRU_model.fit(X_train,Y_train,epochs=epochs,batch_size=batch_size,validation_data=(X_validation, Y_validation),callbacks=callbacks,verbose=1)
+  ```
+
+### Generating Predictions
+
+- **LSTM Predictions**: `LSTM_model.predict(X_test)` is used to generate predictions from the LSTM model using the test dataset (`X_test`). These predictions are initially in the scaled form because the model was trained on data that had been normalized.
+
+- **GRU Predictions**: Similarly, `GRU_model.predict(X_test)` generates predictions for the same test dataset using the GRU model. As with the LSTM predictions, these are also in the scaled form.
+
+### Inverse Scaling of Predictions
+
+Since the original dataset was normalized to a specific range (typically 0 to 1) to facilitate model training, the predictions made by the models are also in this scaled range. To interpret these predictions in the context of actual Bitcoin prices, it is necessary to reverse the scaling process.
+
+- **Inverse Scaling for LSTM Predictions**: `scaler_price.inverse_transform(LSTM_predic)` converts the LSTM model's predictions from the normalized scale back to their original price scale. This step is crucial for comparing the predicted prices against real historical data.
+
+- **Inverse Scaling for GRU Predictions**: Similarly, `scaler_price.inverse_transform(GRU_predic)` is used to reverse the normalization applied to the GRU model's predictions, transforming them back to the original price scale.
+
+```bash
+ # Making predictions
+ LSTM_predic = LSTM_model.predict(X_test)
+ GRU_predic = GRU_model.predict(X_test)
+
+ # Inverse transforming the predictions to get them back to the original scale
+ LSTM_price_predictions_scaled = scaler_price.inverse_transform(LSTM_predic)
+ GRU_price_predictions_scaled = scaler_price.inverse_transform(GRU_predic)
+ 
+  ```
+
+  After training the LSTM and GRU models to forecast Bitcoin prices, it's crucial to evaluate their performance using various metrics. This section covers the evaluation of both models on the test dataset, employing several statistical measures to assess their predictive accuracy and effectiveness.
+
+### LSTM Model Evaluation
+
+The LSTM model's performance is evaluated using the following metrics:
+
+- **Root Mean Square Error (RMSE)**: Provides the square root of the average squared differences between the predicted values and actual values. A lower RMSE indicates better model performance.
+  - `LSTM Test data RMSE`: Calculated using `math.sqrt(mean_squared_error(Y_test, LSTM_predic))`.
+
+- **Mean Squared Error (MSE)**: Represents the average of the squared differences between predicted and actual values. Like RMSE, a lower value is better.
+  - `LSTM Test data MSE`: Obtained with `mean_squared_error(Y_test, LSTM_predic)`.
+
+- **Mean Absolute Error (MAE)**: Measures the average magnitude of the errors in a set of predictions, without considering their direction.
+  - `LSTM Test data MAE`: Derived from `mean_absolute_error(Y_test, LSTM_predic)`.
+
+- **Explained Variance Regression Score**: Indicates the proportion of the variance in the dependent variable that is predictable from the independent variable(s).
+  - `LSTM Test data explained variance regression score`: Calculated using `explained_variance_score(Y_test, LSTM_predic)`.
+
+- **R² Score**: Represents the coefficient of determination, indicating the proportion of the variance for the dependent variable that's predictable from the independent variables.
+  - `LSTM Test data R2 score`: Computed with `r2_score(Y_test, LSTM_predic)`.
+
+- **Mean Gamma Deviance Regression Loss (MGD)** and **Mean Poisson Deviance Regression Loss (MPD)**: These metrics are used for models that predict counts or positive quantities, respectively.
+  - `LSTM Test data MGD`: `mean_gamma_deviance(Y_test, LSTM_predic)`
+  - `LSTM Test data MPD`: `mean_poisson_deviance(Y_test, LSTM_predic)`
+
+### GRU Model Evaluation
+
+The GRU model undergoes a similar evaluation process:
+
+- **RMSE for GRU Model**: `GRU Test data RMSE`
+- **MSE for GRU Model**: `GRU Test data MSE`
+- **MAE for GRU Model**: `GRU Test data MAE`
+- **Explained Variance for GRU Model**: `GRU Test data explained variance regression score`
+- **R² Score for GRU Model**: `GRU Test data R2 score`
+- **MGD for GRU Model**: `GRU Test data MGD`
+- **MPD for GRU Model**: `GRU Test data MPD`
+
+By evaluating both models using these comprehensive metrics, we can assess their predictive accuracy and understand their strengths and limitations in forecasting Bitcoin prices.
+
+
+### Results
+
+
+
 
 
 
