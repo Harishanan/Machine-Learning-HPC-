@@ -75,6 +75,7 @@ The process of installing the operating system on a compute node is similar to t
 
 # Creatting Machine Learning for predict cryptocurrency
 
+
 ## Libraries and Modules Documentation
 
 
@@ -87,7 +88,7 @@ The process of installing the operating system on a compute node is similar to t
 
 - **`pandas`** (`pd`): A pivotal library for data manipulation and analysis, ideal for working with structured data.
 - **`numpy`** (`np`): The foundational package for numerical computing in Python, supporting array operations, mathematical functions, and more.
-- **`statistics`**: Offers functions for calculating mathematical statistics of numeric (real-valued) data.
+
 
 ### Machine Learning and Neural Networks
 
@@ -116,8 +117,7 @@ The process of installing the operating system on a compute node is similar to t
 - **`sklearn.metrics`**: Includes various metrics for evaluating the performance of machine learning models, such as:
   - **`mean_squared_error, mean_absolute_error`**: Quantify the average errors between predicted and actual values.
   - **`explained_variance_score, r2_score`**: Assess the explanatory power of regression models.
-  - **`mean_poisson_deviance, mean_gamma_deviance`**: Evaluate models for count data and positive continuous data, respectively.
-  - **`accuracy_score`**: Measure the accuracy of classification models.
+  - **`mean_poisson_deviance, mean_gamma_deviance`**: Evaluate models for count 
 
 These libraries collectively support the processes of data preparation, modeling, evaluation, and visualization for this ML.
 
@@ -125,78 +125,10 @@ These libraries collectively support the processes of data preparation, modeling
 
 # -*- coding: cp1252 -*-
 from array import array
-from ast import mod
 from pickletools import optimize
 import math
 from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score, r2_score 
-from sklearn.metrics import mean_poisson_deviance, mean_gamma_deviance, accuracy_score
-from statistics import mode
-import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
-from sklearn.preprocessing import MinMaxScaler
-from keras.models import Sequential
-from keras.layers import Dense, LSTM, GRU
-from keras.layers import Dropout
-import yfinance as yf
-from datetime import datetime, timedelta
-
-```
-## Libraries and Modules Documentation
-
-
-### Core Python Libraries
-
-- **`array`**: Provides space-efficient storage of basic C-style data types. Used for specific low-level data operations.
-- **`math`**: Essential for advanced mathematical operations, such as square roots or logarithms, beyond basic arithmetic.
-
-### Data Manipulation and Analysis
-
-- **`pandas`** (`pd`): A pivotal library for data manipulation and analysis, ideal for working with structured data.
-- **`numpy`** (`np`): The foundational package for numerical computing in Python, supporting array operations, mathematical functions, and more.
-- **`statistics`**: Offers functions for calculating mathematical statistics of numeric (real-valued) data.
-
-### Machine Learning and Neural Networks
-
-- **`sklearn.preprocessing.MinMaxScaler`**: Scales features to a specified range, usually between zero and one, crucial for many machine learning algorithms.
-- **`keras.models.Sequential`**: Allows for easy assembly of models where each layer has exactly one input tensor and one output tensor.
-- **`keras.layers`**: Contains various neural network layers, including:
-  - **`Dense`**: Standard fully connected neural network layer.
-  - **`LSTM`** (Long Short-Term Memory): A type of RNN layer important for sequence prediction problems.
-  - **`GRU`** (Gated Recurrent Unit): A streamlined version of LSTM, faster to train but similarly effective for sequence data.
-  - **`Dropout`**: Helps prevent overfitting by randomly setting input units to 0 at each update during training time.
-
-### Data Visualization
-
-- **`matplotlib.pyplot`** (`plt`): A comprehensive library for creating static, animated, and interactive visualizations in Python.
-
-### Financial Data
-
-- **`yfinance`** (`yf`): Enables access to Yahoo Finance's market data, useful for obtaining historical financial data for analysis.
-
-### Date and Time Management
-
-- **`datetime`**: Provides classes for manipulating dates and times, crucial for managing time series data effectively.
-
-### Performance Metrics
-
-- **`sklearn.metrics`**: Includes various metrics for evaluating the performance of machine learning models, such as:
-  - **`mean_squared_error, mean_absolute_error`**: Quantify the average errors between predicted and actual values.
-  - **`explained_variance_score, r2_score`**: Assess the explanatory power of regression models.
-  - **`mean_poisson_deviance, mean_gamma_deviance`**: Evaluate models for count data and positive continuous data, respectively.
-  - **`accuracy_score`**: Measure the accuracy of classification models.
-
-These libraries collectively support the processes of data preparation, modeling, evaluation, and visualization for this ML.
-
-```bash 
-
-# -*- coding: cp1252 -*-
-from array import array
-from ast import mod
-from pickletools import optimize
-import math
-from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score, r2_score 
-from sklearn.metrics import mean_poisson_deviance, mean_gamma_deviance, accuracy_score
+from sklearn.metrics import mean_poisson_deviance, mean_gamma_deviance
 from statistics import mode
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -210,7 +142,7 @@ from datetime import datetime, timedelta
 
 ```
 ## Getting Data
-The initial step in creating a Machine Learning model involves accessing historical data for the cryptocurrencies that will be utilised for making predictions. Initially, the use of an API to access this historical data was contemplated. However, due to the constraints imposed by APIs, the decision was ultimately made to employ data available from Yahoo Finance. This platform facilitates the acquisition of historical datasets for the most significant cryptocurrencies. For this project, data pertaining to Bitcoin and Ethereum will be used.
+The initial step in creating a Machine Learning model involves accessing historical data for the cryptocurrencies that will be utilised for making predictions. Initially, the use of an API to access this historical data was contemplated. However, due to the constraints imposed by APIs, the decision was ultimately made to employ data available from Yahoo Finance. This platform facilitates the acquisition of historical datasets for the most significant cryptocurrencies. For this project, data pertaining to Bitcoin, Ethereum, BNB will be used.
 
 The following code retrieves historical price data for Bitcoin (BTC) against the US Dollar (USD) for analysis and prediction purposes:
 
@@ -448,6 +380,54 @@ This method iterates over the data array, constructing input sequences (X) and t
 Input Sequences (X): For each iteration i, a slice of the data array from i to `i + time_step` is taken. This slice represents a sequence of `time_step` consecutive time steps, which serves as one input example for the model. These sequences are appended to the list `X`.
 
 Labels (Y): The label for each input sequence is the value immediately following the sequence in the dataset. Specifically, `data[i + time_step, 0]` is used as the label for the sequence ending at `i + time_step - 1`. This means the model is trained to predict the next value in the series based on the preceding `time_step` values. The labels are appended to the list `Y`.
+
+## Machine Learning 
+In order to understand the implementation of machine learning, it is required first to grasp what Deep Learning encompasses. Deep Learning is a subset of machine learning that employs algorithms inspired by the structure and function of the brain called artificial neural networks. It has revolutionized various fields by providing solutions to complex problems that were previously considered intractable.
+
+Some of the most popular DL architectures ara Convolutiona Neural Networks (CNN) for image or video processing and Recurrent Neural Networks (RNN) for sequential data processing, 
+
+
+### RNN
+RNNs, unlike traditional neural networks,  process data in sequence allowing previous outputs to influence the next input. This makes RNNs ideal for time series analysis, natural language processing, and other tasks where context and order matter.are pivotal in handling sequential data, excelling in tasks where context and the sequence of information are crucial. 
+
+However, RNNs encounter a significant challenge known as the "vanishing gradient problem." This issue arises during the training phase, particularly with long sequences of data. As the sequence length increases, the gradients used in the training process can become very small, effectively preventing the network from learning long-distance correlations in the data. This limitation severely restricts the practical applications of traditional RNNs, making it difficult for them to process sequences with long-term dependencies.
+
+To overcome these limitations, two advanced architectures have been developed: Long Short-Term Memory (LSTM) units and Gated Recurrent Units (GRU).
+
+
+
+### LSTM (Long Short-Term Memory):
+ LSTMs are designed with the specific goal of avoiding the long-term dependency problem.  This model employs a memory cell to store and retrieve input from earlier time steps, making it well-suited for modeling sequential data with long-term dependencies. It comprises four main components: three gates (Input, Output, and Forget gates) and a memory cell.
+
+- The input gate governs the entry of fresh inputs into the memory cell.
+- The forget gate determines how much of the previous memory state should be forgotten by the memory cell.
+- The output gate regulates the output of memory cell states.
+- The memory cell retains and transmits data to the next time step. 
+  
+These gates collectively decide which information should be passed through the network, which should be retained in the network's long-term memory, and which should be forgotten. This architecture allows LSTMs to maintain a balance between the short-term and long-term information, enabling them to capture dependencies that span across long sequences of data effectively.
+The LSTM's ability to maintain a memory and selectively update it through these mechanisms enables it to handle various sequence learning tasks with high efficiency.
+
+![alt text](<LSTM machine learnig.png>)
+  
+
+This adragam represents a architecture of the LSTM unit features:
+
+- A cell state line that runs horizontally from left to right, denoted as `C_{t-1}` to `C_t`, which carries information across time steps and can be modified by three gates:
+  
+  1. **Forget Gate (`f_t`)**: Uses the sigmoid function (σ) to decide what information is discarded from the cell state, based on the previous hidden state `h_{t-1}` and the current input `X_t`.
+  
+  2. **Input Gate (`i_t`) and Candidate Layer (`\tilde{C}_t`)**: Determine which new information is added to the cell state. The input gate controls the values to be updated, and the candidate layer proposes new candidate values.
+  
+  3. **Output Gate (`o_t`)**: Decides the next hidden state (`h_t`), which is the filtered cell state. The sigmoid gate's output is multiplied by the `tanh` of the cell state to produce the hidden state `h_t`.
+
+- Element-wise multiplication (×) for gating and element-wise addition (+) for updating the cell state and creating the output.
+
+
+
+
+### GRU (Gated Recurrent Unit): 
+
+GRUs simplify the LSTM architecture while retaining its ability to handle long-term dependencies. GRUs combine the forget and input gates into a single update gate and merge the cell state and hidden state, resulting in a more streamlined model that requires fewer parameters. Despite their simplicity, GRUs have demonstrated a capability comparable to LSTMs for many tasks, making them a popular choice due to their efficiency and effectiveness.
 
 
 
