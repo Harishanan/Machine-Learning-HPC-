@@ -164,5 +164,11 @@ The creation of manual pages, or "man pages," serves as a cornerstone in documen
 
 
 
+    Pan Ming (2003) The discussion about software maintenance. Information Technology.
+    Ahmad Salman Khan & M. Kajko-Mattsson (2012) Evaluating the Role of Maintenance Environment Activities in Software Handover. 2012 8th International Conference on Computing Technology and Information Management (NCM and ICNIT), 1, pp. 230-237.
+    R. Banker, G. Davis, & S. Slaughter (1998) Software Development Practices, Software Complexity, and Software Maintenance Performance: a Field Study. Management Science, 44, pp. 433-450.
+    M. Joy, S. Jarvis, & Michael Luck (2002) Maintaining your Linux OS.
+
+
 ## Authors
 
