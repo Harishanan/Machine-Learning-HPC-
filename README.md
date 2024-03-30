@@ -120,28 +120,6 @@ Extra Steps to make it awesome:
 2.	If we have two cooling solutions, we need to ensure that failure of one doesn’t lead to overheating.
 
 
-Power Management
-1.	Calculate Power Requirements
-a.	CPU – 84 Watt  (https://www.cpu-world.com/CPUs/Core_i5/Intel-Core%20i5-4590.html )
-b.	GPU – 45Watt (https://www.techpowerup.com/gpu-specs/quadro-k620.c2600 )
-c.	Motherboard – 
-d.	Single Board –
-e.	Storage Device – 
-f.	Fans - 
-g.	RAM – 
-h.	Power – 
-
-Might need to use P = V * A
-https://pc-builds.com/power-supply-calculator/
-
-2.	Power Supply Selection:
-Choose power supplies that can handle the total power demand of the system with some margin for future expansion. 
-
-	Our Chieftec CTG-750C can deliver up to 750W.
-
-Would be nice to ensure that the systems in in operation in case of failure.
-
-
 ## References
 1. https://hpc.uni.lu/infrastructure/network
 2. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
