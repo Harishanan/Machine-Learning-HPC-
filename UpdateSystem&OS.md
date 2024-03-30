@@ -18,10 +18,21 @@ Cron is a time-based job scheduler in Unix-like operating systems. This can be u
    Use crontab -e to open the crontab file for editing. If it's the first time using crontab, you might be prompted to select an editor.
 
 - <b>Schedule Update Jobs:</b>
-  Add the below commands to update the list of available packages and installs the latest versions.
+  Add the below commands to update the list of available packages and installs the latest versions(The system will update at 3 AM every day)
 ```sh
 0 3 * * * apt-get update && apt-get upgrade -y >> home/master/logFiles/apt_upgrade.log 2>&1
 ```
 Here,
->> home/master/logFiles/apt_upgrade.log directs the output to home/master/logFiles/apt_upgrade.log 
->> 2>&1 ensures that both stdout and stderr from the commands are redirected to the log file.
+- >> home/master/logFiles/apt_upgrade.log directs the output to home/master/logFiles/apt_upgrade.log 
+- >> 2>&1 ensures that both stdout and stderr from the commands are redirected to the log file.
+
+### 3. Automating Configuration Updates with Cron and Git
+To ensure system configuration files are up-to-date, a cron job is scheduled to pull changes from Git repository.
+
+- <b>Cron Job for Git Pull:</b>
+  Below a cron job is added that navigates to your configuration directory and executes a git pull to fetch and merge changes from the remote repository. For example, to check for changes every day at 4 AM:
+
+```sh
+0 4 * * * cd /home/master/GitHub/ace-2023_-team-0/ && git pull >> home/master/logFiles/git_pull.log 2>&1
+```
+
