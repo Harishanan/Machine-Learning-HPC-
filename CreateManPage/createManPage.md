@@ -91,7 +91,7 @@ sudo cp HPC_GUIDE.1 /usr/local/share/man/man1/
     sudo mandb
 ```
 The above command will display
-![Output of the Man Page](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/documentation/Create-Man-Page-for-HPC---Taufique/CreateManPage/Screenshot%20from%202024-03-30%2001-08-20.png)
+![Output of the Man Page](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/documentation/Create-Man-Page-for-HPC---Taufique/CreateManPage/Screenshot%20from%202024-03-30%2002-37-32.png)
 ## Step 3: Viewing the Man Page
 To view the man page, use the man command followed by the name of the man page without the section number:
 
