@@ -63,3 +63,40 @@ For monitoring the system, visit:
 .fi
 .SH AUTHOR
 Written by the TEAM-0.
+<<<<<<< HEAD
+=======
+
+```
+
+## Step 2: Installing the Man Page
+
+1. Copy the Man Page to the Man Directory
+2. Man pages are stored in a directory structure under /usr/share/man or /usr/local/share/man. Copy man page to the appropriate section.
+
+```sh 
+sudo cp HPC_GUIDE.1 /usr/local/share/man/man1/
+```
+3. Update the man database to include your new man page by running:
+
+```sh
+    sudo mandb
+```
+The above command will display
+![Output of the Man Page](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/documentation/Create-Man-Page-for-HPC---Taufique/CreateManPage/Screenshot%20from%202024-03-30%2001-08-20.png)
+## Step 3: Viewing the Man Page
+To view the man page, use the man command followed by the name of the man page without the section number:
+
+```sh
+man HPC_GUIDE
+```
+The above command will display the below:
+
+## Additional Information
+
+### File Locations: 
+The example file paths given in the man page (~/ExampleFile/allApplicationPackages.def and ~/ExampleFile/slurmScriptFile.slurm) should be replaced with actual paths where these files can be found.
+
+### Example file can be seen here:
+- [allApplicationPackages.def](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/documentation/Create-Man-Page-for-HPC---Taufique/CreateManPage/ExampleFiles/allApplicationPackages.def)
+- [slurmScriptFile.slurm](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/documentation/Create-Man-Page-for-HPC---Taufique/CreateManPage/ExampleFiles/slurmScriptFile.slurm)
+>>>>>>> refs/remotes/origin/documentation/Create-Man-Page-for-HPC---Taufique
