@@ -61,6 +61,19 @@ By default, one of the ports is enabled. However, to activate the second port, u
 
 Once the steps are followed and both interfaces are activated, users can proceed to configure each interface to perform specific tasks. Detailed instructions can be found in the following link: [Configuring Interface using Nm-Connection-Editor](https://github.com/TeachingMaterial/ace-2023_-team-0/tree/documentation/nm-connection-editor-Harishanan)
 
+Ethernet cables were manually crimped for this project, adhering to the Registered Jack 45 (RJ-45) standard. The figure below illustrates the color standard for RJ-45 cables..
+
+![RJ-45 Standard](rj45_standard.PNG)<br>
+      <b>Figure 1: RJ-45 Standard</b>
+      <br>
+
+Step wise Step  process is shown in figure 2 below:
+
+![Ethernet-Crimp](stepwisestepcrimp.PNG)<br>
+      <b>Figure 2: Step by Step Ethernet Cimp</b>
+      <br>
+
+
 ## 3. System Construction:
 ***Assemble the HPC system, implementing power management and resource-efficient configurations. Configure non-volatile storage and RAM to meet performance requirements.***
 
