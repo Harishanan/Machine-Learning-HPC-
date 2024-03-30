@@ -1,3 +1,14 @@
+# HPC Guide Man Page Installation
+This document outlines the steps to build and install the man page for managing HPC compute nodes and running applications in an HPC environment.
+
+## Prerequisites
+The groff package installed for viewing man pages (usually pre-installed on most Linux distributions).
+
+## Step 1: Creating the Man Page
+
+1. Start by creating a file named HPC_GUIDE.1 with the below content provided. The file contains the man page source code written in the troff markup language, which is used for formatting man pages.
+   
+```sh                                                                                                                  
 .TH HPC_GUIDE 1 "30 March 2024"
 .SH NAME
 hpc_guide \- guide for managing HPC compute nodes and running applications
@@ -63,8 +74,6 @@ For monitoring the system, visit:
 .fi
 .SH AUTHOR
 Written by the TEAM-0.
-<<<<<<< HEAD
-=======
 
 ```
 
@@ -99,4 +108,3 @@ The example file paths given in the man page (~/ExampleFile/allApplicationPackag
 ### Example file can be seen here:
 - [allApplicationPackages.def](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/documentation/Create-Man-Page-for-HPC---Taufique/CreateManPage/ExampleFiles/allApplicationPackages.def)
 - [slurmScriptFile.slurm](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/documentation/Create-Man-Page-for-HPC---Taufique/CreateManPage/ExampleFiles/slurmScriptFile.slurm)
->>>>>>> refs/remotes/origin/documentation/Create-Man-Page-for-HPC---Taufique
