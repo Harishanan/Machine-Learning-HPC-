@@ -88,5 +88,7 @@ The above command will display the below:
 
 ### File Locations: 
 The example file paths given in the man page (~/ExampleFile/allApplicationPackages.def and ~/ExampleFile/slurmScriptFile.slurm) should be replaced with actual paths where these files can be found.
-### Example file can be seen here
-[allApplicationPackages.def](Create)
+
+### Example file can be seen here:
+- [allApplicationPackages.def](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/documentation/Create-Man-Page-for-HPC---Taufique/CreateManPage/ExampleFiles/allApplicationPackages.def)
+- [slurmScriptFile.slurm](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/documentation/Create-Man-Page-for-HPC---Taufique/CreateManPage/ExampleFiles/slurmScriptFile.slurm)
