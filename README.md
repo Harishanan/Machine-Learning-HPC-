@@ -71,19 +71,43 @@ After noticing that Ubuntu 22.04 operated steadily on the ASUS CS-B motherboard,
 # Install Operating System in Compute Node
 The process of installing the operating system on a compute node is similar to that of the head node, with the exception that it is not required the installation of Ubuntu Server specifically.
 
-Cooling Calculations
+**Cooling Calculations**
+
 1.	Heat Dissipation Calculation:
-a.	CPU – 84 Watt  (https://www.cpu-world.com/CPUs/Core_i5/Intel-Core%20i5-4590.html )
-b.	GPU – 45Watt (https://www.techpowerup.com/gpu-specs/quadro-k620.c2600 )
-c.	Motherboard – 
-d.	Single Board – it is not going to generate too much power.
-e.	RAM – Assume
-f.	Power Supply – 132.50W
-g.	SSD -  
-2.	Sum up heat dissipation values for all components
-84 + 45  = 129W + 2.6 = 131.6 ~=  132W == 1320 + (132.50 *2) = 1320 + 265 = 1585
+
+      1.1.  Caluclating Power Consumption for each component:
+
+      *	CPU – 84 Watt  (https://www.cpu-world.com/CPUs/Core_i5/Intel-Core%20i5-4590.html )
+      *	GPU – 45Watt (https://www.techpowerup.com/gpu-specs/quadro-k620.c2600 )
+      *	Motherboard – 
+      *	Single Board – it is not going to generate too much power. (It is not used)
+      *	RAM – 3 Watt (https://uk.crucial.com/support/articles-faq-memory/how-much-power-does-memory-use#:~:text=As%20a%20rule%20of%20thumb,the%20voltage%20beyond%20XMP%20settings.)
+      *	Power Supply – 132.50W
+      *	SSD - 4 Watt (https://www.windowscentral.com/samsung-860-evo-review) 
+
+      1.2.	Sum up Power Consumption values for all components
+   
+         = Heat Dissipation of (CPU + GPU + Motheboard  + RAM + Power Supply + SSD)
+
+         = (84 + 45 + 3 + 132.50 + 4) Watts
+
+         = 268.50 Watt 
+
+      Total Power Consumption for One Node is 268.50 Watt 
+
+      1.3. To Calculate Heat Dissipation in BTU/Hr:
+
+      Multplying Total Power Consumption  *  3.4192  (https://www.se.com/uk/en/faqs/FA213115/#:~:text=To%20calculate%20heat%20dissipation%2C%20multiply,is%20equal%20to%20BTU%20%2F%20HR.)
+
+         = 268.50 * 3.4192
+         
+         = Approx. 920 BTU/Hr
+
+
 3.	Cooling - Need to choose a cooling solution (In our case probably some sort of air cooling) with the capacity which will exceed the calculated heat load.
+
 4.	Need to design the layout of components and cooling elements in a way to ensure proper airflow. Hot air should be efficiently expelled, and cool air should reach components effectively.
+
 Extra Steps to make it awesome: 
 1.	A way to monitor temperature of critical components and send an alert in case of overheating.
 2.	If we have two cooling solutions, we need to ensure that failure of one doesn’t lead to overheating.
