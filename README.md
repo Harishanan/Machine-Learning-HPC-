@@ -97,14 +97,21 @@ The process of installing the operating system on a compute node is similar to t
 
       1.3. To Calculate Heat Dissipation in BTU/Hr:
 
+      *NOTE: One BTU per hour is the energy needed to heat One Pound of Water to 1°F, for one hour*
+
       Multplying Total Power Consumption  *  3.4192  (https://www.se.com/uk/en/faqs/FA213115/#:~:text=To%20calculate%20heat%20dissipation%2C%20multiply,is%20equal%20to%20BTU%20%2F%20HR.)
 
          = 268.50 * 3.4192
          
          = Approx. 920 BTU/Hr
 
+3.	Cooling - Need to choose a cooling solution taking it into consideration that ther is built-in fan for GPU and Power Supply Unit. There is also built-in fan for CPU which is attached to Motherboard.
 
-3.	Cooling - Need to choose a cooling solution (In our case probably some sort of air cooling) with the capacity which will exceed the calculated heat load.
+      ![Fan Placement](fanplacement.png)<br>
+      <b>Figure 1: 3D Model of Case with the fan where a) represents the front 3D view and b) represent the back 3D view </b>
+      <br>
+
+ (In our case probably some sort of air cooling) with the capacity which will exceed the calculated heat load.
 
 4.	Need to design the layout of components and cooling elements in a way to ensure proper airflow. Hot air should be efficiently expelled, and cool air should reach components effectively.
 
