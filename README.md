@@ -2,22 +2,29 @@
 <h3 align="center">High-Performance Computing System</h3>
 
 ## Table Of Contents
-- [Introduction](#Introduction)
-- [System Design And Architecture](#System_Design_And_Architecture)
-- [Technology Research]
-- [Power Management]
-- [System Construction]
-- [Housing and Cooling Solutions]
-- [Operating System Selection]
-   - [Install Operating System in Head Node]
-   - [Install Operating System in Compute Node]
-- [Task Implementation]
-   - [How to Create Machine Learning for Predict Crypto Currencies]
-- [Performance Evaluation]
-- [Software and OS Maintenance]
-- [References]
-- [Contributors]
-- [License]
+- [Table Of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+- [Built With](#built-with)
+- [Abstract](#abstract)
+- [Introduction](#introduction)
+- [1. System Design And Architecture](#1-system-design-and-architecture)
+- [2. Technology Research:](#2-technology-research)
+  - [2.1 Network Interconnect:](#21-network-interconnect)
+- [3. System Construction:](#3-system-construction)
+- [4. Housing and Cooling Solutions:](#4-housing-and-cooling-solutions)
+- [5. Operating System Selection:](#5-operating-system-selection)
+  - [5.1. Install Operating System in Head Node](#51-install-operating-system-in-head-node)
+  - [5.2 Install Operating System in Compute Node](#52-install-operating-system-in-compute-node)
+  - [5.3. Power Management](#53-power-management)
+- [6. BIOS Settings](#6-bios-settings)
+- [7. Networking](#7-networking)
+- [8. Software Installation](#8-software-installation)
+- [9. Task Implementation:](#9-task-implementation)
+  - [9.1. How to Create Machine Learning for Predict Crypto Currencies](#91-how-to-create-machine-learning-for-predict-crypto-currencies)
+- [10. Performance Evaluation:](#10-performance-evaluation)
+- [11. Software and OS Maintenance:](#11-software-and-os-maintenance)
+- [References](#references)
+- [Authors](#authors)
   
 ## About The Project
 
@@ -26,6 +33,7 @@
 - [VueJS](https://vuejs.org/)
 
 ## Abstract
+
 ## Introduction
 
 ## 1. System Design And Architecture
