@@ -190,7 +190,7 @@ The technical indicators RSI, EMA and SMA are generally used for financial analy
 ### Simple Moving Average (SMA)
  The average price of a security or asset over a given length of time, it is determined by summing up the prices for a given number of periods and dividing those values by the same number of periods. Can assist in identifying both 11 short-term and long-term trends in the data
 
- $$
+$$
 \text{SMA} = \frac{\sum_{i=1}^{N} P_i}{N}
 $$
 
@@ -203,6 +203,7 @@ $$
 
 ### The Exponential Moving Average (EMA) 
 IT is a type of moving average that places a greater weight and significance on the most recent data points. It is also referred to as the exponentially weighted moving average. EMAs are commonly used to gauge the direction of the trend in the prices of financial assets such as stocks or cryptocurrencies.
+
 $$
 \text{EMA}_{\text{today}} = (\text{Price}_{\text{today}} \times \text{K}) + (\text{EMA}_{\text{yesterday}} \times (1 - \text{K}))
 $$
@@ -546,11 +547,17 @@ Since the original dataset was normalized to a specific range (typically 0 to 1)
 The LSTM model's performance is evaluated using the following metrics:
 
  **Root Mean Square Error (RMSE)**: Reflects the square root of the average of the squares of the differences between predicted and actual values.
-  $$ \text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2} $$
+ 
+$$ 
+\text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2} 
+$$
+
   - `LSTM Test data RMSE`: Calculated using `math.sqrt(mean_squared_error(Y_test, LSTM_predic))`.
 
   **Mean Squared Error (MSE)**: Indicates the average of the squares of the differences between predicted and actual values.
- $$ \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2 $$
+$$ 
+ \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2 
+$$
 
   - `LSTM Test data MSE`: Obtained with `mean_squared_error(Y_test, LSTM_predic)
 
@@ -559,30 +566,42 @@ The LSTM model's performance is evaluated using the following metrics:
  
 - **Mean Absolute Error (MAE)**: Measures the average of the absolute differences between predicted and actual values.
  
-  $$ \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_{\text{true},i} - y_{\text{pred},i}| $$
+$$ 
+\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_{\text{true},i} - y_{\text{pred},i}| 
+$$
 
   - `LSTM Test data MAE`: Derived from `mean_absolute_error(Y_test, LSTM_predic)`.
 
  **Explained Variance Regression Score**: Provides a measure of how well the model accounts for the variation in the dataset.
-  $$ \text{Explained Variance} = 1 - \frac{\text{Var}(y_{\text{true}} - y_{\text{pred}})}{\text{Var}(y_{\text{true}})} $$
+$$
+ \text{Explained Variance} = 1 - \frac{\text{Var}(y_{\text{true}} - y_{\text{pred}})}{\text{Var}(y_{\text{true}})} 
+$$
 
   - `LSTM Test data explained variance regression score`: Calculated using `explained_variance_score(Y_test, LSTM_predic)`.
 
 **R² Score (Coefficient of Determination)**: Indicates the proportion of the variance in the dependent variable that is predictable from the independent variables.
-  $$ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2}{\sum_{i=1}^{n} (y_{\text{true},i} - \bar{y}_{\text{true}})^2} $$
+$$
+ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2}{\sum_{i=1}^{n} (y_{\text{true},i} - \bar{y}_{\text{true}})^2} 
+$$
 
   - `LSTM Test data R2 score`: Computed with `r2_score(Y_test, LSTM_predic)`.
 
 **Mean Gamma Deviance Regression Loss (MGD)**: A metric for regression models that predict positive continuous outcomes based on the gamma distribution.
 
-  $$ \text{MGD} = \frac{2}{n} \sum_{i=1}^{n} \left( \log \left( \frac{y_{\text{pred},i} + \text{offset}}{y_{\text{true},i} + \text{offset}} \right) + \frac{y_{\text{true},i} - y_{\text{pred},i}}{y_{\text{true},i} + \text{offset}} \right) $$
+$$
+\text{MGD} = \frac{2}{n} \sum_{i=1}^{n} \left( \log \left( \frac{y_{\text{pred},i} + \text{offset}}{y_{\text{true},i} + \text{offset}} \right) + \frac{y_{\text{true},i} - y_{\text{pred},i}}{y_{\text{true},i} + \text{offset}} \right) 
+$$
 
   - `LSTM Test data MGD`: `mean_gamma_deviance(Y_test, LSTM_predic)`
 
  **Mean Poisson Deviance Regression Loss (MPD)**: A metric for regression models that predict count data using the Poisson distribution.
-  $$ \text{MPD} = \frac{2}{n} \sum_{i=1}^{n} \left( y_{\text{true},i} \cdot \log \left( \frac{y_{\text{true},i}}{y_{\text{pred},i}} \right) - (y_{\text{true},i} - y_{\text{pred},i}) \right) $$
+
+$$ 
+\text{MPD} = \frac{2}{n} \sum_{i=1}^{n} \left( y_{\text{true},i} \cdot \log \left( \frac{y_{\text{true},i}}{y_{\text{pred},i}} \right) - (y_{\text{true},i} - y_{\text{pred},i}) \right) 
+$$
 
 - `LSTM Test data MPD`: `mean_poisson_deviance(Y_test, LSTM_predic)`
+
 
 ### GRU Model Evaluation
 
