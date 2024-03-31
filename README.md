@@ -141,7 +141,6 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, GRU
-from keras.layers import Dropout
 import yfinance as yf
 from datetime import datetime, timedelta
 
@@ -186,7 +185,7 @@ In order to facilitate predictions based on the Bitcoin dataset, parameters such
 
 
 ## Technincal Indicators
-The technical indicators RSI, EMA, SMA and MACD are generally used for financial analysis to understand market dynamics and generate trading signals. Those indicators will help ML model to identify complex patterns
+The technical indicators RSI, EMA and SMA are generally used for financial analysis to understand market dynamics and generate trading signals. Those indicators will help ML model to identify complex patterns
 
 ### Simple Moving Average (SMA)
  The average price of a security or asset over a given length of time, it is determined by summing up the prices for a given number of periods and dividing those values by the same number of periods. Can assist in identifying both 11 short-term and long-term trends in the data
