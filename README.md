@@ -200,18 +200,14 @@ $$
   -  $P$<sub>i</sub> denotes the price of the asset at period $i$.
 
 
-
 ### The Exponential Moving Average (EMA) 
 IT is a type of moving average that places a greater weight and significance on the most recent data points. It is also referred to as the exponentially weighted moving average. EMAs are commonly used to gauge the direction of the trend in the prices of financial assets such as stocks or cryptocurrencies.
 
 $$
-
 \text{EMA}_{\text{today}} = (\text{Price}_{\text{today}} \times \text{K}) + (\text{EMA}_{\text{yesterday}} \times (1 - \text{K}))
-
 $$
 
 where:
-
 - $\text{Price}_{\text{today}}$ is the current closing price,
 - $\text{EMA}_{\text{yesterday}}$ is the previous EMA value,
 - $K$ is the smoothing factor, calculated as $K = \frac{2}{(N+1)}$,
@@ -557,12 +553,12 @@ $$
   - `LSTM Test data RMSE`: Calculated using `math.sqrt(mean_squared_error(Y_test, LSTM_predic))`.
 
   **Mean Squared Error (MSE)**: Indicates the average of the squares of the differences between predicted and actual values.
+
 $$ 
  \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2 
 $$
 
   - `LSTM Test data MSE`: Obtained with `mean_squared_error(Y_test, LSTM_predic)
-
 
 
  
@@ -575,6 +571,7 @@ $$
   - `LSTM Test data MAE`: Derived from `mean_absolute_error(Y_test, LSTM_predic)`.
 
  **Explained Variance Regression Score**: Provides a measure of how well the model accounts for the variation in the dataset.
+
 $$
  \text{Explained Variance} = 1 - \frac{\text{Var}(y_{\text{true}} - y_{\text{pred}})}{\text{Var}(y_{\text{true}})} 
 $$
@@ -582,6 +579,7 @@ $$
   - `LSTM Test data explained variance regression score`: Calculated using `explained_variance_score(Y_test, LSTM_predic)`.
 
 **R² Score (Coefficient of Determination)**: Indicates the proportion of the variance in the dependent variable that is predictable from the independent variables.
+
 $$
  R^2 = 1 - \frac{\sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2}{\sum_{i=1}^{n} (y_{\text{true},i} - \bar{y}_{\text{true}})^2} 
 $$
