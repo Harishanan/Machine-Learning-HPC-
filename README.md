@@ -122,6 +122,12 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 ***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
 
 
+# Design reflection and future improvements 
+During the course of this assignment there have been a few development problems and issues that arose in regard to the specific design of the case such as the time impairment, material acquisition, ventilation and change in requirements. In this report I will discuss how each of these problems were analyzed and resolved to display a design that fit the requirements of the projects while also remaining affordable and simple to construct.
+
+# Time impairment 
+The first and possible largest issue we faced in constructing the case was time. As we had a fixed amount of time to build and submit the Hpc the case had to be completed in about a month and a half. My first idea was 3D printing the part required to build the frame/shelfing unit. After sending my designs of to be printed I was told that all part would take over 80 das as there was over 65 pieces to print along with other student needing to use the printing facilities as well.to work around this problem I decided that purchasing a frame could be cheaper and less time consuming as well as having more stability. This way I could focus more on altering the internal of the case as well as making a front and rear for the frame. This cut the time to create a case by at least a month allowing more time for alterations if need be 
+
    
 
 
