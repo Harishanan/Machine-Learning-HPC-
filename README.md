@@ -74,6 +74,11 @@ The process of installing the operating system on a compute node is similar to t
 
 
 # Creatting Machine Learning for predict cryptocurrency
+Machine learning constitutes a complex task; therefore, to facilitate an easier understanding of the process, the following flowchart is provided. This demonstration utilises Bitcoin as an example, yet the application maintains the same structure for each cryptocurrency.
+
+<p align="center">
+  <img src="ML learning flow chart.png" alt="Machine Learning Flow Chart">
+</p>
 
 
 ## Libraries and Modules Documentation
@@ -98,7 +103,7 @@ The process of installing the operating system on a compute node is similar to t
   - **`Dense`**: Standard fully connected neural network layer.
   - **`LSTM`** (Long Short-Term Memory): A type of RNN layer important for sequence prediction problems.
   - **`GRU`** (Gated Recurrent Unit): A streamlined version of LSTM, faster to train but similarly effective for sequence data.
-  - **`Dropout`**: Helps prevent overfitting by randomly setting input units to 0 at each update during training time.
+
 
 ### Data Visualization
 
@@ -218,19 +223,7 @@ $$
 
 EMA involves two main components: the smoothing factor and the previous EMA value. The smoothing factor determines the weightage given to the most recent data point and is typically derived from a specified time period or the number of data points. Since it places more emphasis on recent data, the EMA reacts more quickly to price changes compared to the SMA.
 
-### The Moving Average Convergence Divergence (MACD)
- MACD is a trend-following momentum indicator that shows the relationship between two moving averages of a security’s price. The MACD is calculated by subtracting the 26-period Exponential Moving Average (EMA) from the 12-period EMA.
 
-
- $$
-\text{MACD} = \text{EMA}_{12} - \text{EMA}_{26}
-$$
-
-
-where:
-
-- $\text{EMA}_{12}$ :  The 12-period exponential moving average of the closing prices.
-- $\text{EMA}_{26}$: The 26-period exponential moving average of the closing prices.
 
 ### The Relative Strength Index (RSI)
 RSI a momentum oscillator that measures the speed and change of price movements. The RSI oscillates between zero and 100 and is typically used to identify overbought or oversold conditions in trading assets, indicating a potential reversal in price.
@@ -255,15 +248,7 @@ To add those indiciators  to our dataset will be use function that will make all
 
 ```bash
  def technical_indicators(self,dataset):
-           
-            # Create MACD
-            
-             dataset['26ema'] = dataset['Price'].ewm(span=26).mean()
-             dataset['12ema'] = dataset['Price'].ewm(span=12).mean()
-             dataset['MACD'] = dataset['12ema']-dataset['26ema']
 
-            
-    
             # Create Exponential moving average
                dataset['ema'] = dataset['Price'].ewm(com=0.5).mean()
     
@@ -303,7 +288,7 @@ First, the feautes price, volumen and all the previus technical  are extracted f
    EMA = self.BTC_data[['ema']].values
    SMA= self.BTC_data[['SMA30']].values
    RSI=self.BTC_data[['RSI']].values
-   MACD=self.BTC_data[['MACD']].values
+   
 
    # Scale each feature independently
    scaler_price = MinMaxScaler()
@@ -311,14 +296,14 @@ First, the feautes price, volumen and all the previus technical  are extracted f
    scaler_EMA = MinMaxScaler()
    scaler_SMA= MinMaxScaler()
    scaler_RSI= MinMaxScaler()
-   scaler_MACD= MinMaxScaler()
+   
 
    prices_scaled = scaler_price.fit_transform(prices)
    volumes_scaled = scaler_volume.fit_transform(volumes)
    EMA_scaled = scaler_EMA.fit_transform(EMA)
    SMA_scaled = scaler_SMA.fit_transform(SMA)
    RSI_scaled= scaler_RSI.fit_transform(RSI)
-   MACD_scaled=scaler_MACD.fit_transform(MACD)
+   
 
 
 ```
@@ -327,20 +312,20 @@ After scaling, all features are concatenated horizontally (axis=1) to form a sin
 
 ```bash
 # Concatenate the scaled features
-caled_features = np.concatenate([prices_scaled, volumes_scaled, EMA_scaled,SMA_scaled,RSI_scaled,MACD_scaled], axis=1)
+caled_features = np.concatenate([prices_scaled, volumes_scaled, EMA_scaled,SMA_scaled,RSI_scaled], axis=1)
 ```
 
 ### Spliting the Dataset
 #### Setting Parameters
 Now is required to prepare the scaled features for training, validation, and testing by splitting the dataset according to specified ratios.
 For that task it is goin to set:
-- `time_step`: This parameter specifies the window size for each input sequence to the model. In this context, a time_step of 60 means that each input sequence will consist of data from 60 consecutive time steps.
-- `num_features`: Indicates the number of features used in the dataset, which is 6 in this case. 
+- `time_step`: This parameter specifies the window size for each input sequence to the model. In this context, a time_step of 30 means that each input sequence will consist of data from 30 consecutive time steps.
+- `num_features`: Indicates the number of features used in the dataset, which is 5 in this case. 
   
-- `split_ratio`: A dictionary that defines the proportion of the dataset to be used for training, validation, and testing. Here, 60% of the data is allocated for training, 20% for validation, and the remaining 20% for testing.
+- `split_ratio`: A dictionary that defines the proportion of the dataset to be used for training, validation, and testing. Here, 70% of the data is allocated for training, 10% for validation, and the remaining 20% for testing.
 
 ####  Trimming the Dataset
-To ensure that the dataset can be divided evenly by the `time_step`,  the code trims the dataset to a size that is divisible by 60. This step ensures that every sequence used for training or testing is complete and contains exactly 60 time steps.
+To ensure that the dataset can be divided evenly by the `time_step`,  the code trims the dataset to a size that is divisible by 30. This step ensures that every sequence used for training or testing is complete and contains exactly 30 time steps.
 ```bash
 trimmed_size = len(scaled_features) - (len(scaled_features) % time_step)
 trimmed_data = scaled_features[:trimmed_size]
@@ -386,9 +371,15 @@ X: For each iteration i, a slice of the data array from i to `i + time_step` is 
 ```bash
  X_train, Y_train = self.create_dataset(train_data, time_step)
  X_train = np.reshape((X_train.shape[0], time_step, num_features))
+ Y_train = train_data[time_step:, 0]
+
  X_validation, Y_validation = self.create_dataset(validation_data, time_step)
  X_validation = np.reshape(X_validation, (X_validation.shape[0],  time_step, num_features))
+ Y_validation = validation_data[time_step:, 0]
+
+ X_test, Y_test =self.create_dataset(test_data, time_step)
  X_test = np.reshape(X_test, (X_test.shape[0],  time_step, num_features))
+ Y_test = test_data[time_step:, 0]
  ```
 Now the data set is ready to be intrepreted by the machine learning models.
 
@@ -475,7 +466,7 @@ The GRU uses element-wise operations:
 
 - An LSTM model is instantiated using the Sequential class, which allows for the linear stacking of layers.
 - The LSTM layer is added with na units (neurons), where na=50. This parameter defines the dimensionality of the output space or the number of hidden units in the LSTM layer. The input shape is specified as (time_step, num_features), indicating the dimensions of the input sequences.
-- A Dropout layer with a rate of 0.2 is included to prevent overfitting by randomly setting 20% of the input units to 0 at each update during training.
+
 Two Dense layers are added subsequently:
   - The first Dense layer has a single unit and is typically used for regression tasks or as a precursor to a final classification layer.
   - The second Dense layer, defined by units=dim_exit (where dim_exit=1), suggests the model's output dimension. In this context, it's configured to output a single value, fitting the regression task's requirements.
@@ -484,8 +475,7 @@ Two Dense layers are added subsequently:
 ```bash
 #LSTM
  LSTM_model = Sequential()
- LSTM_model.add(LSTM(units=na, input_shape=(time_step, num_features)))
- LSTM_model.add(Dropout(0.2))  
+ LSTM_model.add(LSTM(units=na, input_shape=(time_step, num_features))) 
  LSTM_model.add(Dense(1))
  LSTM_model.add(Dense(units=dim_exit))
 LSTM_model.compile(optimizer='adam',loss='mse')
@@ -502,8 +492,7 @@ The GRU model architecture is similar to the LSTM's but utilizes GRU layers. GRU
 ```bash
  #GRU
 RU_model= Sequential()
-GRU_model.add(GRU(units=na, input_shape=(time_step, num_features)),)
-GRU_model.add(Dropout(0.2))
+GRU_model.add(GRU(units=na, input_shape=(time_step, num_features)))
 GRU_model.add(Dense(1))
 GRU_model.add(Dense(units=dim_exit))
 GRU_model.compile(optimizer='adam',loss='mse')
@@ -526,7 +515,7 @@ The training process is the same for both models
 history_GRU=GRU_model.fit(X_train,Y_train,epochs=epochs,batch_size=batch_size,validation_data=(X_validation, Y_validation),callbacks=callbacks,verbose=1)
   ```
 
-### Generating Predictions
+## Generating Predictions
 
 - **LSTM Predictions**: `LSTM_model.predict(X_test)` is used to generate predictions from the LSTM model using the test dataset (`X_test`). These predictions are initially in the scaled form because the model was trained on data that had been normalized.
 
@@ -557,24 +546,44 @@ Since the original dataset was normalized to a specific range (typically 0 to 1)
 
 The LSTM model's performance is evaluated using the following metrics:
 
-- **Root Mean Square Error (RMSE)**: Provides the square root of the average squared differences between the predicted values and actual values. A lower RMSE indicates better model performance.
+ **Root Mean Square Error (RMSE)**: Reflects the square root of the average of the squares of the differences between predicted and actual values.
+  $$ \text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2} $$
   - `LSTM Test data RMSE`: Calculated using `math.sqrt(mean_squared_error(Y_test, LSTM_predic))`.
 
-- **Mean Squared Error (MSE)**: Represents the average of the squared differences between predicted and actual values. Like RMSE, a lower value is better.
-  - `LSTM Test data MSE`: Obtained with `mean_squared_error(Y_test, LSTM_predic)`.
+  **Mean Squared Error (MSE)**: Indicates the average of the squares of the differences between predicted and actual values.
+ $$ \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2 $$
 
-- **Mean Absolute Error (MAE)**: Measures the average magnitude of the errors in a set of predictions, without considering their direction.
+  - `LSTM Test data MSE`: Obtained with `mean_squared_error(Y_test, LSTM_predic)
+
+
+
+ 
+- **Mean Absolute Error (MAE)**: Measures the average of the absolute differences between predicted and actual values.
+ 
+  $$ \text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_{\text{true},i} - y_{\text{pred},i}| $$
+
   - `LSTM Test data MAE`: Derived from `mean_absolute_error(Y_test, LSTM_predic)`.
 
-- **Explained Variance Regression Score**: Indicates the proportion of the variance in the dependent variable that is predictable from the independent variable(s).
+ **Explained Variance Regression Score**: Provides a measure of how well the model accounts for the variation in the dataset.
+  $$ \text{Explained Variance} = 1 - \frac{\text{Var}(y_{\text{true}} - y_{\text{pred}})}{\text{Var}(y_{\text{true}})} $$
+
   - `LSTM Test data explained variance regression score`: Calculated using `explained_variance_score(Y_test, LSTM_predic)`.
 
-- **R² Score**: Represents the coefficient of determination, indicating the proportion of the variance for the dependent variable that's predictable from the independent variables.
+**R² Score (Coefficient of Determination)**: Indicates the proportion of the variance in the dependent variable that is predictable from the independent variables.
+  $$ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2}{\sum_{i=1}^{n} (y_{\text{true},i} - \bar{y}_{\text{true}})^2} $$
+
   - `LSTM Test data R2 score`: Computed with `r2_score(Y_test, LSTM_predic)`.
 
-- **Mean Gamma Deviance Regression Loss (MGD)** and **Mean Poisson Deviance Regression Loss (MPD)**: These metrics are used for models that predict counts or positive quantities, respectively.
+**Mean Gamma Deviance Regression Loss (MGD)**: A metric for regression models that predict positive continuous outcomes based on the gamma distribution.
+
+  $$ \text{MGD} = \frac{2}{n} \sum_{i=1}^{n} \left( \log \left( \frac{y_{\text{pred},i} + \text{offset}}{y_{\text{true},i} + \text{offset}} \right) + \frac{y_{\text{true},i} - y_{\text{pred},i}}{y_{\text{true},i} + \text{offset}} \right) $$
+
   - `LSTM Test data MGD`: `mean_gamma_deviance(Y_test, LSTM_predic)`
-  - `LSTM Test data MPD`: `mean_poisson_deviance(Y_test, LSTM_predic)`
+
+ **Mean Poisson Deviance Regression Loss (MPD)**: A metric for regression models that predict count data using the Poisson distribution.
+  $$ \text{MPD} = \frac{2}{n} \sum_{i=1}^{n} \left( y_{\text{true},i} \cdot \log \left( \frac{y_{\text{true},i}}{y_{\text{pred},i}} \right) - (y_{\text{true},i} - y_{\text{pred},i}) \right) $$
+
+- `LSTM Test data MPD`: `mean_poisson_deviance(Y_test, LSTM_predic)`
 
 ### GRU Model Evaluation
 
@@ -590,8 +599,112 @@ The GRU model undergoes a similar evaluation process:
 
 By evaluating both models using these comprehensive metrics, we can assess their predictive accuracy and understand their strengths and limitations in forecasting Bitcoin prices.
 
+## Generating Future Predictions with LSTM and GRU Models
 
-### Results
+After evaluating the LSTM and GRU models on historical test data, the next step involves using these models to predict future Bitcoin prices. The process entails preparing the input data from the recent past and iteratively predicting the next day's price over a specified future period.
+
+### Preparing the Input Data
+
+- **Time Window for Predictions**: The model looks back 90 days (`time_based = 90`) from the most recent data point in `test_data` to prepare the input for the first prediction. This approach assumes that the last 90 days contain relevant information for forecasting future prices.
+
+- **Reshaping the Data**: The selected 90-day data segment is reshaped to match the expected input format for the LSTM and GRU models, which is `(1, time_based, num_features)`. This step ensures compatibility with the model's architecture, allowing for accurate predictions.
+ ```bash
+
+ # Number of days to look back to make future predictions
+  time_based = 90
+ # Prepare the input for the first prediction by taking the last 90 days from test_data
+ last_90_days = test_data[-time_based:]
+ # Reshape the last 90 days data to fit the LSTM_model's expected input shape
+  current_batch = last_90_days.reshape((1, time_based, num_features))
+```
+### Iterative Future Predictions
+
+- Two lists, `LSTM_future_predictions` and `GRU_future_predictions`, are initialized to store the models' predictions for the next 30 days.
+
+- **Prediction Loop**: For each day in the next 30 days:
+  - The LSTM and GRU models each make a prediction for the next day's price using `current_batch` as input.
+  - These predictions are appended to their respective lists for future analysis.
+  - The input batch is then updated to include the new prediction while dropping the oldest day. This process involves:
+    - Extracting features from the last day in the batch (excluding the predicted feature).
+    - Combining these features with the new prediction to form the next day's input.
+    - Reshaping and updating the input batch to reflect this addition, ensuring the batch always represents the most recent 90 days of data relevant for prediction.
+
+ ```bash
+# Predict the next 30 days
+        for i in range(30):  # Loop for 30 days
+            # Predict the next day using the first LSTM_model
+            LSTM_next_day_prediction = LSTM_model.predict(current_batch)[0]
+            # Predict the next day using the second LSTM_model
+            GRU_next_day_prediction = GRU_model.predict(current_batch)[0]
+            # Add the predictions to their respective lists
+            LSTM_future_predictions.append(LSTM_next_day_prediction)
+            GRU_future_predictions.append(GRU_next_day_prediction)
+    
+            # Get the features from the last day in the batch (excluding the target feature)
+            last_features = current_batch[0, -1, 1:]
+    
+            # Combine the next day prediction with the last features
+            next_day_input = np.hstack([LSTM_next_day_prediction, last_features])
+            # Reshape the combination to match the expected number of features
+            next_day_input = next_day_input.reshape((1, 1, num_features))
+            # Update the batch to include the new prediction and drop the oldest day
+            current_batch = np.concatenate([current_batch[:, 1:, :], next_day_input], axis=1)
+    
+
+   
+            # Repeat the process for  GRU model prediction
+            GRU_next_day_input = np.hstack([GRU_next_day_prediction, last_features])
+            GRU_next_day_input = GRU_next_day_input.reshape((1, 1, num_features))
+
+```
+### Rescaling Predictions
+
+- **Inverse Scaling**: The predictions made by the models are initially in the scaled form (due to preprocessing). To interpret these predictions in the context of actual Bitcoin prices, they are inversely transformed back to their original scale using `scaler_price.inverse_transform`.
+
+- The `LSTM_future_predictions_scaled` and `GRU_future_predictions_scaled` arrays contain the rescaled predictions for the next 30 days, providing a forecast of Bitcoin prices in a usable format.
+```bash
+  # Reverse the scaling transformation to convert predictions back to their original scale
+        LSTM_future_predictions_scaled = scaler_price.inverse_transform(np.array(LSTM_future_predictions).reshape(-1, 1))
+        GRU_future_predictions_scaled = scaler_price.inverse_transform(np.array(GRU_future_predictions).reshape(-1, 1))
+ ```
+
+
+## Results
+The graphical results demonstrate that both machine learning models achieve a high level of accuracy when compared with the actual prices. However, it is observed that the LSTM model exhibits a degree of imprecision towards the end.
+
+![alt text](<btc prediction plot.png>)
+
+While testing the results using evaluation metrics is given that:
+- According RMSE  GRU is  more accurate
+- According MSE  GRU is more accurate
+- According MAE  LSTM is more accurate
+- According Varicence regression  GRU is more accurate
+-  According R2  GRU is more accurate
+-  According MGD  GRU is more accurate
+-  According MSE  LSTM is more accurate
+
+| Metric                                        | LSTM Results               | GRU Results                |
+|-----------------------------------------------|----------------------------|----------------------------|
+| Test data RMSE:                               | 0.013515279041348916       | 0.012886921913316975       |
+| Test data MSE:                                | 0.0018266276762337735      | 0.001660727563992923       |
+| Test data MAE:                                | 0.008977291327245784       | 0.00988896278501512        |
+| Test data variance regression :| 0.9933846879800868         | 0.9955477868417992         |
+| Test data R2 score:                           | 0.9933206066938037         | 0.9939272503512039         |
+| Test data MGD:                                | 0.0008894913516761145      | 0.0009750636990728198      |
+| Test data MPD:                                | 0.0036820411478632367      | 0.00037713497773401283     |
+
+
+![alt text](<BTC future predcition.png>)
+
+
+## Conlusion 
+The LSTM and GRU models have been employed to forecast future Bitcoin prices, and their performance was rigorously evaluated. The evaluation metrics show that both models achieve a high degree of accuracy, with the GRU model displaying a slight edge in terms of lower RMSE, MSE, and higher R² score, indicating a marginally better fit to the test data. 
+
+The explained variance scores are impressively high for both models (LSTM: 0.9933, GRU: 0.9955), suggesting that they are highly capable of capturing the variance in the Bitcoin price movements.
+
+From the predictive visualizations, it is observed that the GRU model's predictions are a bit closer to the actual price trends. However, the difference is not substantial, implying that in different market conditions or with different hyperparameter tunings, the LSTM model might perform equally well or even outperform the GRU model.
+
+In conclusion, while the GRU model currently shows slightly more accurate results, both models are quite competent in predicting Bitcoin prices. The choice between LSTM and GRU for future predictions might depend on computational resources, time constraints, and specific nuances in the price movement patterns. There is a strong likelihood that under other circumstances, the LSTM model could yield better results, underlining the importance of model experimentation and validation in practical scenarios.
 
 
 
