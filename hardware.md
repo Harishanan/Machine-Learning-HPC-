@@ -8,6 +8,7 @@ Below are the specifications of the components utilized in this project:
   - [NVIDIA QUADRO](#nvidia-quadro)
   - [TP-Link Switch - TL-SG105](#tp-link-switch---tl-sg105)
   - [External Fans](#external-fans)
+  - [Power Supply Unit](#power-supply-unit)
 - [References](#references)
 
 ## ASUS CS-B
@@ -29,7 +30,7 @@ Below are the specifications of the components utilized in this project:
 
 ## SAMSUNG v-NAND SSD 860 EVO
 
-<img align="right" width="210" height="160" src="pictures/SSD.png">
+<img align="right" width="250" height="190" src="pictures/SSD.png">
 
 * Capacity:	500 GB
 
@@ -48,7 +49,7 @@ Below are the specifications of the components utilized in this project:
 
 ## NVIDIA QUADRO
 
-<img align="right" width="290" height="160" src="pictures/GPU.png">
+<img align="right" width="300" height="170" src="pictures/GPU.png">
 
 * GPU Memory 2 GB DDR3
 
@@ -65,7 +66,7 @@ Fansink
 * 
 ## TP-Link Switch - TL-SG105
 
-<img align="right" width="250" height="140" src="pictures/switch.png">
+<img align="right" width="260" height="150" src="pictures/switch.png">
 
 *  5 x 10/100/1000Mbps ports
 
@@ -79,6 +80,35 @@ Fansink
   
 ## External Fans
 
+<img align="right" width="300" height="300" src="pictures/fan.png">
+
+* Product Name: Akasa AK-174
+
+* Power connector type:	3-Pin
+
+* Voltage:	12 Volts
+
+* Housing : Transparent, Blue LED Case 
+
+* Fan Dimension: 120 120 25mm
+
+* Fan speed 1700 RPM
+
+* Airflow 59.05 CFM 100.0m3/hFan
+ 
+* Air pressure 3.57mm 
+  
+* Noise level 29.75 dBA
+  
+* Current rating: 0.18A
+
+* Bearing type Twin Ball
+  
+* Fan life expectancy 50,000 hours
+
+
+## Power Supply Unit
+
 
 #  References
 TP-Link Switch - TL-SG105: https://groceries.asda.com/product/mobile-phone-accessories/tp-link-5-port-gigabit-ethernet-switch-tl-sg-105/1000144744779
@@ -86,3 +116,5 @@ TP-Link Switch - TL-SG105: https://groceries.asda.com/product/mobile-phone-acces
 ASUS CS-B: https://basitcomputers.com/product/i5-4590-4th-gen-motherboard-processor-asus-q87-cs-b/
 
 SAMSUNG v-NAND SSD 860 EVOL: https://www.techpowerup.com/ssd-specs/samsung-860-evo-500-gb.d7
+
+External Akasa AK-174: https://www.amazon.ae/Akasa-AK-174CB-4BLB-12cm-Blue-case/dp/B000OGZ8QG?th=1
