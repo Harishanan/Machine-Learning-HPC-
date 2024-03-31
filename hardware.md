@@ -8,10 +8,11 @@ Below are the specifications of the components utilized in this project:
   - [NVIDIA QUADRO](#nvidia-quadro)
   - [TP-Link Switch - TL-SG105](#tp-link-switch---tl-sg105)
   - [External Fans](#external-fans)
+- [References](#references)
 
 ## ASUS CS-B
     
-<img align="right" width="300" height="200" src="pictures/motherboard.png">
+<img align="right" width="300" height="200" src="pictures/motherboard.PNG">
 
 * CPU: Intel 4TH Generation Core Core i5 
   
@@ -64,5 +65,24 @@ Fansink
 * 
 ## TP-Link Switch - TL-SG105
 
+<img align="right" width="250" height="140" src="pictures/switch.png">
 
+*  5 x 10/100/1000Mbps ports
+
+* Compact design with Energy efficient Technology.
+
+* Power Down Idle Ports
+
+* Power Budget According to Cable Length : shorter cables would use less power because of less power degradation over their length
+
+* Easy to use and save up to 84% of the power consumption
+  
 ## External Fans
+
+
+#  References
+TP-Link Switch - TL-SG105: https://groceries.asda.com/product/mobile-phone-accessories/tp-link-5-port-gigabit-ethernet-switch-tl-sg-105/1000144744779
+
+ASUS CS-B: https://basitcomputers.com/product/i5-4590-4th-gen-motherboard-processor-asus-q87-cs-b/
+
+SAMSUNG v-NAND SSD 860 EVOL: https://www.techpowerup.com/ssd-specs/samsung-860-evo-500-gb.d7
