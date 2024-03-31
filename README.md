@@ -137,6 +137,9 @@ The ventilation of the case was considered from the very beginning as it essenti
 # Change in requirements 
 Throughout the course pf this project there were a number of alterations that needed to be made to counter errors in judgement as well as new components that needed to be added to achieve complete networking between the boards. By altering the size of the shelves and by utilizing the space in the side of the case for storing the wires, all new components and power sources fit as needed 
 
+# Reflection 
+If I were to design this case again, I believe there are a few changes that could be made. I think the biggest change I would make is I would have made holes across the laser cut shelves as it would increase the ventilation in the case however if I did this, I would make the shelf out of wood as with to many holes cut the structural integrity would be compromised and they may not be able to hold the components at the current thickness. By changing the material to wood and increasing the thickness of the shelves, adding the holes will not impair the performance. It is important to keep in mind the ultimate stress point and the fracture point of the material used as well as the elastic point. The brackets that were built were perfectly fit for purpose so I will utilize them for similar case frames in the future and if given the opportunity to improve this case
+
    
 
 
