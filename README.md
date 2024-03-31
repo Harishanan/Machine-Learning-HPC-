@@ -71,7 +71,7 @@ After noticing that Ubuntu 22.04 operated steadily on the ASUS CS-B motherboard,
 # Install Operating System in Compute Node
 The process of installing the operating system on a compute node is similar to that of the head node, with the exception that it is not required the installation of Ubuntu Server specifically.
 
-**Cooling Calculations**
+# Cooling Calculations
 
 1.	Heat Dissipation Calculation:
 
@@ -105,7 +105,9 @@ The process of installing the operating system on a compute node is similar to t
          
          = Approx. 920 BTU/Hr
 
-3.	Cooling - Need to choose a cooling solution taking it into consideration that ther is built-in fan for GPU and Power Supply Unit. There is also built-in fan for CPU which is attached to Motherboard.
+3.	Cooling - The selection of the fan was made with careful consideration of various factors, and a dual-fan system was chosen. Two fans are positioned at the front of the case to intake cool air, while another two are situated at the back to expel hot air as depicted in Figure 1. This configuration creates an airflow pattern that helps maintain optimal temperatures for all components.
+
+      Additionally, the CPU fan, which is attached to the motherboard, provides active cooling for the CPU. Moreover, the GPU and power supply unit also have built-in fans for additional cooling.
 
       ![Fan Placement](fanplacement.png)<br>
       <b>Figure 1: 3D Model of Case with the fan where a) represents the front 3D view and b) represent the back 3D view </b>
@@ -113,12 +115,16 @@ The process of installing the operating system on a compute node is similar to t
 
  (In our case probably some sort of air cooling) with the capacity which will exceed the calculated heat load.
 
-4.	Need to design the layout of components and cooling elements in a way to ensure proper airflow. Hot air should be efficiently expelled, and cool air should reach components effectively.
+4. **Requirement taken into Consideration while choosing the fan** :
 
-Extra Steps to make it awesome: 
-1.	A way to monitor temperature of critical components and send an alert in case of overheating.
-2.	If we have two cooling solutions, we need to ensure that failure of one doesn’t lead to overheating.
+   * Size: Utilizing four fans of approximately 120mm, the standard dimension for case fans, is the chosen configuration.
+   * Speed:
+   * Connector: Fans are selected to be compatible with the motherboard's fan headers, featuring a 4-pin connector.
+   * Noise level: Priority is given to fans with a low noise level to guarantee quieter system operation.
 
+5. **Examination**
+
+   A heat gun was employed to assess the heat dissipation of the entire system under two conditions: with the fan operational and with the fan deactivated.
 
 ## References
 1. https://hpc.uni.lu/infrastructure/network
