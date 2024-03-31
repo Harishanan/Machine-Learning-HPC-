@@ -748,7 +748,9 @@ In conclusion, while the GRU model currently shows slightly more accurate result
 ## References
 1. https://hpc.uni.lu/infrastructure/network
 2. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
-3. 
+3. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
+4. https://plantuml.com/
+5. https://www.kaggle.com/code/meetnagadia/bitcoin-price-prediction-using-lstm
 
 ## Authors
 
