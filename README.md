@@ -128,6 +128,14 @@ During the course of this assignment there have been a few development problems 
 # Time impairment 
 The first and possible largest issue we faced in constructing the case was time. As we had a fixed amount of time to build and submit the Hpc the case had to be completed in about a month and a half. My first idea was 3D printing the part required to build the frame/shelfing unit. After sending my designs of to be printed I was told that all part would take over 80 das as there was over 65 pieces to print along with other student needing to use the printing facilities as well.to work around this problem I decided that purchasing a frame could be cheaper and less time consuming as well as having more stability. This way I could focus more on altering the internal of the case as well as making a front and rear for the frame. This cut the time to create a case by at least a month allowing more time for alterations if need be 
 
+# Material acquisition 
+An issue arose with the materials as some materials were ordered before the time issues were realized. This issue was fixed by ordering the correct components and altering the lengths of some of the cables needed like the ethernet cable and the power cable along with some cable management. I mention these issues as it highlighted the need to double-check the design before ordering any components as well as communicating with my teams to avoid these mistakes happening in the future.
+
+# Ventilation
+The ventilation of the case was considered from the very beginning as it essential to keep the system cool under prolonged periods of time.  With 5 motherboards being used in sync I decided to go with a 2 in 2 out fans system. 2 fans would take air in at the top front of the case and 2 would blow air out of the case at the bottom rear. This would allow decent air flow that would keep a steady current around the case. Temperature sensors inside the case can monitor how hot the components get and alert the user if the temperature exceeds the recommended limit.
+Change in requirements 
+Throughout the course pf this project there were a number of alterations that needed to be made to counter errors in judgement as well as new components that needed to be added to achieve complete networking between the boards. By altering the size of the shelves and by utilizing the space in the side of the case for storing the wires, all new components and power sources fit as needed 
+
    
 
 
