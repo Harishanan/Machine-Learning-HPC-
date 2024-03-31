@@ -133,7 +133,8 @@ An issue arose with the materials as some materials were ordered before the time
 
 # Ventilation
 The ventilation of the case was considered from the very beginning as it essential to keep the system cool under prolonged periods of time.  With 5 motherboards being used in sync I decided to go with a 2 in 2 out fans system. 2 fans would take air in at the top front of the case and 2 would blow air out of the case at the bottom rear. This would allow decent air flow that would keep a steady current around the case. Temperature sensors inside the case can monitor how hot the components get and alert the user if the temperature exceeds the recommended limit.
-Change in requirements 
+
+# Change in requirements 
 Throughout the course pf this project there were a number of alterations that needed to be made to counter errors in judgement as well as new components that needed to be added to achieve complete networking between the boards. By altering the size of the shelves and by utilizing the space in the side of the case for storing the wires, all new components and power sources fit as needed 
 
    
