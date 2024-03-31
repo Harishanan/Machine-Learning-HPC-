@@ -38,6 +38,9 @@ The provided documentation outlines the comprehensive process undertaken by Team
 ## Introduction
 
 ## 1. System Design And Architecture
+
+[Specification of all the components can be found here!](hardware.md)
+
 ***Design the architecture, integrating 14 ASUS CS-8 motherboards and single-board computers. Provide critical reflections on the chosen design.***
 
 ## 2. Technology Research: 
@@ -83,13 +86,13 @@ Once the steps are followed and both interfaces are activated, users can proceed
 
 Ethernet cables were manually crimped for this project, adhering to the Registered Jack 45 (RJ-45) standard. The figure below illustrates the color standard for RJ-45 cables..
 
-![RJ-45 Standard](rj45_standard.PNG)<br>
+![RJ-45 Standard](pictures/rj45_standard.PNG)<br>
       <b>Figure 1: RJ-45 Standard</b>
       <br>
 
 Step wise Step  process is shown in figure 2 below:
 
-![Ethernet-Crimp](stepwisestepcrimp.PNG)<br>
+![Ethernet-Crimp](pictures/stepwisestepcrimp.PNG)<br>
       <b>Figure 2: Step by Step Ethernet Cimp</b>
       <br>
 
