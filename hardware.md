@@ -8,7 +8,7 @@ Below are the specifications of the components utilized in this project:
   - [NVIDIA QUADRO](#nvidia-quadro)
   - [TP-Link Switch - TL-SG105](#tp-link-switch---tl-sg105)
   - [External Fans](#external-fans)
-  - [Power Supply Unit](#power-supply-unit)
+  - [Power Supply Unit (FSP220-50LC)](#power-supply-unit-fsp220-50lc)
 - [References](#references)
 
 ## ASUS CS-B
@@ -63,7 +63,7 @@ Below are the specifications of the components utilized in this project:
 Fansink
 
 * Graphics APIs Shader Model 5.0, OpenGL 4.53, DirectX 11.24, Vulkan 1.03
-* 
+  
 ## TP-Link Switch - TL-SG105
 
 <img align="right" width="260" height="150" src="pictures/switch.png">
@@ -96,7 +96,7 @@ Fansink
 
 * Airflow 59.05 CFM 100.0m3/hFan
  
-* Air pressure 3.57mm 
+* Air pressure 3.57mmH2O 
   
 * Noise level 29.75 dBA
   
@@ -106,9 +106,32 @@ Fansink
   
 * Fan life expectancy 50,000 hours
 
+## Power Supply Unit (FSP220-50LC)
 
-## Power Supply Unit
+<img align="right" width="250" height="270" src="pictures/psu.png">
 
+
+
+* 1 x 20-Pin Main Connector
+  
+* 1 x CPU 4-Pin 12V Connector
+
+* 2 x SATA Connector
+
+* 1 x 4-Pin Molex Peripheral Connector
+
+* 1 x Floppy Drive Connectors:
+
+
+* Dimensions (mm) : 81mm x 40mm x 150mm 
+
+* Efficiency :	85% typical load (85 certificate)
+
+* Input Voltage :  Full Range 110-230V
+
+* Input Current :  4A/ 115VAC in, 2A/ 230 VAC in
+
+* Input Frequency Range :  47-63 Hz
 
 #  References
 TP-Link Switch - TL-SG105: https://groceries.asda.com/product/mobile-phone-accessories/tp-link-5-port-gigabit-ethernet-switch-tl-sg-105/1000144744779
@@ -118,3 +141,5 @@ ASUS CS-B: https://basitcomputers.com/product/i5-4590-4th-gen-motherboard-proces
 SAMSUNG v-NAND SSD 860 EVOL: https://www.techpowerup.com/ssd-specs/samsung-860-evo-500-gb.d7
 
 External Akasa AK-174: https://www.amazon.ae/Akasa-AK-174CB-4BLB-12cm-Blue-case/dp/B000OGZ8QG?th=1
+
+FSP220-50LC: https://www.headingpower.com/p-75-fsp220-50lc-220w-flex-atx-power-supply.aspx
