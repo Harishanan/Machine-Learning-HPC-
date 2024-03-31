@@ -104,7 +104,7 @@ The process of installing the operating system on a compute node is similar to t
       
       = Approx. 920 BTU/Hr
 
-   Taking into consideration, that onlu head node is using GPU, the heat dissipation of compute node will be :
+   Taking into consideration, that only head node is using GPU, the heat dissipation of compute node will be :
 
          = Power Consumption (CPU + RAM + Power Supply + SSD) * 3.4192
 
@@ -117,7 +117,8 @@ The process of installing the operating system on a compute node is similar to t
 #### 1.4 Requirement taken into Consideration while choosing the fan :
 
    * Size: Utilizing four fans of approximately 120mm, the standard dimension for case fans, is the chosen configuration.
-   * Speed:
+   * Speed: should be more than 1000 RPM , so thatit can produce required airflow
+   * Max Airflow:	At least. 35 CFM
    * Connector: Fans are selected to be compatible with the motherboard's fan headers, featuring a 4-pin connector.
    * Noise level: Priority is given to fans with a low noise level to guarantee quieter system operation.
   
@@ -176,7 +177,7 @@ The process of installing the operating system on a compute node is similar to t
 
 2. **Examination**
 
-   A heat gun was employed to assess the heat dissipation of the entire system under two conditions: with the fan operational and with the fan deactivated.
+   A heat gun was employed to assess the heat dissipation of the entire system under two conditions: with the fan operational and with the fan deactivated. The result of testing is provided in Performance Evaluation Part.
 
 ## References
 1. https://hpc.uni.lu/infrastructure/network
