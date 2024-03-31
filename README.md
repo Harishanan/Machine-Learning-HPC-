@@ -61,6 +61,223 @@ After noticing that Ubuntu 22.04 operated steadily on the ASUS CS-B motherboard,
 # Install Operating System in Compute Node
 The process of installing the operating system on a compute node is similar to that of the head node, with the exception that it is not required the installation of Ubuntu Server specifically.
 
+# SLURM Configuration
+
+SLURM, an acronym for Simple Linux Utility for Resource Management, is an open-source workload manager developed for supercomputers and Linux-based cluster systems. It offers three primary functions: 
+
+1. It allocates both exclusive and non-exclusive access to compute node resources from a central head node, allowing tasks to be executed efficiently.
+2. It furnishes a structured framework for initiating, executing, and overseeing tasks across a designated set of allocated nodes.
+3. It resolves resource contention by administering a queue of pending work, ensuring fair access to resources among multiple users or processes.  
+
+The primary commands for submitting, allocating, and monitoring jobs in SLURM are outlined as follows:
+
+1. **sbatch**: Employed to submit batch jobs, allowing users to send job requests to the SLURM scheduler. Job parameters and requirements are defined within a job script, and SLURM schedules and executes the job accordingly.
+
+2. **salloc**: Facilitates interactive resource allocation, enabling users to acquire compute resources in real-time. Once resources are allocated, users can execute commands within this dedicated resource environment.
+
+3. **srun**: Used to execute parallel tasks within allocated resource environments, whether obtained interactively through `salloc` or as part of a batch job submitted with `sbatch`. It manages the execution of parallel tasks across specified nodes.
+
+4. **squeue**: Utilized for monitoring the status of jobs in the SLURM job queue, providing details such as job ID, user, status, and resource utilization. This allows users to monitor job progress and identify queued or running jobs.
+
+5. **scancel**: Enables users to terminate running or queued jobs within the SLURM job queue by specifying the job ID(s) of the targeted jobs to be canceled.
+
+6. **scontrol**: Used for modifying or querying the configuration and state of the SLURM cluster, granting users the ability to manage SLURM resources by configuring nodes, partitions, and accounts, as well as accessing information about jobs and nodes.
+
+These commands serve as essential tools for effectively interacting with SLURM and managing job execution on high-performance computing clusters.
+
+**SLURM CONFIGURATION IN HEAD NODE**
+---
+To begin configuring Slurm on the head node, the initial step involves defining and exporting an environment variable representing the user ID (UID) for the 'munge' group. This variable serves as a placeholder for the UID that will later be assigned to the 'munge' group. Additionally, a user account named 'munge' is established. MUNGE is employed as the default authentication mechanism. This process is accomplished using the following command:
+
+      export MUNGEUSER=1001 
+      sudo groupadd -g $MUNGEUSER munge 
+      sudo useradd -m -c "MUNGE Uid 'N' Gid Emporium" -d /var/lib/munge -u $MUNGEUSER -g munge -s /sbin/nologin munge 
+
+Likewise, an environment variable for SLURM is established, exported, and associated with the SLURM group. Concurrently, a user account named 'slurm' is created. This process is executed using the following command:
+
+      export SLURMUSER=1002 
+      sudo groupadd -g $SLURMUSER slurm 
+      sudo useradd -m -c "SLURM workload manager" -d /var/lib/slurm -u $SLURMUSER -g slurm -s /bin/bash slurm
+
+Finally MUNGE is installed using the following command:
+
+      sudo apt-get install -y munge 
+
+Upon installing MUNGE, ownership and permissions for MUNGE across various parts of the system are modified to "munge:munge". This task is accomplished using the following command:
+
+      sudo chown -R munge: /etc/munge/ /var/log/munge/ /var/lib/munge/ /run/munge/
+      sudo chmod 0700 /etc/munge/ /var/log/munge/ /var/lib/munge/ /run/munge/
+
+Following the configuration of MUNGE, the munge.key file is copied to the `/nfs/slurm` directory. This action facilitates the utilization of the same munge key for authentication purposes on the client node. The command utilized for this step is:
+
+      sudo scp /etc/munge/munge.key /nfs/slurm/
+
+MUNGE services can be enabled and started utilising following command:
+
+      sudo systemctl enable munge
+      sudo systemctl start munge
+
+After setting up MUNGE, the following command can be used to check the status of MUNGE:
+
+      sudo systemctl status munge 
+
+After configuring MUNGE, the next step involves downloading a database server that will store job history and scheduling reports. For this project, Mariadb is chosen due to its simplicity in configuration. The following command is utilized to download the Mariadb server:
+
+      sudo apt-get install mariadb-server
+
+In addition to installing the mariadb-server, the Slurm Database Daemon and Slurm-wlm are also installed using the following command:
+
+      sudo apt-get install slurmdbd
+      sudo apt-get install slurm-wlm
+
+The database is configured to grant permissions to the 'localhost'. Furthermore, a Slurm database is created to store all the logs of Slurm activities. Following command can be employed to achieve this process:
+
+      mysql
+      grant all on slurm_acct_db.* TO 'slurm'@'localhost' identified by 'toor' with grant option; 
+      create database slurm_acct_db;
+      exit
+
+ Once the database is configured, the slurmdbd.conf file is created. The following line can be used to make slurmdbd.conf file.
+
+      sudo nano /etc/slurm/slurmdbd.conf
+
+The database configuration file should contain the following line of code:
+
+      AuthType=auth/munge
+      DbdAddr=localhost
+      #DbdHost=headnode
+      DbdHost=localhost
+      DbdPort=6819
+      SlurmUser=slurm
+      DebugLevel=4
+      LogFile=/var/log/slurm/slurmdbd.log
+      PidFile=/run/slurm/slurmdbd.pid
+      StorageType=accounting_storage/mysql
+      StorageHost=localhost
+      StorageLoc=slurm_acct_db
+      StoragePass=toor
+      StorageUser=slurm
+      ###Setting database purge parameters
+      PurgeEventAfter=12months
+      PurgeJobAfter=12months
+      PurgeResvAfter=2months
+      PurgeStepAfter=2months
+      PurgeSuspendAfter=1month
+      PurgeTXNAfter=12months
+      PurgeUsageAfter=12months
+ 
+ Required Ownership and Permission should be give to the conf file.
+      chown slurm:slurm /etc/slurm/slurmdbd.conf
+      chmod -R 600 slurmdbd.conf
+ 
+  The Slurm configuration file can be generated based on the system requirements using the provided link: [Slurm Configuration Generator](https://slurm.schedmd.com/configurator.html).
+
+The following command can be used to create the configuration file and place it inside the /etc/slurm/ directory
+
+      sudo nano /etc/slurm/slurm.conf 
+      (Add the configuration file which is created using the link)
+
+The firewall is deactivated to enable inbound traffic on ports 6817, 6818, and 6819 using the following command:
+
+      sudo ufw allow 6817
+      sudo ufw allow 6818
+      sudo ufw allow 6819
+
+Directories are created to store logs and reports generated by SLURM. Subsequently, permissions and ownership are adjusted accordingly.
+
+      mkdir /var/spool/slurmctld
+      chown slurm:slurm /var/spool/slurmctld
+      chmod 755 /var/spool/slurmctld
+
+      mkdir  /var/log/slurm
+      touch /var/log/slurm/slurmctld.log
+      touch /var/log/slurm/slurm_jobacct.log /var/log/slurm/slurm_jobcomp.log
+      chown -R slurm:slurm /var/log/slurm/
+      chmod 755 /var/log/slurm
+
+
+
+After completing the configuration of SLURM on the Head Node, following commands is utilised to enable and start all the necessary SLURM services:
+
+      systemctl daemon-reload
+      systemctl enable slurmdbd
+      systemctl start slurmdbd
+      systemctl enable slurmctld
+      systemctl start slurmctld
+
+Lastly, following command is employed to check the status of the SLURM services:
+
+      systemctl status slurmdbd
+      systemctl status slurmctld
+**SLURM CONFIGURATION IN CLIENT NODE**
+--
+The process of configuring SLURM on the client node closely resembles that of the head node, with the primary distinction being the absence of the need to set up a database. Similar to the head node, MUNGE must be configured by creating MUNGE and SLURM groups, as well as MUNGE and SLURM users. Following this setup, MUNGE should be installed. The following command is employed to accomplish these tasks:
+
+      export MUNGEUSER=1001 
+      $ sudo groupadd -g $MUNGEUSER munge 
+      $ sudo useradd -m -c "MUNGE Uid 'N' Gid Emporium" -d /var/lib/munge -u $MUNGEUSER -g munge -s /sbin/nologin munge 
+      $ export SLURMUSER=1002 
+      $ sudo groupadd -g $SLURMUSER slurm 
+      $ sudo useradd -m -c "SLURM workload manager" -d /var/lib/slurm -u $SLURMUSER -g slurm -s /bin/bash slurm
+      sudo apt-get install -y munge
+
+Now, the munge.key file, previously copied to `/nfs/slurm`, can be further distributed to each client node by copying it to `/etc/munge/`. This can be achieved using the following command:
+
+      sudo scp /nfs/slurm/munge.key /etc/munge/
+      sudo chown munge:munge /etc/munge/munge.key
+      sudo chmod 400 /etc/munge/munge.key
+
+Once the key has been copied and permissions have been adjusted, the MUNGE service is ready to be enabled and started. This task can be accomplished using the following command:
+
+      sudo systemctl enable munge
+      sudo systemctl start munge
+
+After setting up Munge, SLURM should be installed in the compute node. To install SLURM on the compute node, you can use the following command:
+
+      sudo apt-get install slurm-wlm
+
+For compute node, the same configuration file should be used as headnode. Therefore, all the configuration file from headnode must be copied to `/nfs/slurm`, which then can be copied to `/etc/slurm/` directory in compute node. 
+
+**Copying `slurm.conf` and `slurmdbd.conf` to `/nfs/slurm` directory in headnode** 
+
+      sudo scp /etc/slurm/slurm.conf /nfs/slurm/
+      sudo scp /etc/slurm/slurmdbd.conf /nfs/slurm/
+
+**Copying `slurm.conf` and `slurmdbd.conf` from  `/nfs/slurm` to `/etc/slurm/` directory in compute node**
+
+      sudo scp /nfs/slurm/slurm.conf /etc/slurm
+      sudo scp /nfs/slurm/slurmdbd.conf /etc/slurm
+
+Once all the configuration files are copied, the following commands are used to set up the required directories and log files for SLURM, ensuring ownership and permissions are appropriately configured to collect SLURM messages.
+
+      mkdir /var/spool/slurmd 
+      chown slurm: /var/spool/slurmd
+      chmod 755 /var/spool/slurmd
+
+      mkdir /var/log/slurm/
+      touch /var/log/slurm/slurmd.log
+      chown -R slurm:slurm /var/log/slurm/slurmd.log
+      chmod 755 /var/log/slurm
+
+      mkdir /run/slurm
+      touch /run/slurm/slurmd.pid (For compute node)
+      chown slurm /run/slurm
+      chown slurm:slurm /run/slurm
+      chmod -R 770 /run/slurm
+
+After setting up the file, the path of slurmd.pid has to be changed inside slurmd.service file, slurmd.service can be accessed using following command:
+
+      nano /usr/lib/systemd/system/slurmd.service
+
+After completing the configuration of SLURM on the Compute Node, following commands is utilised to enable and start the SLURM services:
+
+      systemctl daemon-reload
+      systemctl enable slurmd
+      systemctl start slurmd
+
+Lastly, following command is employed to check the status of the SLURM services:
+
+      systemctl status slurmd
 
 ## 6. Task Implementation:
 ### How to Create Machine Learning for Predict Crypto Currencies
@@ -295,13 +512,6 @@ Evaluation metrics are crucial for assessing a model's performance and its suita
 
 
    
-
-
-
-
-
-
-
 
 
 ## References
