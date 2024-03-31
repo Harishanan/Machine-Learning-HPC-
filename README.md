@@ -582,7 +582,6 @@ $$
   - `LSTM Test data explained variance regression score`: Calculated using `explained_variance_score(Y_test, LSTM_predic)`.
 
 **R² Score (Coefficient of Determination)**: Indicates the proportion of the variance in the dependent variable that is predictable from the independent variables.
-
 $$
  R^2 = 1 - \frac{\sum_{i=1}^{n} (y_{\text{true},i} - y_{\text{pred},i})^2}{\sum_{i=1}^{n} (y_{\text{true},i} - \bar{y}_{\text{true}})^2} 
 $$
