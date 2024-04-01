@@ -122,7 +122,7 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 ***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
 
 
- ## Configuring Prometheus and Grafana
+ # Configuring Prometheus and Grafana
 
 # What is Prometheus 
 •The primary uses of Prometheus, an open-source Linux server monitoring program, are alert management, event monitoring, and metrics monitoring.
@@ -136,25 +136,32 @@ The initial part of the Prometheus architecture is the Prometheus server.
 The central component of the Prometheus architecture, which is further split into storage, Prom, HTTP server, and so on, is the Prometheus server. 
 Data is scraped from the target nodes in the Prometheus server and then saved in the database.
 
-# Storage 
+## Storage 
 •The Prometheus server has local on-disk storage for storage. 
 
 •Numerous interfaces in Prometheus enable integration with external storage systems.
 
-# Service Discovery
+## Service Discovery
 •The services that need to be scraped are found with the use of service discovery.
 
 •We can detect the targets and keep an eye on the entities using service discovery.
 
-# Scrape Target
+## Scrape Target
 •We can extract metrics from it and scrape the target after the services have been determined and the targets are prepared.
 
 •Node exporters allow us to export the endpoint's data.
 
 •Prometheus keeps the metrics or other data in a local storage once it has been fetched.
 
- # User Interface
+ ## User Interface
 Another crucial element is the user interface, which creates a link between the user and the system. Grafana, a visualization tool, and Prometheus work together to create excellent unique dashboards. Grafana dashboards show data using tables, pie charts, line charts, and excellent data graphs of network load, CPU and RAM consumption, among other things, along with indications. Grafana uses prom ql in order to extract data from Prometheus
+
+## What is Grafana
+•Grafana, which is an open-source, free visualization tool that is typically utilized in conjunction with Prometheus to track metrics.
+
+•Grafana offers a range of dashboards, diagrams, charts, and notifications for the specific data source.
+
+•One of Grafana's key advantages is that we may share and store the dashboard with every member of the group. 
    
 
 
