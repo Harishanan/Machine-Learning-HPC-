@@ -17,7 +17,7 @@ The technical indicators RSI, EMA, and SMA are commonly employed in financial an
 The Simple Moving Average (SMA) calculates the average price of a security or asset over a specified period. It is derived by summing up the prices for a given number of periods and dividing the total by the same number of periods. This indicator can be instrumental in identifying both short-term and long-term trends in the data.
 <div style="text-align: center;">
 
-![alt text](image.png)
+![alt text](pictures/image.png)
 </div>
 
 Where *N* is the number of periods used in the calculation, *Pi* denotes the price of the asset at period *i*.
@@ -27,7 +27,7 @@ The Exponential Moving Average (EMA) is a type of moving average that assigns gr
 
 <div style="text-align: center;">
 
-![alt text](image-1.png)
+![alt text](pictures/image-1.png)
 </div>
 
 #### RSI
@@ -35,7 +35,7 @@ The Relative Strength Index (RSI) evaluates the strength of price movements in f
 
 <div style="text-align: center;">
 
-![alt text](image-2.png)
+![alt text](pictures/image-2.png)
 </div>
 
 Now the data set is ready with 6 features (Time, Price, Volume, SMA, EMA, RSI)
@@ -54,7 +54,7 @@ The Random Forest Algorithm is commonly used for regression and classification p
 
 <div style="text-align: center;">
 
-![alt text](image-3.png)
+![alt text](pictures/image-3.png)
 </div>
 
 After each tree has been constructed, the algorithm predicts the class or regression value by aggregating the results of each tree. In classification tasks, the forest produces the mode of the predicted classes from each tree, while in regression tasks, it produces the mean of the predictions.
@@ -65,7 +65,7 @@ To make predictions at a new point *x* , the following equation is used:
 
 <div style="text-align: center;">
 
-![alt text](image-4.png)
+![alt text](pictures/image-4.png)
 
 </div>
 
@@ -79,7 +79,7 @@ The residual error is utilized to train the subsequent decision tree. This proce
 One of the benefits of Gradient Boosting is its effectiveness in handling missing data and outliers. This characteristic is particularly advantageous in cryptocurrency markets, where data may be scarce and unreliable.
 <div style="text-align: center;">
 
-![alt text](image-5.png)
+![alt text](pictures/image-5.png)
 </div>
 
 ##### Long Short-Term Memory (most recommended, it’s seems is the more accurate for our task)
@@ -96,13 +96,13 @@ To predict future prices, LSTMs can analyze historical price data to identify pa
 
 <div style="text-align: center;">
 
-![alt text](image-6.png)
+![alt text](pictures/image-6.png)
 </div>
 
 The training process is described by:
 <div style="text-align: center;">
 
-![alt text](image-7.png)
+![alt text](pictures/image-7.png)
 </div>
 
 Where *x_t*  is the input at time step  *t* ,  *h_t*  is the hidden state at time  *t* , *c_t*  is the cell state at time step  *t* , and *i_t* ,  *f_t*, and  *o_t*  are the input gate, forget gate, and output gate, respectively, at time step *t* .  *W*  and  *b* are the weight matrices and bias vectors, respectively. The sigmoid function and the hyperbolic tangent function *tanh* are used to bound the output between 0 and 1, and between -1 and 1, respectively.
@@ -113,7 +113,7 @@ In order to predict price trends in the crypto market, it is necessary to captur
 
 <div style="text-align: center;">
 
-![alt text](image-8.png)
+![alt text](pictures/image-8.png)
 </div>
 
 ### Step 6: Evaluation Metrics
@@ -126,7 +126,7 @@ Mean Squared Error (MSE) is a commonly used metric to evaluate the performance o
 
 <div style="text-align: center;">
 
-![alt text](image-9.png)
+![alt text](pictures/image-9.png)
 </div>
 
 Where, *n* is the number of data points in the dataset, *predicted_i* is the predicted value for the i-th data point, *actual_i* is the actual value for the i-th data point.
@@ -135,7 +135,7 @@ Where, *n* is the number of data points in the dataset, *predicted_i* is the pre
 Mean Absolute Error (MAE) is a commonly used metric for evaluating the accuracy of a predictive model. It calculates the average magnitude of errors in a set of predictions, without considering their direction.
 <div style="text-align: center;">
 
-![alt text](image-10.png)
+![alt text](pictures/image-10.png)
 </div>
 
 Where, *Y_i* is the actual value,  *Y*^_i is the predicted value and *n* the number of observations.
@@ -144,7 +144,7 @@ Where, *Y_i* is the actual value,  *Y*^_i is the predicted value and *n* the num
 Mean Squared Error (MSE) is a commonly used metric to measure the disparity between the predicted and actual values in a regression problem. It is calculated by averaging the squared differences between the predicted and actual values. A lower MSE value indicates better performance
 <div style="text-align: center;">
 
-![alt text](image-11.png)
+![alt text](pictures/image-11.png)
 </div>
 
 Where, *Y_i* is the actual value,  *Y*^_i is the predicted value and *n* the number of observations.
@@ -156,7 +156,7 @@ R-squared (R2) is a statistical measure that represents the proportion of the va
 The formula to clacalute R-Squared is: 
 <div style="text-align: center;">
 
-![alt text](image-13.png)
+![alt text](pictures/image-13.png)
 </div>
 Where,
 
@@ -169,7 +169,7 @@ Where,
 The formula to calculte TWAP is:
 <div style="text-align: center;">
 
-![alt text](image-14.png)
+![alt text](pictures/image-14.png)
 </div>
 
 Where,
@@ -183,7 +183,7 @@ VWAP stands for Volume-Weighted Average Price. It's a trading benchmark used pri
 The formula for VWAP is as follows:
 <div style="text-align: center;">
 
-![alt text](image-15.png)
+![alt text](pictures/image-15.png)
 </div>
 
 
