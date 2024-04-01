@@ -36,3 +36,16 @@ The same steps used for configuring the OpenSSH server on the head node can be r
 <b>Figure 1: Viewing the compute node from head node, using SSH</b>
 <br><br>
 
+## Step 4 : Setting up Passwordless SSH Login System
+
+To establish a passwordless login system, begin by generating an SSH key pair on the head node using the command:
+
+        ssh-keygen -t rsa 
+
+Press `enter` to all the system prompts, which will generate the SSH key pair inside the .ssh directory in the home directory. Two keys will be created: 'id_rsa' and 'id_rsa.pub'.
+
+The public key, denoted by `.pub`, must be copied to all other compute nodes using the following command:
+
+        ssh-copy-id compute_node_username@ip_address
+
+Once this step is completed, the passwordless login system will be established.
