@@ -218,7 +218,7 @@ I added the prometheus connection my adding the URL of prometheus local host 909
 ## Grafana graphs 
 The first graph displays the CPU core usage which tells us the percent of processing power that is being used as well as the memory usage which show the amount of ram being utilized 
 
-![Shell](graph.1 cpu.jpeg)<br>
+![Shell](graph.1 cpu.jpg)<br>
 <b>Figure 1:cpu and memor graph</b>
 <br><br>
 
