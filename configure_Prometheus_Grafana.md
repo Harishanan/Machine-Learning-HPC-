@@ -74,15 +74,13 @@ tar -xvf prometheus-2.46.0.linux-amd64.tar.gz – extracts the file form the set
 ## Prometheus configuration file
 In this section I confirmed the Prometheus yml file was present and modified as needed. i set the evaluation time and scrape intrval time to 15 seconds then
 I added all data points that I wanted to scrap in the scrap configs section with the main prometheus job in the scrape config section. An alert manager can also be implemented if necessary to alert the user of certain readings that exceeds recommeneded values   
-
-![alt text](prometheus.jpg)
+![prometheus](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/115148130/dcefdc5f-dc1a-4a9a-9c6f-a670e4c17083)
 <b>Figure .1 shows the prometheus yml file   </b>
 <br><br>
 
 ## Creating Prometheus Systemd file
 In this section I created a service file that sets up its startup and states its service type and users. I then reloaded the system to confirm the setup. The code used will be included in the appendix. 
-
-![alt text](system.MD-Prom.jpg)
+![system MD-Prom](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/115148130/ecd478a6-f445-4c58-99ae-7a304370358c)
 <b>Figure .2 system.MD file for prometheuese   </b>
 <br><br>
 
