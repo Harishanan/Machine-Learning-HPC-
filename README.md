@@ -162,6 +162,10 @@ Another crucial element is the user interface, which creates a link between the 
 •Grafana offers a range of dashboards, diagrams, charts, and notifications for the specific data source.
 
 •One of Grafana's key advantages is that we may share and store the dashboard with every member of the group. 
+
+## Node exporter 
+An agent called the Node Exporter collects system metrics and makes them available in a manner that Prometheus can read. One project that is managed by the Prometheus project is the Node Exporter. You are free to skip this step if you would prefer not to collect system stats. We are using node exporter to scrape metric from the different node and then relay them to Prometheus. The metric scraped from port 9100 are for the head-node and the ports 9101,9102,9103 and 9104 are for the sub-nodes 
+
    
 
 
