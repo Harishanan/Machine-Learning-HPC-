@@ -137,24 +137,24 @@ The central component of the Prometheus architecture, which is further split int
 Data is scraped from the target nodes in the Prometheus server and then saved in the database.
 
 ## Storage 
-•The Prometheus server has local on-disk storage for storage. 
+•The Prometheus server includes local on-disk storage . 
 
 •Numerous interfaces in Prometheus enable integration with external storage systems.
 
 ## Service Discovery
 •The services that need to be scraped are found with the use of service discovery.
 
-•We can detect the targets and keep an eye on the entities using service discovery.
+•using the service discovery we can check what targets are activley being scraped aswell as monitoring all entitys 
 
 ## Scrape Target
-•We can extract metrics from it and scrape the target after the services have been determined and the targets are prepared.
+•We can extract metrics and scrape metric from the target after the services have been determined and the targets are prepared.
 
 •Node exporters allow us to export the endpoint's data.
 
 •Prometheus keeps the metrics or other data in a local storage once it has been fetched.
 
  ## User Interface
-Another crucial element is the user interface, which creates a link between the user and the system. Grafana, a visualization tool, and Prometheus work together to create excellent unique dashboards. Grafana dashboards show data using tables, pie charts, line charts, and excellent data graphs of network load, CPU and RAM consumption, among other things, along with indications. Grafana uses prom ql in order to extract data from Prometheus
+Another crucial element is the user interface, which creates a link between the user and the system. Grafana, a visualization tool, and Prometheus work together to create excellent unique dashboards. Grafana dashboards show data using tables, pie charts, line charts, and data graphs of network load, CPU and RAM consumption, among other things, along with the ability to display alerts. Grafana uses prom ql in order to extract data from Prometheus
 
 ## What is Grafana
 •Grafana, which is an open-source, free visualization tool that is typically utilized in conjunction with Prometheus to track metrics.
@@ -164,7 +164,7 @@ Another crucial element is the user interface, which creates a link between the 
 •One of Grafana's key advantages is that we may share and store the dashboard with every member of the group. 
 
 ## Node exporter 
-An agent called the Node Exporter collects system metrics and makes them available in a manner that Prometheus can read. One project that is managed by the Prometheus project is the Node Exporter. You are free to skip this step if you would prefer not to collect system stats. We are using node exporter to scrape metric from the different node and then relay them to Prometheus. The metric scraped from port 9100 are for the head-node and the ports 9101,9102,9103 and 9104 are for the sub-nodes 
+An agent called the Node Exporter collects system metrics and makes them available in a manner that Prometheus can read. One project that is managed by the Prometheus project is the Node Exporter. You can skip this step if system stats are not needed. We are using node exporter to scrape metrics from the different nodes and then relay them to Prometheus. The metrics scraped from port 9100 are for the head-node and the ports 9101,9102,9103 and 9104 are for the sub-nodes 
 
 # Steps taken to configure both Prometheus 
 
@@ -198,15 +198,19 @@ tar -xvf prometheus-2.46.0.linux-amd64.tar.gz – extracts the file form the set
 
 
 ## Prometheus configuration file
-In this section I confirmed the Prometheus yml file was present and modified as needed. the evaluation time and scrape intrval time is set to 15 seconds 
-I added all data points that I wanted to scrap in the scrap configs section with the main prometheus job in the scrape config section. An alert manager can also be implemented if necessary to alert the user if certain readings hit certain ranges  
+In this section I confirmed the Prometheus yml file was present and modified as needed. i set the evaluation time and scrape intrval time to 15 seconds then
+I added all data points that I wanted to scrap in the scrap configs section with the main prometheus job in the scrape config section. An alert manager can also be implemented if necessary to alert the user of certain readings that exceeds recommeneded values   
 
 ![alt text](prometheus.jpg)
 <b>Figure .1 shows the prometheus yml file   </b>
 <br><br>
 
 ## Creating Prometheus Systemd file
-In this section I created a service file that sets up its startup and states its service type and users. I then reloaded the system to confirm the setup. The code used will be included in the appendix of the READ.ME FILE. 
+In this section I created a service file that sets up its startup and states its service type and users. I then reloaded the system to confirm the setup. The code used will be included in the appendix. 
+
+![alt text](system.MD-Prom.jpg)
+<b>Figure .2 system.MD file for prometheuese   </b>
+<br><br>
 
  *./prometheus –config.file=prometheus.yml (or) ./prometheus – launches the Prometheus server*  
  
@@ -244,6 +248,7 @@ The fourth and final graph displays context switches which are the process of sw
 ![alt text](<graph .4 context switch and network traffic.jpg>)
 <b>Figure .5 context switch and network readings   </b>
 <br><br>
+
 
 
 
