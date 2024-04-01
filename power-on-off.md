@@ -1,13 +1,8 @@
 # **Power on and off function for HPC**
 
-## **1. Background for power on and off function in HPC**
+## **1. Implementation of power on and off function**
 
-Due to failures experienced with the power-on button for the entire HPC system, the strategy was changed to power the HPC on and off. In this project, a bash script was created using Wake-on-LAN communication and OpenSSH. Initially, the HPC's head node will be turned on using the power-on button. Afterwards, to turn on the compute nodes, a bash script will be run, which turns on the other compute nodes at intervals. Through this method, the compute nodes can be successfully powered on, allowing the whole HPC system to function. Then, to turn off all the compute nodes, the OpenSSH function was incorporated into the script, with the sudo shutdown command for all compute nodes. Through this, it is possible to turn off the entire compute nodes. Finally, to turn off the head node, one can press the power button or enter a separate sudo shutdown command for the head node.
-
-
-## **2. Implementation of power on and off function**
-
-### **2.1 Background of Wake-On-LAN**
+### **1.1 Background of Wake-On-LAN**
 ![Wake On LAN info](WakeOnLAN.png)<br>
 <b>Figure 1: Wake On LAN working setup</b>
 <br>
@@ -16,7 +11,7 @@ A network protocol known as Wake-On-LAN (WoL) enables a computer to be remotely 
 
 As shown in Figure 1A, the magic packet will contain all the MAC addresses of the compute nodes in the network. Note, that all devices must be on the same network, which is 192.168.0.0, and have a valid NIC (Network Interface Card). Then, the magic packets will be broadcast in the network as shown in Figure 1B, which is 255.255.255.255. The magic packets will be sent to the relevant compute nodes by identifying each MAC address incorporated within the magic packets.
 
-### **2.2 Setting up Power button on head node**
+### **1.2 Setting up Power button on head node**
  ---
 
 ![Power button setup](powerbuttonsetup.png)<br>
@@ -26,7 +21,7 @@ As shown in Figure 1A, the magic packet will contain all the MAC addresses of th
 As shown in Figure 2, must first identify the power button headers. As illustrated in part A, it was found that the front panel connectors are the connections to the power button and the power button's LED. Then, as shown in Figure 2 B, upon connecting the power button to the appropriate headers, the LED of the power button illuminates. After shutting down the system and turning it on using the power button, the head node successfully powers on. Furthermore, by pressing the power button after the head node is on, the head node displays a power-off option on the monitor. Through this process, the power on and off functionality was successfully implemented in the head node.
 
 
-### **2.3 Setting up Wake-On-LAN magic packets communication**
+### **1.3 Setting up Wake-On-LAN magic packets communication**
 <br>
 
 ![Wake On LAN setup](WOL-setup1.png)<br>
@@ -48,7 +43,7 @@ A. First, in the compute node BIOS, in the APM section related with power manage
 10. Simultaneously, check whether the compute node receiving those packets by using wireshark GUI.
 By following, the above steps successfully, can setup a Wake-On-LAN communication. 
 
-### **2.4 Bash scripting for Wake-On-LAN**
+### **1.4 Bash scripting for Wake-On-LAN**
 After, setting up the WOL communication and Open-SSH, have to create a bash script to turn on and off the compute nodes, which performs after booting up of head node. This step took due to the failure of power on and off button process. 
 
     #! /usr/bin/env bash
@@ -78,12 +73,11 @@ After, setting up the WOL communication and Open-SSH, have to create a bash scri
 
 As shown in Figure 4 above, a bash script was created to turn off and on the compute nodes. As illustrated in the bash script, the MAC addresses of the compute nodes and the SSH with IP addresses were stored in an array. Next, to turn on the compute nodes, the etherwake function was used within a for loop, and to turn off the compute nodes, sudo shutdown with appropriate SSH was used within a for loop. Finally, to detect any inappropriate input, an echo message was created to instruct on the correct input format.
 
-## **3. Testing power on and off function**
+## **2. Testing power on and off function**
 
 After the successful implementation of Wake On LAN, 3 tests have been conducted:
 
-### **3.1. Wireshark testing**
----
+### **2.1. Wireshark testing**
 
 ![Wire shark testing](wiresharktest.png)<br>
 <b>Figure 5: Wireshark testing</b>
@@ -96,8 +90,7 @@ After the successful implementation of Wake On LAN, 3 tests have been conducted:
 <li>Results: As shown in Figure 5, the testing confirms the magic packet reaches the intended device and is properly constructed, indicating the built network configurations support WoL functionality. Similary, the above test has conducted across all compute nodes with head node. </li>
 </ul>
 
-### **3.2. Bash script power on testing**
----
+### **2.2. Bash script power on testing**
 <ul>
 <li>Purpose: To verify whether the created bash script turns on the compute nodes from the head node.</li>
 
@@ -106,8 +99,7 @@ After the successful implementation of Wake On LAN, 3 tests have been conducted:
 <li>Results: As a result, the head node will not print anything in the terminal. The compute nodes start to turn on one by one as mentioned in the script's for loop.</li>
 </ul>
 
-### **3.3. Bash script power off testing**
----
+### **2.3. Bash script power off testing**
 <ul>
 <li>Purpose: To verify whether the created bash script turns off the compute nodes.</li>
 
@@ -118,7 +110,7 @@ After the successful implementation of Wake On LAN, 3 tests have been conducted:
 
 
 
- ## **4. Helpful Resources**
+ ## **3. Helpful Resources**
 
 1. How to install WOL : https://pimylifeup.com/ubuntu-enable-wake-on-lan/#:~:text=Wake%2Don%2DLAN%20is%20a,functionality%20through%20your%20devices%20BIOS.
 <br>
