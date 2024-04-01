@@ -204,14 +204,16 @@ $$
 IT is a type of moving average that places a greater weight and significance on the most recent data points. It is also referred to as the exponentially weighted moving average. EMAs are commonly used to gauge the direction of the trend in the prices of financial assets such as stocks or cryptocurrencies.
 
 $$
-\text{EMA}_{\text{today}} = (\text{Price}_{\text{today}} \times \text{K}) + (\text{EMA}_{\text{yesterday}} \times (1 - \text{K}))
+EMA_t = (V_t \times \left(\frac{s}{1+d}\right)) + EMA_{t-1} \times \left(1 - \frac{s}{1+d}\right)
 $$
 
-where:
-- $\text{Price}_{\text{today}}$ is the current closing price,
-- $\text{EMA}_{\text{yesterday}}$ is the previous EMA value,
-- $K$ is the smoothing factor, calculated as $K = \frac{2}{(N+1)}$,
-- $N$ is the number of periods.
+Where:
+
+- \(EMA_t\) is the EMA today.
+- \(V_t\) is the value today.
+- \(s\) is the smoothing factor, typically 2.
+- \(d\) is the number of days.
+- \(EMA_{t-1}\) is the EMA of the previous day.
 
 In simpler terms:
 
