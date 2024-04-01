@@ -277,6 +277,8 @@ Apptainer, formerly known as Singularity, is a containerization platform designe
 
 Below, you can find details on how Apptainers function with images and how they can be configured:
 
+[Learn More about Apptainer and How to Configure apptainer](configure_apptainer.md)
+
 ## 5.4. Prometheus and Grafana Configuration
 
 [Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
