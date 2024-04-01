@@ -193,6 +193,10 @@ These commands serve as essential tools for effectively interacting with SLURM a
 
 [Step by Step Configuration File Can be Found Here!](slurm.md)
 
+## 5.4. Configure Prometheus and Grafana
+
+[Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
+
 ## 6. Task Implementation:
 ### 6.1. How to Create Machine Learning for Predict Crypto Currencies
 
@@ -209,8 +213,6 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 ## 8. Software and OS Maintenance: 
 ***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
 
-
- # Configuring Prometheus and Grafana
 
  
 
