@@ -212,6 +212,36 @@ As the default configuration for the prometheus the local host on port 9090 we c
 ## Installing Grafana
 Grafana was then installed by following a similar process which was adding the Grafana repository to the system and then installing it and updating the packages by using the *get-update* and *apt-get* commands. Followed by enabling the server using the enable command. The password for Grafana was then changed to using the *sudo grafana-cli admin reset-admin-password* command 
 
+## Prometheus and Grafana inter-connection 
+I added the prometheus connection my adding the URL of prometheus local host 9090 as a new data source and then saving the configuration. From here I created a new dashboard using the data source based of a template on the grafana download page 
+
+## Grafana graphs 
+The first graph displays the CPU core usage which tells us the percent of processing power that is being used as well as the memory usage which show the amount of ram being utilized 
+
+![Shell](graph.1 cpu.jpeg)<br>
+<b>Figure 1:cpu and memor graph</b>
+<br><br>
+
+The second graph used displayed disk space which determines the total data the hard disks can store. It also displays the load carried by the board
+
+![Shell](case.jpeg)<br>
+<b>Figure 1:Case</b>
+<br><br>
+
+The third graph shows the disc utilization per device which is the percentage of your hard disk your computer is currently using to run programs and carry out tasks. It also displays the rate the disc can read or write to a device 
+
+![Shell](case.jpeg)<br>
+<b>Figure 1:Case</b>
+<br><br>
+
+The fourth and final graph displays context switches which are the process of switching the CPU from one process, task or thread to another. It also shows the traffic over the network 
+
+![Shell](case.jpeg)<br>
+<b>Figure 1:Case</b>
+<br><br>
+
+
+
    
 
 
