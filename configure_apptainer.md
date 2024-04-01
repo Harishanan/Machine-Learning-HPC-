@@ -1,19 +1,22 @@
-# What is apptainer? 
+#How Apptainers Function & How they can be Configured:
 
-Apptainer is a container platform. It allows you to create and run containers that package up pieces of software in a way that is portable and reproducible. You can build a container using Apptainer on your laptop, and then run it on many of the largest HPC clusters in the world, local university or company clusters, a single server, in the cloud, or on a workstation down the hall. Your container is a single file, and you don’t have to worry about how to install all the software you need on each different operating system.
-
-# Why use Apptainer?
-
-Apptainer was created to run complex applications on HPC clusters in a simple, portable, and reproducible way. First developed at Lawrence Berkeley National Laboratory, it quickly became popular at other HPC sites, academic sites, and beyond.
-
-# How Container Works? 
+## How Container Works? 
 
 Containers work by packaging an application along with all the parts it needs—such as libraries and other dependencies—into one package. This container communicates with the Linux kernel, which is the core part of the operating system, but the application inside the container thinks it's in its own little world with its own resources. It's like giving your application its own lightweight, portable house that can be easily moved and replicated anywhere that speaks its language (runs a container engine), without having to worry about the local settings or other applications.
 
 ![Crunchtools-Blog](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/85470428/3637b9fa-256f-49d5-b67a-c24cdae02399)
 
+## How Apptainer Works
 
-# Why Use Conatainer for HPC Purposes?
+Apptainer uses a container format called SIF (Singularity Image Format) for its container images. These images encapsulate the entire environment needed to run an application, including the operating system, software, libraries, and environment variables. Here's how it works:
+
+1. Image Creation: Users create a container image based on a definition file (e.g., Singularity.def) that specifies the base environment, software to install, and any customizations.
+2. Image Storage: The resulting image (e.g., imagename.squashfs) is a single file that can be easily copied and shared across different systems.
+3. Image Execution: Apptainer containers run as single processes on the host system, without needing to emulate an entire operating system, leading to efficient performance on HPC systems.
+
+Containerization ensures that none of these stages depend on an OS kernel. Therefore, containers do not carry any Guest OS with them the way a VM must. Moreover, containerized applications are tied to all their dependencies as a single deployable unit. Leveraging the features and capabilities of the host OS, containers enable these software apps to work in all environments (Meir, 2021).
+
+## Why Use Conatainer for HPC Purposes?
 
 - <b>Environment Consistency:</b>
   Containers encapsulate the application and its environment. This ensures that the software runs consistently across different computing environments, which is crucial in HPC where calculations and simulations need to be reliable and reproducible.
@@ -36,9 +39,18 @@ Containers work by packaging an application along with all the parts it needs—
 - <b>Scalability:</b>
   Containers can be quickly spun up and down, which is beneficial for HPC workloads that may need to scale out to many nodes during peak times and scale back down when the demand decreases.
 
-# Installing Apptainer
+## Apptainer Containers For HPC
 
-## Install System Dependencies
+Apptainer (Formerly known as Singularity) was designed so that applications which run in a container have the same distance to the host kernel and hardware as natively running applications as shown below. This translates to performance, jitter reduction, and the ability to directly utilize GPUs and communications fabrics such as InfiniBand and Intel Omni-Path Architecture (Intel OPA).
+
+![771621a160b7e5c7b5c2d5dd68466a4b](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/85470428/bd4b0d82-af71-426b-8f20-7da5bafdbf03)
+
+Unlike Docker (currently the most well-known enterprise container system) and other container systems, Singularity preserves the security of the host HPC system and does not represent a breach of security. Plus Singularity includes MPI – an essential part of HPC computing.
+
+
+## Installing Apptainer
+
+### Install System Dependencies
 
 On Ubuntu:
 
@@ -58,7 +70,7 @@ sudo apt-get install -y \
     curl wget git
 ```
 
-## Install Go
+### Install Go
 Apptainer is written in Go and the latest version of GO can be downloaded from [official binaries](https://golang.org/dl/) or you can download GO via terminal by doing:
 
 ```sh
@@ -87,14 +99,14 @@ echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-## Clone the repo
+### Clone the repo
 
 ```sh
 git clone https://github.com/apptainer/apptainer.git
 cd apptainer
 ```
 
-## Compiling Apptainer
+### Compiling Apptainer
 
 Configure, build, and install Apptainer using the following commands:
 
@@ -111,7 +123,10 @@ By doing the above commands, apptainer is installed. Check by doing:
 apptainer --version
 ```
 
-https://apptainer.org/docs/admin/main/installation.html
-https://www.linuxjournal.com/content/everything-you-need-know-about-linux-containers-part-ii-working-linux-containers-lxc
-https://crunchtools.com/comparison-linux-container-images/
-https://apptainer.org/docs/user/main/introduction.html
+## References
+
+1. Meir, A. (2021). What are Containers and How Do They Work? [online] Ridge Cloud. Available at: https://www.ridge.co/blog/what-are-containers/.
+2. https://apptainer.org/docs/admin/main/installation.html
+3. https://www.linuxjournal.com/content/everything-you-need-know-about-linux-containers-part-ii-working-linux-containers-lxc
+4. https://crunchtools.com/comparison-linux-container-images/
+5. https://apptainer.org/docs/user/main/introduction.html
