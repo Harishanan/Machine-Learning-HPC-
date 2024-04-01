@@ -56,7 +56,7 @@ The provided documentation outlines the comprehensive process undertaken by Team
 
 ***Design the architecture, integrating 14 ASUS CS-8 motherboards and single-board computers. Provide critical reflections on the chosen design.***
 
-Before commencing the project design process, a comprehensive file containing all specifications was compiled. This file proved invaluable throughout the project, aiding in power and cooling calculations and enhancing our understanding of the system.
+Before commencing the project design process, a comprehensive file containing all specifications was compiled. This file proved invaluable throughout the project, aiding in power and cooling calculations and enhancing our understanding of the system. [Specification of all the components can be found here!](hardware.md)
 
 # 2. Technology Research: 
 ***Conduct comprehensive research on HPC technologies, power management, non-volatile storage, and RAM. Justify technology choices based on problem domain appropriateness.*** 
@@ -268,8 +268,6 @@ In this project, Secure Shell (SSH) is employed to establish secure connections 
 
 ### 5.1.2 Network File System (NFS)
 The Network File System (NFS) is a networking protocol designed for distributed file sharing. A file system organizes and stores data in the form of files, typically on Hard Disk Drives (HDDs) or Solid-State Drives (SSDs). NFS operates on a similar principle, allowing files to be stored and accessed over a network, enabling multiple devices within the same network to retrieve and share data.
-[Specification of all the components can be found here!](hardware.md)
-   
 
 NFS is a widely utilized protocol for file sharing servers, offering compatibility across a broad spectrum of operating systems. In this project, NFS will play a crucial role in facilitating seamless file sharing among all client nodes. In this project, the functionality of NFS can be illustrated using a visualization similar to Figure 1:
 <div style="text-align: center;">
