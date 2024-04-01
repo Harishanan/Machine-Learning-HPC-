@@ -166,6 +166,40 @@ Another crucial element is the user interface, which creates a link between the 
 ## Node exporter 
 An agent called the Node Exporter collects system metrics and makes them available in a manner that Prometheus can read. One project that is managed by the Prometheus project is the Node Exporter. You are free to skip this step if you would prefer not to collect system stats. We are using node exporter to scrape metric from the different node and then relay them to Prometheus. The metric scraped from port 9100 are for the head-node and the ports 9101,9102,9103 and 9104 are for the sub-nodes 
 
+# Steps taken to configure both Prometheus 
+
+## Creating Prometheus System Users and Directory
+In this section I configured the system user, created directories where the configuration files will be stored and set the ownership of the Prometheus directory 
+sudo useradd --no-create-home --shell /bin/false Prometheus -- Create a system user for Prometheus
+sudo mkdir /etc/prometheus
+sudo mkdir /var/lib/Prometheus – stores the libraries and configuration files of the directories 
+sudo chown prometheus:prometheus /var/lib/prometheus -- sets prometheus as the owner of the directory 
+
+## Download Prometheus Binary File
+In this section I downloaded the latest version of prometheus for our operating system from the prometheus home page under downloads 
+
+cd /tmp/--enters tmp
+wget. https://github.com/prometheus/prometheus/releases/download/v2.46.0/prometheus-2.46.0.linux-amd64.tar.gz –uses wget command to download the prometheus setup 
+tar -xvf prometheus-2.46.0.linux-amd64.tar.gz – extracts the file form the setup
+
+## moves config file and sets the user access 
+cd prometheus-2.46.0. linux-amd64 – enters the Prometheus download 
+sudo mv console* /etc/prometheus – moves the configuration file 
+sudo mv prometheus.yml /etc/prometheus – moves the configuration file
+sudo chown -R prometheus: prometheus /etc/prometheus – sets the user of prometheus 
+
+
+## Prometheus configuration file
+In this section I confirmed the Prometheus yml file was present and modified as needed 
+I added all data points that I wanted to scrap in the scrap configs section with the main prometheus job in the scrape config section  
+
+## Creating Prometheus Systemd file
+In this section I created a service file that sets up its startup and states its service type and users. I then reloaded the system to confirm the setup. The code used will be included in the appendix of the READ.ME FILE. 
+ ./prometheus –config.file=prometheus.yml (or) ./prometheus – launches the Prometheus server  
+ 
+## Verification 
+As the default configuration for the prometheus the local host on port 9090 we can verify that its up by accessing http://server-ip-address:9090.on our web browser. When the prometheus interface was displayed I could see if was configure correctly 
+
    
 
 
