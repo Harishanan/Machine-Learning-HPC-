@@ -183,10 +183,10 @@ wget. https://github.com/prometheus/prometheus/releases/download/v2.46.0/prometh
 tar -xvf prometheus-2.46.0.linux-amd64.tar.gz – extracts the file form the setup
 
 ## moves config file and sets the user access 
-cd prometheus-2.46.0. linux-amd64 – enters the Prometheus download 
-sudo mv console* /etc/prometheus – moves the configuration file 
-sudo mv prometheus.yml /etc/prometheus – moves the configuration file
-sudo chown -R prometheus: prometheus /etc/prometheus – sets the user of prometheus 
+('cd prometheus-2.46.0. linux-amd64 – enters the Prometheus download')
+('sudo mv console* /etc/prometheus – moves the configuration file')
+('sudo mv prometheus.yml /etc/prometheus – moves the configuration file')
+('sudo chown -R prometheus: prometheus /etc/prometheus – sets the user of prometheus')
 
 
 ## Prometheus configuration file
