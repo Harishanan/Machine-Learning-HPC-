@@ -58,9 +58,6 @@ The provided documentation outlines the comprehensive process undertaken by Team
 
 Before commencing the project design process, a comprehensive file containing all specifications was compiled. This file proved invaluable throughout the project, aiding in power and cooling calculations and enhancing our understanding of the system.
 
-[Specification of all the components can be found here!](hardware.md)
-   
-   
 # 2. Technology Research: 
 ***Conduct comprehensive research on HPC technologies, power management, non-volatile storage, and RAM. Justify technology choices based on problem domain appropriateness.*** 
 
@@ -83,9 +80,7 @@ Figure: OS Compatibility of Asus CS-B
                   sudo apt update                                           
             
                   sudo apt upgrade
-
-3. Given its role as the head node in our setup, the desktop image is transformed into a server. Let's quickly delve into the significance of the head node within the realm of High-Performance Computing (HPC).
-
+    
 - The head node serves as a central control unit in an HPC environment, orchestrating and managing the entire cluster. Its primary purposes include task scheduling, resource allocation, and overall coordination of computational tasks within the cluster. By installing      the Ubuntu Server and setting the default target to multi-user mode optimize resource allocation, conserving RAM and CPU resources by eschewing unnecessary graphical sessions. This ensures that the head node operates efficiently, enabling it to efficiently manage and    oversee the computational workload of the entire HPC cluster.
   
             To install Ubuntu Server  : sudo apt install ubuntu-server
@@ -271,6 +266,29 @@ In this project, Secure Shell (SSH) is employed to establish secure connections 
 [Step by step configuration guide available here!](openssh.md)
 
 
+### 5.1.2 Network File System (NFS)
+The Network File System (NFS) is a networking protocol designed for distributed file sharing. A file system organizes and stores data in the form of files, typically on Hard Disk Drives (HDDs) or Solid-State Drives (SSDs). NFS operates on a similar principle, allowing files to be stored and accessed over a network, enabling multiple devices within the same network to retrieve and share data.
+[Specification of all the components can be found here!](hardware.md)
+   
+
+NFS is a widely utilized protocol for file sharing servers, offering compatibility across a broad spectrum of operating systems. In this project, NFS will play a crucial role in facilitating seamless file sharing among all client nodes. In this project, the functionality of NFS can be illustrated using a visualization similar to Figure 1:
+<div style="text-align: center;">
+
+![alt text](NFS.PNG)
+
+<p> Figure 1. Network File Sharing </p>
+</div>
+
+In this representation:
+
+- The "Head Node" hosts a shared directory containing files.
+- The "Client Node" connects to the File Server using NFS.
+- The shared directory is mounted on the Client Node, allowing  seamless access to files.
+- Applications running on the Client Node can interact with the shared files through the mounted directory.
+
+Step by Step NFS configuration Guide Can be found here: [NFS Configuration](NFS.md)
+           
+
 ## 5.2. Background for power on and off function in HPC
 
 Due to failures experienced with the power-on button for the entire HPC system, the strategy was changed to power the HPC on and off. In this project, a bash script was created using Wake-on-LAN communication and OpenSSH. Initially, the HPC's head node will be turned on using the power-on button. Afterwards, to turn on the compute nodes, a bash script will be run, which turns on the other compute nodes at intervals. Through this method, the compute nodes can be successfully powered on, allowing the whole HPC system to function. Then, to turn off all the compute nodes, the OpenSSH function was incorporated into the script, with the sudo shutdown command for all compute nodes. Through this, it is possible to turn off the entire compute nodes. Finally, to turn off the head node, one can press the power button or enter a separate sudo shutdown command for the head node.
@@ -343,9 +361,14 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 4. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
 5. https://hpc.uni.lu/infrastructure/network
 6. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
-
+7. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
+8. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
+9. https://scikit-learn.org/stable/index.html
+10. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
+11. https://hpc.uni.lu/infrastructure/network
 
 
 # V. Authors
+
 
 
