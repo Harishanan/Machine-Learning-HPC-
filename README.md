@@ -39,7 +39,7 @@
   - [7.2. Implementation of Cryptocurrency Price Prediction Application](#72-implementation-of-cryptocurrency-price-prediction-application)
 - [8. Performance Evaluation: Develop a strategy for evaluating HPC system performance.](#8-performance-evaluation-develop-a-strategy-for-evaluating-hpc-system-performance)
 - [9. Software and OS Maintenance:](#9-software-and-os-maintenance)
-  - [IV. References](#iv-references)
+- [IV. References](#iv-references)
 - [V. Authors](#v-authors)
   
 # I. About The Project
@@ -332,7 +332,7 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 ***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
 
 
-## IV. References
+# IV. References
 1. The button can be find here: https://uk.rs-online.com/web/p/push-button-switches/2099127?cm_mmc=UK-PLA-DS3A-_-google-_-CSS_UK_EN_PMAX_RS+PRO-_--_-2099127&matchtype=&&gad_source=1&gclid=EAIaIQobChMIpP3xg7-mhAMVFAUGAB0t5QD5EAQYByABEgIy1_D_BwE&gclsrc=aw.ds
 
 2. How to install WOL : https://pimylifeup.com/ubuntu-enable-wake-on-lan/#:~:text=Wake%2Don%2DLAN%20is%20a,functionality%20through%20your%20devices%20BIOS.
