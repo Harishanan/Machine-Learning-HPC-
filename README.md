@@ -158,6 +158,13 @@ Step wise Step  process is shown in figure 2 below:
 ## 4. Housing and Cooling Solutions: 
 ***Design and implement housing/structure using laser cutting or additive manufacturing. Discuss convection principles (natural and forced) for cooling.***
 
+## 5. System Configuration
+
+### 5.1. Background for power on and off function in HPC
+
+Due to failures experienced with the power-on button for the entire HPC system, the strategy was changed to power the HPC on and off. In this project, a bash script was created using Wake-on-LAN communication and OpenSSH. Initially, the HPC's head node will be turned on using the power-on button. Afterwards, to turn on the compute nodes, a bash script will be run, which turns on the other compute nodes at intervals. Through this method, the compute nodes can be successfully powered on, allowing the whole HPC system to function. Then, to turn off all the compute nodes, the OpenSSH function was incorporated into the script, with the sudo shutdown command for all compute nodes. Through this, it is possible to turn off the entire compute nodes. Finally, to turn off the head node, one can press the power button or enter a separate sudo shutdown command for the head node.
+
+[Step by Step Configuration File Can be Found Here](power-on-off.md)
 # 5.Software Installation
 
 ## 5.1 SLURM Configuration
@@ -186,6 +193,10 @@ These commands serve as essential tools for effectively interacting with SLURM a
 
 [Step by Step Configuration File Can be Found Here!](slurm.md)
 
+## 5.4. Configure Prometheus and Grafana
+
+[Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
+
 ## 6. Task Implementation:
 ### 6.1. How to Create Machine Learning for Predict Crypto Currencies
 
@@ -203,10 +214,7 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 ***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
 
 
-
-
-
-
+ 
 
 ## References
 1. The button can be find here: https://uk.rs-online.com/web/p/push-button-switches/2099127?cm_mmc=UK-PLA-DS3A-_-google-_-CSS_UK_EN_PMAX_RS+PRO-_--_-2099127&matchtype=&&gad_source=1&gclid=EAIaIQobChMIpP3xg7-mhAMVFAUGAB0t5QD5EAQYByABEgIy1_D_BwE&gclsrc=aw.ds

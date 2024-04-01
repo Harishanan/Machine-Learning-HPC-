@@ -1,10 +1,4 @@
 # **Power on and off function for HPC**
-## **1. Introduction**
-To enable parallelisation in HPC, networking must be established between the head node and compute nodes. Therefore, this section will discuss how the network is established in this project's HPC and will also discuss components such as IP address configuration, network topology, and network bridging in more detail. As an introduction, for this networking setup, a star networking topology, static IP configuration and nm-connection editor have been used and will be discussed in more detail below. Note: In the HPC, the operating system is downloaded separately on each node.
-
-Through this successful networking implementation, future works such as SLURM configuration, Wake On LAN, OpenSSH and many more can be enabled.
-
-
 ## **1. Implementation of power on and off function**
 
 ### **1.1 Background of Wake-On-LAN**
