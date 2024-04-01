@@ -25,8 +25,8 @@
   - [4.6. Time impairment](#46-time-impairment)
   - [4.7.  Material acquisition](#47--material-acquisition)
   - [4.8. Ventilation](#48-ventilation)
-    - [4.9. Change in requirements](#49-change-in-requirements)
-    - [4.10 Reflection](#410-reflection)
+  - [4.9. Change in requirements](#49-change-in-requirements)
+  - [4.10 Reflection](#410-reflection)
 - [5. System Configuration](#5-system-configuration)
   - [5.1. Networking](#51-networking)
     - [5.1.1. **Open-SSH connection**](#511-open-ssh-connection)
@@ -34,13 +34,13 @@
 - [6.Software Installation](#6software-installation)
   - [6.1 SLURM Configuration](#61-slurm-configuration)
   - [6.2. Configure Prometheus and Grafana](#62-configure-prometheus-and-grafana)
-  - [7. Task Implementation:](#7-task-implementation)
-    - [7.1. How to Create Machine Learning for Predict Crypto Currencies](#71-how-to-create-machine-learning-for-predict-crypto-currencies)
-    - [7.2. Implementation of Cryptocurrency Price Prediction Application](#72-implementation-of-cryptocurrency-price-prediction-application)
-  - [8. Performance Evaluation: Develop a strategy for evaluating HPC system performance.](#8-performance-evaluation-develop-a-strategy-for-evaluating-hpc-system-performance)
-  - [9. Software and OS Maintenance:](#9-software-and-os-maintenance)
+- [7. Task Implementation:](#7-task-implementation)
+  - [7.1. How to Create Machine Learning for Predict Crypto Currencies](#71-how-to-create-machine-learning-for-predict-crypto-currencies)
+  - [7.2. Implementation of Cryptocurrency Price Prediction Application](#72-implementation-of-cryptocurrency-price-prediction-application)
+- [8. Performance Evaluation: Develop a strategy for evaluating HPC system performance.](#8-performance-evaluation-develop-a-strategy-for-evaluating-hpc-system-performance)
+- [9. Software and OS Maintenance:](#9-software-and-os-maintenance)
   - [IV. References](#iv-references)
-  - [Authors](#authors)
+- [V. Authors](#v-authors)
   
 # I. About The Project
 The provided documentation outlines the comprehensive process undertaken by Team 0 for the design of a High Performance Computing (HPC) system as part of the Advanced Computer Engineering Module for the Computer Engineering Program at the University of Greenwich for the academic year 2023/24. This report guides the reader through a detailed step-by-step procedure encompassing both hardware and software aspects of the project. By following this documentation, readers will gain insights into the systematic approach employed by the team, enabling them to replicate and create their own HPC systems.  
@@ -248,10 +248,10 @@ An issue arose with the materials as some materials were ordered before the time
 ## 4.8. Ventilation
 The ventilation of the case was considered from the very beginning as it essential to keep the system cool under prolonged periods of time.  With 5 motherboards being used in sync I decided to go with a 2 in 2 out fans system. 2 fans would take air in at the top front of the case and 2 would blow air out of the case at the bottom rear. This would allow decent air flow that would keep a steady current around the case. Temperature sensors inside the case can monitor how hot the components get and alert the user if the temperature exceeds the recommended limit.
 
-### 4.9. Change in requirements 
+## 4.9. Change in requirements 
 Throughout the course pf this project there were a number of alterations that needed to be made to counter errors in judgement as well as new components that needed to be added to achieve complete networking between the boards. By altering the size of the shelves and by utilizing the space in the side of the case for storing the wires, all new components and power sources fit as needed 
 
-### 4.10 Reflection 
+## 4.10 Reflection 
 If I were to design this case again, I believe there are a few changes that could be made. I think the biggest change I would make is I would have made holes across the laser cut shelves as it would increase the ventilation in the case however if I did this, I would make the shelf out of wood as with to many holes cut the structural integrity would be compromised and they may not be able to hold the components at the current thickness. By changing the material to wood and increasing the thickness of the shelves, adding the holes will not impair the performance. It is important to keep in mind the ultimate stress point and the fracture point of the material used as well as the elastic point. The brackets that were built were perfectly fit for purpose so I will utilize them for similar case frames in the future and if given the opportunity to improve this case
 
 
@@ -314,21 +314,21 @@ These commands serve as essential tools for effectively interacting with SLURM a
 
 [Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
 
-## 7. Task Implementation:
-### 7.1. How to Create Machine Learning for Predict Crypto Currencies
+# 7. Task Implementation:
+## 7.1. How to Create Machine Learning for Predict Crypto Currencies
 
 To predict cryptocurrency prices with machine learning, start by fetching historical data (prices, volumes, timestamps) using APIs like Alpha Vantage. Process this data, compute technical indicators (RSI, EMA, SMA), and normalize to ensure uniformity. Split the data into training, validation, and testing sets for model development and evaluation. Consider machine learning models such as Random Forest for its robustness, Gradient Boosting for error minimization, LSTM for capturing long-term dependencies, and GRU for efficient sequential data handling. Fine-tune models using the validation set and assess their performance with metrics like RMSE and MAE on the test set, aiming to select the model that best captures cryptocurrency market dynamics. (<b>This needs to be rewritten</b>)
 
 [Access the detailed step-by-step guide here](Predicting_Cryptocurrency_Prices_with_ML.md)
 
-### 7.2. Implementation of Cryptocurrency Price Prediction Application
+## 7.2. Implementation of Cryptocurrency Price Prediction Application
 <b>Write a introduction of this topic</b>
 
 [Access the detailed step-by-step guide here](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/Implementation_of_ML.md)
 
-## 8. Performance Evaluation: Develop a strategy for evaluating HPC system performance. 
+# 8. Performance Evaluation: Develop a strategy for evaluating HPC system performance. 
 
-## 9. Software and OS Maintenance: 
+# 9. Software and OS Maintenance: 
 ***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
 
 
@@ -349,6 +349,6 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 
 
 
-## Authors
+# V. Authors
 
 
