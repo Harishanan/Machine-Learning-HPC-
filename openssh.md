@@ -32,7 +32,7 @@ The same steps used for configuring the OpenSSH server on the head node can be r
 
 ## STEP 3: Accessing compute nodes using Open-SSH connection
 
-![access SSH](access-SSH.png)<br>
+![access SSH](pictures/access-SSH.png)<br>
 <b>Figure 1: Viewing the compute node from head node, using SSH</b>
 <br><br>
 
