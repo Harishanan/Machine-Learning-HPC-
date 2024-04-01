@@ -124,14 +124,14 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 
  # Configuring Prometheus and Grafana
 
-# What is Prometheus 
+## What is Prometheus 
 •The primary uses of Prometheus, an open-source Linux server monitoring program, are alert management, event monitoring, and metrics monitoring.
 
 •Because Prometheus has revolutionized system monitoring, the Cloud Native Computing Foundation (CNCF) has named it as one of its top projects.
 
 •Prometheus supports dashboarding and graphing using a variety of modalities.
 
-# Prometheus Components
+## Prometheus Components
 The initial part of the Prometheus architecture is the Prometheus server. 
 The central component of the Prometheus architecture, which is further split into storage, Prom, HTTP server, and so on, is the Prometheus server. 
 Data is scraped from the target nodes in the Prometheus server and then saved in the database.
