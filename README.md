@@ -12,8 +12,7 @@
     - [2.1.2 Install Operating System in Compute Node](#212-install-operating-system-in-compute-node)
   - [2.2 Power Management](#22-power-management)
   - [2.3 Cooling Calculations](#23-cooling-calculations)
-    - [2.3.1.	Heat Dissipation Calculation:](#231heat-dissipation-calculation)
-    - [2.3.2.	3D Model](#2323d-model)
+    - [2.3.1.	3D Model](#2313d-model)
   - [2.4 Network Interconnect:](#24-network-interconnect)
 - [3. System Construction:](#3-system-construction)
 - [4. Housing and Cooling Solutions:](#4-housing-and-cooling-solutions)
@@ -141,12 +140,10 @@ The process of installing the operating system on a compute node is similar to t
 
 ## 2.3 Cooling Calculations
 
-### 2.3.1.	Heat Dissipation Calculation:
-
 Cooling calculations were conducted to determine the necessary airflow for ordering the appropriate fan. This involved performing a simple arithmetic calculation, the details of which can be found in the [this file here.](coolingcalculation.md). 
 
 
-### 2.3.2.	3D Model 
+### 2.3.1.	3D Model 
  The selection of the fan was made with careful consideration of various factors, and a dual-fan system was chosen. Two fans are positioned at the front of the case to intake cool air, while another two are situated at the back to expel hot air as depicted in Figure 1. This configuration creates an airflow pattern that helps maintain optimal temperatures for all components.
 
    Additionally, the CPU fan, which is attached to the motherboard, provides active cooling for the CPU. Moreover, the GPU and power supply unit also have built-in fans for additional cooling.
