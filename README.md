@@ -1,82 +1,36 @@
 <h3 align="center">High-Performance Computing System</h3>
 
 ## Table Of Contents
-- [5.Software Installation](#5software-installation)
-  - [5.1 SLURM Configuration](#51-slurm-configuration)
-  - [7. Performance Evaluation: Develop a strategy for evaluating HPC system performance.](#7-performance-evaluation-develop-a-strategy-for-evaluating-hpc-system-performance)
-  - [8. Software and OS Maintenance:](#8-software-and-os-maintenance)
-  - [9. Task Implementation:](#9-task-implementation)
-    - [9.1. How to Create Machine Learning for Predict Crypto Currencies](#91-how-to-create-machine-learning-for-predict-crypto-currencies)
-  - [10. Performance Evaluation:](#10-performance-evaluation)
-  - [References](#references)
-  - [Authors](#authors)
+
+- [About The Project](#i-about-the-project)
+- [Buid With](#ii-built-with)
+- [Introduction](#iii-introduction)
+- [System Design And Architecture](#1-system-design-and-architecture)
+- [Technology Research:](#2-technology-research)
+- [System Construction](#3-system-construction)
+- [Housing and Cooling Solutions](#4-housing-and-cooling-solutions)
+- [System Configuration](#5-system-configuration)
+- [Software Design And Architecture](#1-system-design-and-architecture)
   
-## About The Project
+  
+## I. About The Project
 The provided documentation outlines the comprehensive process undertaken by Team 0 for the design of a High Performance Computing (HPC) system as part of the Advanced Computer Engineering Module for the Computer Engineering Program at the University of Greenwich for the academic year 2023/24. This report guides the reader through a detailed step-by-step procedure encompassing both hardware and software aspects of the project. By following this documentation, readers will gain insights into the systematic approach employed by the team, enabling them to replicate and create their own HPC systems.  
 
-## Built With
+## II. Built With
 - [JavaScript](https://www.javascript.com/)
 - [VueJS](https://vuejs.org/)
 
 
-## Introduction
+## III. Introduction
 
 
-## 1. System Design And Architecture ## 4. Housing and Cooling Solutions: 
-***Design and implement housing/structure using laser cutting or additive manufacturing. Discuss convection principles (natural and forced) for cooling.***
-
-
-[Specification of all the components can be found here!](hardware.md)
+## 1. System Design And Architecture 
 
 ***Design the architecture, integrating 14 ASUS CS-8 motherboards and single-board computers. Provide critical reflections on the chosen design.***
 
-# Original Design For The HPC Case
-The original design for the case consisted of 3D printing of all components needed. This included the shelves, floor, roof, and side/back panels of the case. Multiple aspects have to be considered when designing the case such as the components requirements, ventilation, and accessibility. All original shelf and case piece that have been uploaded were designed to be durable and well ventilated and were easily connected together using a pin system
+Before commencing the project design process, a comprehensive file containing all specifications was compiled. This file proved invaluable throughout the project, aiding in power and cooling calculations and enhancing our understanding of the system.
 
-## Problems Encountered
-While waiting to receive the initial components from 3d printing I was informed that it would take to long to 3d print all my required components as there were many other students looking to 3d print components at this time Aswell. To solve this issue, we decided to order the shell of our case and print the brackets and laser cut the shelves as well as the front and back panels in stead of printing all the components
-
-# Chosen Shell  
-The case we ordered was a 21U tall server racking system which was perfect for the purpose of our projects. It came with slots all down the left and ride side of the case which ensured enough ventilation for the fans to disperse the heat 
-
-![Shell](case.jpeg)<br>
-<b>Figure 1:Case</b>
-<br><br>
-
-The 1U brackets were 3d printed in order to hold the acrylic shelves that were laser cut. They were mounted in the holes that were ment for the racking system of the case. An extension cord was placed at the back and mounted to the top of the case. Whis acted as a way to limit the amount of cables that would exit the case. Instead, we could power each of the motherboards power sources internally 
-
-![Push button](brackets.jpeg)<br>
-<b>Figure 1:3D printed brakets </b>
-<br><br>
-
-The front and back of the case was laser cut in acrylic with 120x120 fan holes at the base and the top in order to mount the fan to then in a way that allowed them to get a strong enough air pull. Hence the small circles that fill the 120x120 frame. the back panel was made to be slightly smaller to allow room for the extension cord 
-
-
-![Push button](panels.jpeg)<br>
-<b>Figure 1:3D back panel of case  </b>
-<br><br>
-
-# Other alterations
-Rubber feet will be used on the motherboards and the SSDs to limit the directs contact onto the shelves to allow air underneath the boards when necessary. The extension cable will run down the side of the case into an outlet. The power button will drill through the roof of the case to allow Instant power to the application we have also decided to cover the back of the case to limit the light inside the case to utilize the led fans. All power supply will plug directly into the extension cord build into the case
-
-# Design reflection and future improvements 
-During the course of this assignment there have been a few development problems and issues that arose in regard to the specific design of the case such as the time impairment, material acquisition, ventilation and change in requirements. In this report I will discuss how each of these problems were analyzed and resolved to display a design that fit the requirements of the projects while also remaining affordable and simple to construct.
-
-# Time impairment 
-The first and possible largest issue we faced in constructing the case was time. As we had a fixed amount of time to build and submit the Hpc the case had to be completed in about a month and a half. My first idea was 3D printing the part required to build the frame/shelfing unit. After sending my designs of to be printed I was told that all part would take over 80 das as there was over 65 pieces to print along with other student needing to use the printing facilities as well.to work around this problem I decided that purchasing a frame could be cheaper and less time consuming as well as having more stability. This way I could focus more on altering the internal of the case as well as making a front and rear for the frame. This cut the time to create a case by at least a month allowing more time for alterations if need be 
-
-# Material acquisition 
-An issue arose with the materials as some materials were ordered before the time issues were realized. This issue was fixed by ordering the correct components and altering the lengths of some of the cables needed like the ethernet cable and the power cable along with some cable management. I mention these issues as it highlighted the need to double-check the design before ordering any components as well as communicating with my teams to avoid these mistakes happening in the future.
-
-# Ventilation
-The ventilation of the case was considered from the very beginning as it essential to keep the system cool under prolonged periods of time.  With 5 motherboards being used in sync I decided to go with a 2 in 2 out fans system. 2 fans would take air in at the top front of the case and 2 would blow air out of the case at the bottom rear. This would allow decent air flow that would keep a steady current around the case. Temperature sensors inside the case can monitor how hot the components get and alert the user if the temperature exceeds the recommended limit.
-
-# Change in requirements 
-Throughout the course pf this project there were a number of alterations that needed to be made to counter errors in judgement as well as new components that needed to be added to achieve complete networking between the boards. By altering the size of the shelves and by utilizing the space in the side of the case for storing the wires, all new components and power sources fit as needed 
-
-# Reflection 
-If I were to design this case again, I believe there are a few changes that could be made. I think the biggest change I would make is I would have made holes across the laser cut shelves as it would increase the ventilation in the case however if I did this, I would make the shelf out of wood as with to many holes cut the structural integrity would be compromised and they may not be able to hold the components at the current thickness. By changing the material to wood and increasing the thickness of the shelves, adding the holes will not impair the performance. It is important to keep in mind the ultimate stress point and the fracture point of the material used as well as the elastic point. The brackets that were built were perfectly fit for purpose so I will utilize them for similar case frames in the future and if given the opportunity to improve this case
-
+[Specification of all the components can be found here!](hardware.md)
    
    
 ## 2. Technology Research: 
@@ -222,9 +176,59 @@ Step wise Step  process is shown in figure 2 below:
 ***Assemble the HPC system, implementing power management and resource-efficient configurations. Configure non-volatile storage and RAM to meet performance requirements.***
 
 
-## 4. System Configuration
+## 4. Housing and Cooling Solutions: 
 
-### 4.1. Networking
+### Original Design For The HPC Case
+The original design for the case consisted of 3D printing of all components needed. This included the shelves, floor, roof, and side/back panels of the case. Multiple aspects have to be considered when designing the case such as the components requirements, ventilation, and accessibility. All original shelf and case piece that have been uploaded were designed to be durable and well ventilated and were easily connected together using a pin system
+
+### Problems Encountered
+While waiting to receive the initial components from 3d printing I was informed that it would take to long to 3d print all my required components as there were many other students looking to 3d print components at this time Aswell. To solve this issue, we decided to order the shell of our case and print the brackets and laser cut the shelves as well as the front and back panels in stead of printing all the components
+
+### Chosen Shell  
+The case we ordered was a 21U tall server racking system which was perfect for the purpose of our projects. It came with slots all down the left and ride side of the case which ensured enough ventilation for the fans to disperse the heat 
+
+![Shell](case.jpeg)<br>
+<b>Figure 1:Case</b>
+<br><br>
+
+The 1U brackets were 3d printed in order to hold the acrylic shelves that were laser cut. They were mounted in the holes that were ment for the racking system of the case. An extension cord was placed at the back and mounted to the top of the case. Whis acted as a way to limit the amount of cables that would exit the case. Instead, we could power each of the motherboards power sources internally 
+
+![Push button](brackets.jpeg)<br>
+<b>Figure 1:3D printed brakets </b>
+<br><br>
+
+The front and back of the case was laser cut in acrylic with 120x120 fan holes at the base and the top in order to mount the fan to then in a way that allowed them to get a strong enough air pull. Hence the small circles that fill the 120x120 frame. the back panel was made to be slightly smaller to allow room for the extension cord 
+
+
+![Push button](panels.jpeg)<br>
+<b>Figure 1:3D back panel of case  </b>
+<br><br>
+
+### Other alterations
+Rubber feet will be used on the motherboards and the SSDs to limit the directs contact onto the shelves to allow air underneath the boards when necessary. The extension cable will run down the side of the case into an outlet. The power button will drill through the roof of the case to allow Instant power to the application we have also decided to cover the back of the case to limit the light inside the case to utilize the led fans. All power supply will plug directly into the extension cord build into the case
+
+### Design reflection and future improvements 
+During the course of this assignment there have been a few development problems and issues that arose in regard to the specific design of the case such as the time impairment, material acquisition, ventilation and change in requirements. In this report I will discuss how each of these problems were analyzed and resolved to display a design that fit the requirements of the projects while also remaining affordable and simple to construct.
+
+### Time impairment 
+The first and possible largest issue we faced in constructing the case was time. As we had a fixed amount of time to build and submit the Hpc the case had to be completed in about a month and a half. My first idea was 3D printing the part required to build the frame/shelfing unit. After sending my designs of to be printed I was told that all part would take over 80 das as there was over 65 pieces to print along with other student needing to use the printing facilities as well.to work around this problem I decided that purchasing a frame could be cheaper and less time consuming as well as having more stability. This way I could focus more on altering the internal of the case as well as making a front and rear for the frame. This cut the time to create a case by at least a month allowing more time for alterations if need be 
+
+### Material acquisition 
+An issue arose with the materials as some materials were ordered before the time issues were realized. This issue was fixed by ordering the correct components and altering the lengths of some of the cables needed like the ethernet cable and the power cable along with some cable management. I mention these issues as it highlighted the need to double-check the design before ordering any components as well as communicating with my teams to avoid these mistakes happening in the future.
+
+### Ventilation
+The ventilation of the case was considered from the very beginning as it essential to keep the system cool under prolonged periods of time.  With 5 motherboards being used in sync I decided to go with a 2 in 2 out fans system. 2 fans would take air in at the top front of the case and 2 would blow air out of the case at the bottom rear. This would allow decent air flow that would keep a steady current around the case. Temperature sensors inside the case can monitor how hot the components get and alert the user if the temperature exceeds the recommended limit.
+
+### Change in requirements 
+Throughout the course pf this project there were a number of alterations that needed to be made to counter errors in judgement as well as new components that needed to be added to achieve complete networking between the boards. By altering the size of the shelves and by utilizing the space in the side of the case for storing the wires, all new components and power sources fit as needed 
+
+### Reflection 
+If I were to design this case again, I believe there are a few changes that could be made. I think the biggest change I would make is I would have made holes across the laser cut shelves as it would increase the ventilation in the case however if I did this, I would make the shelf out of wood as with to many holes cut the structural integrity would be compromised and they may not be able to hold the components at the current thickness. By changing the material to wood and increasing the thickness of the shelves, adding the holes will not impair the performance. It is important to keep in mind the ultimate stress point and the fracture point of the material used as well as the elastic point. The brackets that were built were perfectly fit for purpose so I will utilize them for similar case frames in the future and if given the opportunity to improve this case
+
+
+## 5. System Configuration
+
+### 5.1. Networking
 To enable parallelisation in HPC, networking must be established between the head node and compute nodes. Therefore, this section will discuss how the network is established in this project's HPC and will also discuss components such as IP address configuration, network topology, and network bridging in more detail. As an introduction, for this networking setup, a star networking topology, static IP configuration and nm-connection editor have been used and will be discussed in more detail below. Note: In the HPC, the operating system is downloaded separately on each node.
 
 [Step by Step Configuration File Can be Found Here](nm-connection-editor.md)
@@ -241,16 +245,16 @@ In this project, Secure Shell (SSH) is employed to establish secure connections 
 [Step by step configuration guide available here!](openssh.md)
 
 
-### 4.2. Background for power on and off function in HPC
+### 5.2. Background for power on and off function in HPC
 
 Due to failures experienced with the power-on button for the entire HPC system, the strategy was changed to power the HPC on and off. In this project, a bash script was created using Wake-on-LAN communication and OpenSSH. Initially, the HPC's head node will be turned on using the power-on button. Afterwards, to turn on the compute nodes, a bash script will be run, which turns on the other compute nodes at intervals. Through this method, the compute nodes can be successfully powered on, allowing the whole HPC system to function. Then, to turn off all the compute nodes, the OpenSSH function was incorporated into the script, with the sudo shutdown command for all compute nodes. Through this, it is possible to turn off the entire compute nodes. Finally, to turn off the head node, one can press the power button or enter a separate sudo shutdown command for the head node.
 
 [Step by Step Configuration File Can be Found Here](power-on-off.md)
 
 
-# 5.Software Installation
+# 6.Software Installation
 
-## 5.1 SLURM Configuration
+## 6.1 SLURM Configuration
 
 SLURM, an acronym for Simple Linux Utility for Resource Management, is an open-source workload manager developed for supercomputers and Linux-based cluster systems. It offers three primary functions: 
 
@@ -277,28 +281,29 @@ These commands serve as essential tools for effectively interacting with SLURM a
 
 [Step by Step Configuration File Can be Found Here!](slurm.md)
 
-## 5.4. Configure Prometheus and Grafana
+## 6.2. Configure Prometheus and Grafana
 
 [Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
 
-## 6. Task Implementation:
-### 6.1. How to Create Machine Learning for Predict Crypto Currencies
+## 7. Task Implementation:
+### 7.1. How to Create Machine Learning for Predict Crypto Currencies
 
 To predict cryptocurrency prices with machine learning, start by fetching historical data (prices, volumes, timestamps) using APIs like Alpha Vantage. Process this data, compute technical indicators (RSI, EMA, SMA), and normalize to ensure uniformity. Split the data into training, validation, and testing sets for model development and evaluation. Consider machine learning models such as Random Forest for its robustness, Gradient Boosting for error minimization, LSTM for capturing long-term dependencies, and GRU for efficient sequential data handling. Fine-tune models using the validation set and assess their performance with metrics like RMSE and MAE on the test set, aiming to select the model that best captures cryptocurrency market dynamics. (<b>This needs to be rewritten</b>)
 
 [Access the detailed step-by-step guide here](Predicting_Cryptocurrency_Prices_with_ML.md)
 
-### 6.2. Implementation of Cryptocurrency Price Prediction Application
+### 7.2. Implementation of Cryptocurrency Price Prediction Application
 <b>Write a introduction of this topic</b>
 
 [Access the detailed step-by-step guide here](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/Implementation_of_ML.md)
-## 7. Performance Evaluation: Develop a strategy for evaluating HPC system performance. 
 
-## 8. Software and OS Maintenance: 
+## 8. Performance Evaluation: Develop a strategy for evaluating HPC system performance. 
+
+## 9. Software and OS Maintenance: 
 ***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
 
 
-## References
+## IV. References
 1. The button can be find here: https://uk.rs-online.com/web/p/push-button-switches/2099127?cm_mmc=UK-PLA-DS3A-_-google-_-CSS_UK_EN_PMAX_RS+PRO-_--_-2099127&matchtype=&&gad_source=1&gclid=EAIaIQobChMIpP3xg7-mhAMVFAUGAB0t5QD5EAQYByABEgIy1_D_BwE&gclsrc=aw.ds
 
 2. How to install WOL : https://pimylifeup.com/ubuntu-enable-wake-on-lan/#:~:text=Wake%2Don%2DLAN%20is%20a,functionality%20through%20your%20devices%20BIOS.
