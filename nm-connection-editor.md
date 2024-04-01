@@ -9,7 +9,7 @@ The nm-connection-editor helps to create new network connections and manage exis
 By typing the above command in Linux terminal, user can start the nm connection editor application. It is only available in GUI (desktop or GNOME) environment. To instead work with terminal, can use nm-cli connection. It available in all platforms such as terminal, desktop and ssh,or instead, can use nmtui, it is a curses-based application. It works on terminal and desktop and support all the feature of network manager.
 
 <b>Table 1: Comparing nmtui and nm-connection-editor</b>
-![nmtui_nmconnections](nm-connection-nmtui.png)<br>
+![nmtui_nmconnections](pictures/nm-connection-nmtui.png)<br>
 <br><br>
 
 ## **2. Methodology of nm-connection-editor implementation**
@@ -17,7 +17,7 @@ By typing the above command in Linux terminal, user can start the nm connection 
 ### **2.1 How to add a new network connection with nm-connection-editor**
 <br>
 
-![new_nm_connections](add-connection.png)<br>
+![new_nm_connections](pictures/add-connection.png)<br>
 <b>Figure 1:Flow diagram to add a new network connection in nm-connection-editor</b>
 <br><br>
 
@@ -39,7 +39,7 @@ After activating network connection, can view the IP configuration of the specif
 
 ### **2.2 How to edit a network connection with nm-connection-editor**
 
-![edit_nm_connections](edit-connection.png)<br>
+![edit_nm_connections](pictures/edit-connection.png)<br>
 <b>Figure 2:Flow diagram to edit network connection in nm-connection-editor</b>
 <br><br>
 
@@ -55,7 +55,7 @@ Verify the customised  IP address changed/ updated.
  ### **2.3 How to delete a network connection with nm-connection-editor**
 
  
-![delete_nm_connections](delete-connection.png)<br>
+![delete_nm_connections](pictures/delete-connection.png)<br>
 <b>Figure 3:Flow diagram to delete a network connection in nm-connection-editor</b>
 <br><br>
 
@@ -91,12 +91,12 @@ To implement networking for this project, have used the network bridging format.
 After establishing network connections, it is necessary to assign an IP address to each node to uniquely identify each one in the HPC network. Therefore, we use static IP address configuration. A static IP address means manually assigning an IP address to network devices. In this case, a Class C IPv4 address is used. The given subnet mask is /24 or 255.255.255.0.The assigned IP addresses are shown below in Table 2. Additionally, the table contains the MAC address of each node.
 
 <b>Table 2: IP Address and MAC Address of each node</b>
-![ipandmacaddressinfo](ip&macaddress.png)<br>
+![ipandmacaddressinfo](pictures/ip&macaddress.png)<br>
 <br>
 
 ### **3.3 Network implementation in HPC using nm-connection editor**
 
-![nm-connect-implement](nm-connect-implement.png)<br>
+![nm-connect-implement](pictures/nm-connect-implement.png)<br>
 <b>Figure 4:Implementation of networking in HPC using nm-connection-editor</b>
 <br>
 
@@ -105,7 +105,7 @@ In accordance with the methodology described in section 2.1, a static IP address
 ### **3.4 Implemented network topology**
 
 
-![topology-implement](startopology.png)<br>
+![topology-implement](pictures/startopology.png)<br>
 <b>Figure 5: Network topology implemented in HPC</b>
 <br>
 
@@ -115,7 +115,7 @@ For this HPC’s network, star network topology has been implemented, as shown i
 ## **4. Testing networking implementation**
 ### **4.1 Verification of Internet Connection**
 
-![internet_test](internettest.png)<br>
+![internet_test](pictures/internettest.png)<br>
 <b>Figure 6: Internet connection test on compute node</b>
 <br>
 
@@ -129,7 +129,7 @@ For this HPC’s network, star network topology has been implemented, as shown i
 
 ### **4.2. Ping Tests**
 
-![ping_test](pingtest.png)<br>
+![ping_test](pictures/pingtest.png)<br>
 <b>Figure 7: Ping test on compute node</b>
 <br>
 
