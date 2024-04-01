@@ -156,8 +156,23 @@ The process of installing the operating system on a compute node is similar to t
     
     The system is expected to consume between 73W - 88W during active use and between 25.05W - 40.05W when idle. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
 
+### 2.3 Cooling Calculations
 
-### 2.3 Network Interconnect:
+#### 2.3.1.	Heat Dissipation Calculation:
+
+Cooling calculations were conducted to determine the necessary airflow for ordering the appropriate fan. This involved performing a simple arithmetic calculation, the details of which can be found in the [this file here.](coolingcalculation.md). 
+
+
+#### 2.3.2.	3D Model 
+ The selection of the fan was made with careful consideration of various factors, and a dual-fan system was chosen. Two fans are positioned at the front of the case to intake cool air, while another two are situated at the back to expel hot air as depicted in Figure 1. This configuration creates an airflow pattern that helps maintain optimal temperatures for all components.
+
+   Additionally, the CPU fan, which is attached to the motherboard, provides active cooling for the CPU. Moreover, the GPU and power supply unit also have built-in fans for additional cooling.
+
+   ![Fan Placement](fanplacement.png)<br>
+   <b>Figure 1: 3D Model of Case with the fan where a) represents the front 3D view and b) represent the back 3D view </b>
+   <br>
+
+### 2.4 Network Interconnect:
    
 ***Cluster Network is two or more computing device working together for a common computing purpose. This Network follows the principle of the parallel processing. Parallel processing is the method of using two or more processors(CPUs) to handle seperate chuncks of a same complex tasks.*** 
 
@@ -281,7 +296,6 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 
 ## 8. Software and OS Maintenance: 
 ***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
-
 
 
 ## References
