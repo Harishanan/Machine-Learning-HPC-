@@ -198,8 +198,12 @@ tar -xvf prometheus-2.46.0.linux-amd64.tar.gz – extracts the file form the set
 
 
 ## Prometheus configuration file
-In this section I confirmed the Prometheus yml file was present and modified as needed 
-I added all data points that I wanted to scrap in the scrap configs section with the main prometheus job in the scrape config section  
+In this section I confirmed the Prometheus yml file was present and modified as needed. the evaluation time and scrape intrval time is set to 15 seconds 
+I added all data points that I wanted to scrap in the scrap configs section with the main prometheus job in the scrape config section. An alert manager can also be implemented if necessary to alert the user if certain readings hit certain ranges  
+
+![alt text](prometheus.jpg)
+<b>Figure .1 shows the prometheus yml file   </b>
+<br><br>
 
 ## Creating Prometheus Systemd file
 In this section I created a service file that sets up its startup and states its service type and users. I then reloaded the system to confirm the setup. The code used will be included in the appendix of the READ.ME FILE. 
@@ -219,26 +223,26 @@ I added the prometheus connection my adding the URL of prometheus local host 909
 The first graph displays the CPU core usage which tells us the percent of processing power that is being used as well as the memory usage which show the amount of ram being utilized 
 
 ![](<graph.1 cpu.jpg>)<br>
-<b>Figure .1 cpu and memory graph readings </b>
+<b>Figure .2 cpu and memory graph readings </b>
 <br><br>
 
 The second graph used displayed disk space which determines the total data the hard disks can store. It also displays the load carried by the board
 
 ![alt text](<graph.2 disk space and load.jpg>)
-<b>Figure .2 load and the disk usage readings  </b>
+<b>Figure .3 load and the disk usage readings  </b>
 <br><br>
 
 The third graph shows the disc utilization per device which is the percentage of your hard disk your computer is currently using to run programs and carry out tasks. It also displays the rate the disc can read or write to a device 
 
 ![alt text](<graph.3 disc utilzation per device.jpg>)
-<b>Figure .3 disk usage per device and sta/stw readings   </b>
+<b>Figure .4 disk usage per device and sta/stw readings   </b>
 <br><br>
 
 
 The fourth and final graph displays context switches which are the process of switching the CPU from one process, task or thread to another. It also shows the traffic over the network 
 
 ![alt text](<graph .4 context switch and network traffic.jpg>)
-<b>Figure .4 context switch and network readings   </b>
+<b>Figure .5 context switch and network readings   </b>
 <br><br>
 
 
