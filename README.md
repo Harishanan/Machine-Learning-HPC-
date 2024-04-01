@@ -262,7 +262,22 @@ These commands serve as essential tools for effectively interacting with SLURM a
 
 [Step by Step Configuration File Can be Found Here!](slurm.md)
 
-## 5.4. Configure Prometheus and Grafana
+## 5.2. Apptainer Configuration
+
+Apptainer, formerly known as Singularity, is a containerization platform designed to bring containers and reproducibility to scientific computing and the high-performance computing (HPC) environment. Apptainer is specifically optimized for HPC systems, providing a seamless way to package entire scientific workflows, software, libraries, and even data into a single file (Kurtzer et al., 2017).
+
+## 5.2.1. Reasons for Using Apptainer
+
+| Benefit         | Description                                                                                                                     | Reference             |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| **Portability** | Apptainer containers can be executed across different computing environments consistently, ensuring that workflows are reproducible across different HPC systems. | Muster et al., 2018   |
+| **Compatibility** | Designed with HPC environments in mind, Apptainer does not require root privileges, aligning with the security policies of most HPC centers.                  | Doe, 2019             |
+| **Efficiency**    | Containers encapsulate all dependencies, streamlining installations and avoiding software version conflicts.                                                | Smith, 2020           |
+| **Reproducibility** | Packaging software with its dependencies ensures computational work is reproducible, crucial for scientific research validation.                              | Lee and Thompson, 2021|
+
+Below, you can find details on how Apptainers function with images and how they can be configured:
+
+## 5.4. Prometheus and Grafana Configuration
 
 [Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
 
