@@ -183,18 +183,6 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 ***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
 
 
-   
-
-
-
-
-
-## 7. Performance Evaluation: Develop a strategy for evaluating HPC system performance. 
-## 8. Software and OS Maintenance: 
---- Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.
-
-
-
 ## References
 1. The button can be find here: https://uk.rs-online.com/web/p/push-button-switches/2099127?cm_mmc=UK-PLA-DS3A-_-google-_-CSS_UK_EN_PMAX_RS+PRO-_--_-2099127&matchtype=&&gad_source=1&gclid=EAIaIQobChMIpP3xg7-mhAMVFAUGAB0t5QD5EAQYByABEgIy1_D_BwE&gclsrc=aw.ds
 
