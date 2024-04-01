@@ -3,6 +3,7 @@
 ## **1. Implementation of power on and off function**
 
 ### **1.1 Background of Wake-On-LAN**
+---
 ![Wake On LAN info](WakeOnLAN.png)<br>
 <b>Figure 1: Wake On LAN working setup</b>
 <br>
@@ -12,7 +13,7 @@ A network protocol known as Wake-On-LAN (WoL) enables a computer to be remotely 
 As shown in Figure 1A, the magic packet will contain all the MAC addresses of the compute nodes in the network. Note, that all devices must be on the same network, which is 192.168.0.0, and have a valid NIC (Network Interface Card). Then, the magic packets will be broadcast in the network as shown in Figure 1B, which is 255.255.255.255. The magic packets will be sent to the relevant compute nodes by identifying each MAC address incorporated within the magic packets.
 
 ### **1.2 Setting up Power button on head node**
- ---
+---
 
 ![Power button setup](powerbuttonsetup.png)<br>
 <b>Figure 2: Implementing Power On and Off button on Head node motherboard</b>
@@ -22,6 +23,7 @@ As shown in Figure 2, must first identify the power button headers. As illustrat
 
 
 ### **1.3 Setting up Wake-On-LAN magic packets communication**
+---
 <br>
 
 ![Wake On LAN setup](WOL-setup1.png)<br>
@@ -44,6 +46,7 @@ A. First, in the compute node BIOS, in the APM section related with power manage
 By following, the above steps successfully, can setup a Wake-On-LAN communication. 
 
 ### **1.4 Bash scripting for Wake-On-LAN**
+---
 After, setting up the WOL communication and Open-SSH, have to create a bash script to turn on and off the compute nodes, which performs after booting up of head node. This step took due to the failure of power on and off button process. 
 
     #! /usr/bin/env bash
@@ -78,6 +81,7 @@ As shown in Figure 4 above, a bash script was created to turn off and on the com
 After the successful implementation of Wake On LAN, 3 tests have been conducted:
 
 ### **2.1. Wireshark testing**
+---
 
 ![Wire shark testing](wiresharktest.png)<br>
 <b>Figure 5: Wireshark testing</b>
@@ -91,6 +95,7 @@ After the successful implementation of Wake On LAN, 3 tests have been conducted:
 </ul>
 
 ### **2.2. Bash script power on testing**
+---
 <ul>
 <li>Purpose: To verify whether the created bash script turns on the compute nodes from the head node.</li>
 
@@ -100,6 +105,7 @@ After the successful implementation of Wake On LAN, 3 tests have been conducted:
 </ul>
 
 ### **2.3. Bash script power off testing**
+---
 <ul>
 <li>Purpose: To verify whether the created bash script turns off the compute nodes.</li>
 
