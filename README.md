@@ -207,20 +207,22 @@ Step wise Step  process is shown in figure 2 below:
 ***Assemble the HPC system, implementing power management and resource-efficient configurations. Configure non-volatile storage and RAM to meet performance requirements.***
 
 
-## 5. System Configuration
+## 4. System Configuration
 
-### 5.1. Networking
+### 4.1. Networking
 To enable parallelisation in HPC, networking must be established between the head node and compute nodes. Therefore, this section will discuss how the network is established in this project's HPC and will also discuss components such as IP address configuration, network topology, and network bridging in more detail. As an introduction, for this networking setup, a star networking topology, static IP configuration and nm-connection editor have been used and will be discussed in more detail below. Note: In the HPC, the operating system is downloaded separately on each node.
 
 [Step by Step Configuration File Can be Found Here](nm-connection-editor.md)
 
 Through this successful networking implementation, future works such as SLURM configuration, Wake On LAN, OpenSSH and many more can be enabled.
 
-### 5.2. Background for power on and off function in HPC
+### 4.2. Background for power on and off function in HPC
 
 Due to failures experienced with the power-on button for the entire HPC system, the strategy was changed to power the HPC on and off. In this project, a bash script was created using Wake-on-LAN communication and OpenSSH. Initially, the HPC's head node will be turned on using the power-on button. Afterwards, to turn on the compute nodes, a bash script will be run, which turns on the other compute nodes at intervals. Through this method, the compute nodes can be successfully powered on, allowing the whole HPC system to function. Then, to turn off all the compute nodes, the OpenSSH function was incorporated into the script, with the sudo shutdown command for all compute nodes. Through this, it is possible to turn off the entire compute nodes. Finally, to turn off the head node, one can press the power button or enter a separate sudo shutdown command for the head node.
 
 [Step by Step Configuration File Can be Found Here](power-on-off.md)
+
+
 # 5.Software Installation
 
 ## 5.1 SLURM Configuration
