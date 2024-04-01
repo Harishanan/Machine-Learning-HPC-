@@ -196,7 +196,7 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 ### 6.2. Implementation of Cryptocurrency Price Prediction Application
 <b>Write a introduction of this topic</b>
 
-[Access the detailed step-by-step guide here](https://github.com/TeachingMaterial/ace-2023_team0/blob/dev/Implementation_of_ML.md)
+[Access the detailed step-by-step guide here](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/Implementation_of_ML.md)
 ## 7. Performance Evaluation: Develop a strategy for evaluating HPC system performance. 
 
 ## 8. Software and OS Maintenance: 
