@@ -575,9 +575,25 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 # 9. Software and OS Maintenance: 
 ***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
 
+## Cluster Package Management Script
+A bash script is written to automate the process of synchronizing software package installations across a distributed computing environment. It addresses the operational challenge of maintaining consistent software versions across all nodes within a cluster. 
 
+## Setup
+Ensure that SSH keys are configured for password-less access to all client nodes. This is a prerequisite for the script to execute commands remotely without manual intervention.
 
+## Usage
+The script supports two primary operations: installation and uninstallation of software packages. It is invoked from the command line as follows:
 
+```sh
+
+./packageManager.sh -i|-u <package_name>
+Options:
+
+-i: Install the specified package across all nodes.
+-u: Uninstall the specified package across all nodes.
+
+```
+The script can be seen [here](PackageManagerScript.md) with explanation
 # IV. References
 
 1. The button can be find here: https://uk.rs-online.com/web/p/push-button-switches/2099127?cm_mmc=UK-PLA-DS3A-_-google-_-CSS_UK_EN_PMAX_RS+PRO-_--_-2099127&matchtype=&&gad_source=1&gclid=EAIaIQobChMIpP3xg7-mhAMVFAUGAB0t5QD5EAQYByABEgIy1_D_BwE&gclsrc=aw.ds
