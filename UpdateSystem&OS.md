@@ -35,3 +35,5 @@ To ensure system configuration files are up-to-date, a cron job is scheduled to 
 ```sh
 0 4 * * * cd /home/master/GitHub/ace-2023_-team-0/ && git pull >> home/master/logFiles/git_pull.log 2>&1
 ```
+
+All the configuration files can be found [here](https://github.com/TeachingMaterial/ace-2023_-team-0/tree/main/configurationFiles)
