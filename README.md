@@ -54,6 +54,7 @@
     - [9.1.3. Impact of Maintenance on Software Complexity and Maintenance Performance:](#913-impact-of-maintenance-on-software-complexity-and-maintenance-performance)
   - [9.2. Setting Up a System for Software and Operating System Updates Using Cron and Git](#92-setting-up-a-system-for-software-and-operating-system-updates-using-cron-and-git)
   - [9.3. Create Man Page](#93-create-man-page)
+- [10. Conclusion](#10-conclusion)
 - [IV. References](#iv-references)
 - [V. Authors](#v-authors)
   
