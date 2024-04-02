@@ -84,8 +84,6 @@ This documentation outlines the procedures undertaken to construct a comprehensi
 
 # 1. System Design And Architecture 
 
-***Design the architecture, integrating 14 ASUS CS-8 motherboards and single-board computers. Provide critical reflections on the chosen design.***
-
 Before commencing the project design process, a comprehensive file containing all specifications was compiled. This file proved invaluable throughout the project, aiding in power and cooling calculations and enhancing our understanding of the system. [Specification of all the components can be found here!](hardware.md)
 
 Initially, a design concept was developed, featuring two cases where motherboards were stacked vertically, each housing five motherboards. These motherboards would be powered by a 750W Power Supply Unit (PSU). Additionally, this design would be connected to a Single Board Computer (SBC), serving as the head node. Figure 1 illustrates the initial design idea.
@@ -499,7 +497,9 @@ Below, you can find details on how Apptainers function with images and how they 
 
 ## 6.5. Configure Prometheus and Grafana
 
-[Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
+Prometheus, an open-source monitoring and alerting toolkit, is engineered for scalability and reliability when collecting time-series data. Conversely, Grafana serves as a widely-used visualization tool that enriches Prometheus capabilities by delivering dynamic and personalized dashboards for the analysis and monitoring of data. 
+
+Prometheus and Grafana were employed in this project for monitoring the performance of the application. These software tools were utilized for visualization purposes, enabling efficient resource allocation and scheduling. The full configuration file for these applications is provided here: [Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
 
 
 ## 6.6. Monitoring Energy Consumption and Efficiency with Prometheus
