@@ -325,7 +325,30 @@ Due to failures experienced with the power-on button for the entire HPC system, 
 
 # 6.Software Installation
 
-## 6.1 SLURM Configuration
+## 6.1. PXE Server Configuration on Ubuntu 
+
+PXE stands for Preboot Execution Environment is a set of guidelines that allow a computer to boot an operating system (OS) via a network connection. In this project, the PXE Server was initially considered but ultimately not utilized due to technical challenges. Despite multiple attempts to configure PXE, the plan had to be abandoned due to technical issues. Instead, the group opted for a Static Interface Configuration approach for data sharing. Even though PXE booting was unsuccessful, the configuration details of the PXE Server were documented for future reference.
+
+The basic topology for PXE Server is shown below:
+
+![access SSH](topology.png)<br>
+<b>Figure 1: Basic Topology for PXE</b>
+<br><br>
+
+The packages used for the configuration are given below in table:
+
+|   Protocol    |   Package Name    |   Description |
+|---------------|-------------------|-------------- |
+|  DHCP server  | dnsmasq           | DHCPD stands for Dynamic Host Configuration Protocol whcich allocates IP address to Client Node from a predefined pool. This ensures that the client nodes can communicate and access network resources.
+|  TFTP server  | tftpd-hpa         | TFTP stands for Trivial File Transfer Protocol which is used for transfering files between devices on a network. It is a lightweight protocol which lacks advanced features like authentication and directory listing. 
+|  FTP Server   | vsftpd            | File Transfer Protocol is similar to TFTP which supports various commands for navigating directories, uploading, downloading, renaming, and deleting files on the server. 
+|   HTTP        | apache2           |HTTP is a flexible and extensively used protocol that offers a convenient way to communicate and transfer data within cluster computing setups.
+|   NFS         | nfs-kernel-server | [NFS Configuration](NFS.md)
+
+
+[Step by Step Configuration Guide is provided here!](pxeconfig.md)
+
+## 6.2. SLURM Configuration
 
 SLURM, an acronym for Simple Linux Utility for Resource Management, is an open-source workload manager developed for supercomputers and Linux-based cluster systems. It offers three primary functions: 
 
@@ -353,11 +376,11 @@ These commands serve as essential tools for effectively interacting with SLURM a
 [Step by Step Configuration File Can be Found Here!](slurm.md)
 
 
-## 6.2. Apptainer Configuration
+## 6.3. Apptainer Configuration
 
 Apptainer, formerly known as Singularity, is a containerization platform designed to bring containers and reproducibility to scientific computing and the high-performance computing (HPC) environment. Apptainer is specifically optimized for HPC systems, providing a seamless way to package entire scientific workflows, software, libraries, and even data into a single file (Kurtzer et al., 2017).
 
-## 6.2.1. Reasons for Using Apptainer
+## 6.3.1. Reasons for Using Apptainer
 
 | Benefit         | Description                                                                                                                     | Reference             |
 |-----------------|---------------------------------------------------------------------------------------------------------------------------------|-----------------------|
@@ -371,7 +394,7 @@ Below, you can find details on how Apptainers function with images and how they 
 [Learn More about Apptainer and How to Configure apptainer](configure_apptainer.md)
 
 
-## 6.3. Configure Prometheus and Grafana
+## 6.4. Configure Prometheus and Grafana
 
 [Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
 
@@ -405,17 +428,20 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 3. Power button and Front panel connections : https://www.pcinq.com/how-to-connect-motherboard-front-panel-headers/
                             https://www.electronicshub.org/power-button-on-motherboard/#:~:text=Ans%3A%20The%20power%20switch%20on,for%20the%2020-pin%20header
 
-1. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
-2. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
-3. https://scikit-learn.org/stable/index.html
-4. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
-5. https://hpc.uni.lu/infrastructure/network
-6. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
-7. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
-8. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
-9. https://scikit-learn.org/stable/index.html
-10. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
-11. https://hpc.uni.lu/infrastructure/network
+4. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
+5. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
+6. https://scikit-learn.org/stable/index.html
+7. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
+8. https://hpc.uni.lu/infrastructure/network
+9. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
+10. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
+11. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
+12. https://scikit-learn.org/stable/index.html
+13. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
+14. https://hpc.uni.lu/infrastructure/network
+15. https://hpc.uni.lu/infrastructure/network
+16. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
+17. https://medium.com/jacklee26/set-up-pxe-server-on-ubuntu20-04-and-window-10-e69733c1de87
 
 
 # V. Authors
