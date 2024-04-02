@@ -90,13 +90,13 @@ Once the basic structure of the HPC was conceptualized, technical research was i
 
 # 2. Technology Research: 
 
+
 ## 2.1 Operating System Selection: 
 
 Initially, an attempt was made to determine which operating system the ASUS CS-B motherboard supports. However, the information available suggests that the ASUS CS-B is only compatible with Ubuntu 13.10, as indicated in the provided image.
 
 ![Os](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/85470428/3f1fbdae-3522-4e26-841c-ef19f4888d5a)
 Figure: OS Compatibility of Asus CS-B 
-
 
 ### 2.1.1 Install Operating System in Head Node
 
@@ -175,7 +175,6 @@ The process of installing the operating system on a compute node is similar to t
     
     The system is expected to consume between 73W - 88W during active use and between 25.05W - 40.05W when idle. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
 
-
 ## 2.3 Network Interconnect:
 
 There are several interconnect technologies available for establishing connection in a cluster computing with their own strength and specefic use-cases. Some of them are :
@@ -209,7 +208,6 @@ Once the steps are followed and both interfaces are activated, users can proceed
 
 Ethernet cables were manually crimped for this project, adhering to the Registered Jack 45 (RJ-45) standard. The figure below illustrates the color standard for RJ-45 cables..
 
-
 ![RJ-45 Standard](pictures/rj45_standard.PNG)<br>
       <b>Figure 1: RJ-45 Standard</b>
       <br>
@@ -220,21 +218,11 @@ Step wise Step  process is shown in figure 2 below:
       <b>Figure 2: Step by Step Ethernet Cimp</b>
       <br>
 
-* Power Supply Unit (PSU) Capacity:
-
-        Total Output Capacity: 220W
-        Maximum Wattage: 60W
-
-* Conclusion:
-
-    The single PSU in our system will be connected to one motherboard, one SSD, and one graphics card. The total power consumption of the system should not exceed the PSU capacity.
-    
-    The system is expected to consume between 73W - 88W during active use and between 25.05W - 40.05W when idle. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
+ystem is expected to consume between 73W - 88W during active use and between 25.05W - 40.05W when idle. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
 
 ## 2.4 Cooling Calculations
 
 Cooling calculations were conducted to determine the necessary airflow for ordering the appropriate fan. This involved performing a simple arithmetic calculation, the details of which can be found in the [this file here.](coolingcalculation.md). 
-
 
 ### 2.4.1.	3D Model 
  The selection of the fan was made with careful consideration of various factors, and a dual-fan system was chosen. Two fans are positioned at the front of the case to intake cool air, while another two are situated at the back to expel hot air as depicted in Figure 1. This configuration creates an airflow pattern that helps maintain optimal temperatures for all components.
@@ -311,7 +299,7 @@ To enable parallelisation in HPC, networking must be established between the hea
 Through this successful networking implementation, future works such as SLURM configuration, Wake On LAN, OpenSSH and many more can be enabled.
 
 
-### 5.1.1. **Open-SSH connection**
+### 5.1.1. Open-SSH connection
 
 OpenSSH, or Open Secure Shell, is an open-source implementation of the SSH protocol. It provides secure communication between two or more computers over an unsecured network, ensuring data exchange confidentiality and integrity. OpenSSH is widely used in Linux and other Unix-like operating systems as the standard SSH implementation for remote administration, secure file transfer, and tunnelling other network services.
 
@@ -341,7 +329,7 @@ In this representation:
 Step by Step NFS configuration Guide Can be found here: [NFS Configuration](NFS.md)
            
 
-## 5.2. Background for power on and off function in HPC
+## 5.2. Power on and off function in HPC
 
 Due to failures experienced with the power-on button for the entire HPC system, the strategy was changed to power the HPC on and off. In this project, a bash script was created using Wake-on-LAN communication and OpenSSH. Initially, the HPC's head node will be turned on using the power-on button. Afterwards, to turn on the compute nodes, a bash script will be run, which turns on the other compute nodes at intervals. Through this method, the compute nodes can be successfully powered on, allowing the whole HPC system to function. Then, to turn off all the compute nodes, the OpenSSH function was incorporated into the script, with the sudo shutdown command for all compute nodes. Through this, it is possible to turn off the entire compute nodes. Finally, to turn off the head node, one can press the power button or enter a separate sudo shutdown command for the head node.
 
@@ -373,7 +361,28 @@ The packages used for the configuration are given below in table:
 
 [Step by Step Configuration Guide is provided here!](pxeconfig.md)
 
-## 6.2. SLURM Configuration
+## 6.2. Cluster Package Management Script
+A bash script is written to automate the process of synchronizing software package installations across a distributed computing environment. It addresses the operational challenge of maintaining consistent software versions across all nodes within a cluster. 
+
+### 6.2.1. Setup
+Ensure that SSH keys are configured for password-less access to all client nodes. This is a prerequisite for the script to execute commands remotely without manual intervention.
+
+### 6.2.2. Usage
+The script supports two primary operations: installation and uninstallation of software packages. It is invoked from the command line as follows:
+
+```sh
+
+./packageManager.sh -i|-u <package_name>
+Options:
+
+-i: Install the specified package across all nodes.
+-u: Uninstall the specified package across all nodes.
+
+```
+The script can be seen [here](PackageManagerScript.md) with explanation
+
+
+## 6.3. SLURM Configuration
 
 SLURM, an acronym for Simple Linux Utility for Resource Management, is an open-source workload manager developed for supercomputers and Linux-based cluster systems. It offers three primary functions: 
 
@@ -401,11 +410,11 @@ These commands serve as essential tools for effectively interacting with SLURM a
 [Step by Step Configuration File Can be Found Here!](slurm.md)
 
 
-## 6.3. Apptainer Configuration
+## 6.4. Apptainer Configuration
 
 Apptainer, formerly known as Singularity, is a containerization platform designed to bring containers and reproducibility to scientific computing and the high-performance computing (HPC) environment. Apptainer is specifically optimized for HPC systems, providing a seamless way to package entire scientific workflows, software, libraries, and even data into a single file (Kurtzer et al., 2017).
 
-## 6.3.1. Reasons for Using Apptainer
+## 6.4.1. Reasons for Using Apptainer
 
 | Benefit         | Description                                                                                                                     | Reference             |
 |-----------------|---------------------------------------------------------------------------------------------------------------------------------|-----------------------|
@@ -419,9 +428,10 @@ Below, you can find details on how Apptainers function with images and how they 
 [Learn More about Apptainer and How to Configure apptainer](configure_apptainer.md)
 
 
-## 6.4. Configure Prometheus and Grafana
+## 6.5. Configure Prometheus and Grafana
 
 [Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
+
 
 # 7. Task Implementation:
 
@@ -442,6 +452,7 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 
 # 9. Software and OS Maintenance: 
 ***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
+
 
 
 # IV. References
@@ -467,6 +478,17 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 15. https://hpc.uni.lu/infrastructure/network
 16. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
 17. https://medium.com/jacklee26/set-up-pxe-server-on-ubuntu20-04-and-window-10-e69733c1de87
+18. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
+19. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
+20. https://scikit-learn.org/stable/index.html
+21. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
+22. https://hpc.uni.lu/infrastructure/network
+23. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
+24. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
+25. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
+26. https://scikit-learn.org/stable/index.html
+27. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
+28. https://hpc.uni.lu/infrastructure/network
 
 
 # V. Authors
