@@ -31,10 +31,11 @@
     - [5.1.2 Network File System (NFS)](#512-network-file-system-nfs)
   - [5.2. Background for power on and off function in HPC](#52-background-for-power-on-and-off-function-in-hpc)
 - [6.Software Installation](#6software-installation)
-  - [6.1 SLURM Configuration](#61-slurm-configuration)
-  - [6.2. Apptainer Configuration](#62-apptainer-configuration)
-  - [6.2.1. Reasons for Using Apptainer](#621-reasons-for-using-apptainer)
-  - [6.3. Configure Prometheus and Grafana](#63-configure-prometheus-and-grafana)
+  - [6.1. PXE Server Configuration on Ubuntu](#61-pxe-server-configuration-on-ubuntu)
+  - [6.2. SLURM Configuration](#62-slurm-configuration)
+  - [6.3. Apptainer Configuration](#63-apptainer-configuration)
+  - [6.3.1. Reasons for Using Apptainer](#631-reasons-for-using-apptainer)
+  - [6.4. Configure Prometheus and Grafana](#64-configure-prometheus-and-grafana)
 - [7. Task Implementation:](#7-task-implementation)
   - [7.1. How to Create Machine Learning for Predict Crypto Currencies](#71-how-to-create-machine-learning-for-predict-crypto-currencies)
   - [7.2. Implementation of Cryptocurrency Price Prediction Application](#72-implementation-of-cryptocurrency-price-prediction-application)
@@ -53,6 +54,9 @@ The provided documentation outlines the comprehensive process undertaken by Team
 
 # III. Introduction
 
+HPC (High Performance Computing) involves combining the computational capabilities of multiple computers to achieve significantly greater performance than individual systems. It can be referred as Cluster Computing, where a network of two or more computing devices collaborates towards a shared computing objective. This network operates on the principle of parallel processing, which entails distributing complex tasks among two or more processors (CPUs) to expedite their execution.
+
+This documentation outlines the procedures undertaken to construct a comprehensive HPC system utilizing five motherboards, with one serving as the head node and four as compute nodes. The HPC is intended to run a cryptocurrency prediction application capable of forecasting Bitcoin, Ethereum, and Binance Coin (BNB) prices using its datasets. Additionally, it provides a detailed, step-by-step guide for configuring services and necessary configuration files to facilitate parallel processing and establish connections between nodes.
 
 # 1. System Design And Architecture 
 
@@ -150,10 +154,8 @@ The process of installing the operating system on a compute node is similar to t
 
 
 ## 2.3 Network Interconnect:
-   
-***Cluster Network is two or more computing device working together for a common computing purpose. This Network follows the principle of the parallel processing. Parallel processing is the method of using two or more processors(CPUs) to handle seperate chuncks of a same complex tasks.*** 
 
-There are several interconnect technologies available with their own strength and specefic use-cases. Some of them are :
+There are several interconnect technologies available for establishing connection in a cluster computing with their own strength and specefic use-cases. Some of them are :
 
 1. **Infiniband** : Computer Networking communication standard used in high-performance computing that features high throughput and very low latency. It supports Remote Direct Memory Access(RDMA), which means the ability to access host memory directly without CPU intervention. Infiniband is widely used in supercomputer clusters and it is preferred network interconnection technology for GPU servers.
 2. **NVIDIA NVLink** : World's first high-speed GPU interconnect technology that can connect two graphics card , with low latency, and high bandwidth. It is ideal for the system that uses NVIDIA graphics card, such as those in deep-learning and GPU accelerated computing. It is not best option for our project,as it is only compatible with NVIDIA graphics card and we will be using intel graphics card for our HPC.
