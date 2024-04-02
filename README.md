@@ -40,6 +40,7 @@
   - [6.4. Apptainer Configuration](#64-apptainer-configuration)
   - [6.4.1. Reasons for Using Apptainer](#641-reasons-for-using-apptainer)
   - [6.5. Configure Prometheus and Grafana](#65-configure-prometheus-and-grafana)
+  - [6.6. Monitoring Energy Consumption and Efficiency with Prometheus](#66-monitoring-energy-consumption-and-efficiency-with-prometheus)
 - [7. Task Implementation:](#7-task-implementation)
   - [7.1. How to Create Machine Learning for Predict Crypto Currencies](#71-how-to-create-machine-learning-for-predict-crypto-currencies)
   - [7.2. Implementation of Cryptocurrency Price Prediction Application](#72-implementation-of-cryptocurrency-price-prediction-application)
