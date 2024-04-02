@@ -42,3 +42,7 @@ The choice of CPU scaling governor should be based on your system's needs and pr
 1. <i>Minimizing Energy Consumption:</i> If energy efficiency is a priority, a governor like ‘powersave’ may be suitable as it sets the CPU statically to the lowest frequency within operational limits.
 2. <i>Maximizing Performance:</i> If performance is critical, the ‘performance’ governor may be more appropriate as it sets the CPU statically to the highest frequency within the scaling range.
 
+##References
+
+1. Kernel Documentation. (2017). CPU Performance Scaling. Retrieved from https://www.kernel.org/doc/html/v4.14/admin-guide/pm/cpufreq.html
+2. Stack Exchange. (2018). What are the implications of setting the CPU governor to “performance”? Retrieved from https://unix.stackexchange.com/questions/439340/what-are-the-implications-of-setting-the-cpu-governor-to-performance 
