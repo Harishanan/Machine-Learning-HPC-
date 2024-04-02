@@ -608,7 +608,11 @@ The creation of manual pages, or "man pages," serves as a cornerstone in documen
 
 # V. Authors
 
-
+1. [Christopher Reily](https://github.com/chrisreilly706)
+2. [Harishanan Thevarajah](https://github.com/Harishanan)
+3. [Juan David Gallego](https://github.com/jjuanda19)
+4. [Taufique Azad](https://github.com/taufique-06)
+5. [Samir Shrestha](https://github.com/sameyr)  
 
 
 
