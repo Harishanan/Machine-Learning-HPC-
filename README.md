@@ -85,7 +85,7 @@ However, the initial concept was abandoned upon the realization that a single mo
 <div align="center">
 
 ![Final_Design_Sketch](pictures/finalDesignSketch.PNG)<br>
-      <b>Figure 1: Final Design Sketch</b>
+      <b>Figure 2: Final Design Sketch</b>
       <br>
 
 </div>
@@ -100,7 +100,7 @@ Once the basic structure of the HPC was conceptualized, technical research was i
 Initially, an attempt was made to determine which operating system the ASUS CS-B motherboard supports. However, the information available suggests that the ASUS CS-B is only compatible with Ubuntu 13.10, as indicated in the provided image.
 
 ![Os](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/85470428/3f1fbdae-3522-4e26-841c-ef19f4888d5a)
-Figure: OS Compatibility of Asus CS-B 
+Figure 3: OS Compatibility of Asus CS-B 
 
 ### 2.1.1 Install Operating System in Head Node
 
@@ -209,19 +209,23 @@ By default, one of the ports is enabled. However, to activate the second port, u
 
 Once the steps are followed and both interfaces are activated, users can proceed to configure each interface to perform specific tasks. Detailed instructions can be found in the following link: [Configuring Interface using Nm-Connection-Editor](https://github.com/TeachingMaterial/ace-2023_-team-0/tree/documentation/nm-connection-editor-Harishanan)
 
-Ethernet cables were manually crimped for this project, adhering to the Registered Jack 45 (RJ-45) standard. The figure below illustrates the color standard for RJ-45 cables..
+Ethernet cables were manually crimped for this project, adhering to the Registered Jack 45 (RJ-45) standard. The figure 4  illustrates the color standard for RJ-45 cables..
+<div align="center">
 
 ![RJ-45 Standard](pictures/rj45_standard.PNG)<br>
-      <b>Figure 1: RJ-45 Standard</b>
+      <b>Figure 4: RJ-45 Standard</b>
       <br>
+</div>
 
-Step wise Step  process is shown in figure 2 below:
+Step wise Step  process is shown in figure 5 below:
+<div align="center">
 
 ![Ethernet-Crimp](pictures/stepwisestepcrimp.PNG)<br>
-      <b>Figure 2: Step by Step Ethernet Cimp</b>
+      <b>Figure 5: Step by Step Ethernet Cimp</b>
       <br>
+</div>
 
-ystem is expected to consume between 73W - 88W during active use and between 25.05W - 40.05W when idle. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
+System is expected to consume between 73W - 88W during active use and between 25.05W - 40.05W when idle. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
 
 ## 2.4 Cooling Calculations
 
@@ -231,14 +235,28 @@ Cooling calculations were conducted to determine the necessary airflow for order
  The selection of the fan was made with careful consideration of various factors, and a dual-fan system was chosen. Two fans are positioned at the front of the case to intake cool air, while another two are situated at the back to expel hot air as depicted in Figure 1. This configuration creates an airflow pattern that helps maintain optimal temperatures for all components.
 
    Additionally, the CPU fan, which is attached to the motherboard, provides active cooling for the CPU. Moreover, the GPU and power supply unit also have built-in fans for additional cooling.
+  <div align ="center">
 
    ![Fan Placement](fanplacement.png)<br>
-   <b>Figure 1: 3D Model of Case with the fan where a) represents the front 3D view and b) represent the back 3D view </b>
+   <b>Figure 6: 3D Model of Case with the fan where a) represents the front 3D view and b) represent the back 3D view </b>
    <br>
+  </div>
 
 # 3. System Construction:
-***Assemble the HPC system, implementing power management and resource-efficient configurations. Configure non-volatile storage and RAM to meet performance requirements.***
 
+Following the completion of all technical research, a preliminary outline for the basic system construction was created. This step was crucial to ensure that once the case was constructed, the components could be assembled in each shelf according to the designated layout. Notably, since the head node includes a GPU whereas the compute nodes do not, additional clearance was required to prevent overcrowding and ensure proper placement of the motherboard. The initial design for a shelf, which encompasses the motherboard, PSU, and SSD, is depicted in the figure 7 below.
+
+  <div align ="center">
+
+ ![Architecture](pictures/architecture.PNG)<br>
+   <b>Figure 7: 2D Structure of the shelf with all the components.</b>
+   <br>
+
+</div>
+
+Each motherboard was equipped with a 500 GB SSD and 2 * 8 GB RAM, providing sufficient resources for efficient task execution. With four compute nodes in use, this configuration ensures optimal performance. Additionally, the head node can leverage the resources of all nodes simultaneously when executing tasks.
+
+During the layout creation process, careful consideration was given to various requirements such as cooling, power supply, placement dimensions, and more. All calculations pertaining to these requirements have been documented in detailed below.
 
 # 4. Housing and Cooling Solutions: 
 
@@ -252,24 +270,29 @@ While waiting to receive the initial components from 3d printing I was informed 
 ## 4.3. Chosen Shell  
 The case we ordered was a 21U tall server racking system which was perfect for the purpose of our projects. It came with slots all down the left and ride side of the case which ensured enough ventilation for the fans to disperse the heat 
 
+<div align="center">
 
 ![Shell](case.jpeg)<br>
-<b>Figure 1:Case</b>
+<b>Figure 8:Case</b>
 <br><br>
+
+</div>
 
 The 1U brackets were 3d printed in order to hold the acrylic shelves that were laser cut. They were mounted in the holes that were ment for the racking system of the case. An extension cord was placed at the back and mounted to the top of the case. Whis acted as a way to limit the amount of cables that would exit the case. Instead, we could power each of the motherboards power sources internally 
 
 ![Push button](brackets.jpeg)<br>
-<b>Figure 1:3D printed brakets </b>
+<b>Figure 9:3D printed brakets </b>
 <br><br>
 
 The front and back of the case was laser cut in acrylic with 120x120 fan holes at the base and the top in order to mount the fan to then in a way that allowed them to get a strong enough air pull. Hence the small circles that fill the 120x120 frame. the back panel was made to be slightly smaller to allow room for the extension cord 
 
+<div align="center">
 
 ![Push button](panels.jpeg)<br>
-<b>Figure 1:3D back panel of case  </b>
+<b>Figure 10:3D back panel of case  </b>
 <br><br>
 
+</div>
 ## 4.4. Other alterations
 Rubber feet will be used on the motherboards and the SSDs to limit the directs contact onto the shelves to allow air underneath the boards when necessary. The extension cable will run down the side of the case into an outlet. The power button will drill through the roof of the case to allow Instant power to the application we have also decided to cover the back of the case to limit the light inside the case to utilize the led fans. All power supply will plug directly into the extension cord build into the case
 
@@ -315,11 +338,11 @@ In this project, Secure Shell (SSH) is employed to establish secure connections 
 The Network File System (NFS) is a networking protocol designed for distributed file sharing. A file system organizes and stores data in the form of files, typically on Hard Disk Drives (HDDs) or Solid-State Drives (SSDs). NFS operates on a similar principle, allowing files to be stored and accessed over a network, enabling multiple devices within the same network to retrieve and share data.
 
 NFS is a widely utilized protocol for file sharing servers, offering compatibility across a broad spectrum of operating systems. In this project, NFS will play a crucial role in facilitating seamless file sharing among all client nodes. In this project, the functionality of NFS can be illustrated using a visualization similar to Figure 1:
-<div style="text-align: center;">
+<div align = "center">
 
 ![alt text](NFS.PNG)
 
-<p> Figure 1. Network File Sharing </p>
+<p> Figure 11. Network File Sharing </p>
 </div>
 
 In this representation:
@@ -355,10 +378,12 @@ CPU performance scaling enables the operating system to scale the CPU frequency 
 PXE stands for Preboot Execution Environment is a set of guidelines that allow a computer to boot an operating system (OS) via a network connection. In this project, the PXE Server was initially considered but ultimately not utilized due to technical challenges. Despite multiple attempts to configure PXE, the plan had to be abandoned due to technical issues. Instead, the group opted for a Static Interface Configuration approach for data sharing. Even though PXE booting was unsuccessful, the configuration details of the PXE Server were documented for future reference.
 
 The basic topology for PXE Server is shown below:
+<div align="center">
 
 ![access SSH](topology.png)<br>
-<b>Figure 1: Basic Topology for PXE</b>
+<b>Figure 12: Basic Topology for PXE</b>
 <br><br>
+</div>
 
 The packages used for the configuration are given below in table:
 
