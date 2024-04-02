@@ -32,3 +32,13 @@ The choice of CPU scaling governor should be based on your system's needs and pr
 3. <b>ondemand:</b> Dynamically increases CPU speed when needed, offering a balance between performance and power usage.
 4. <b>conservative:</b> Similar to ondemand but increases CPU frequency more gradually.
 5. <b>schedutil:</b> Makes scaling decisions based on the scheduler's load tracking, potentially offering better efficiency.
+
+## Factors to Consider
+- <b>Workload Characteristics:</b>
+1. <i>CPU Intensity:</i> If the tasks are CPU-intensive and require quick completion, then considering higher clock frequencies is necesary.
+2. <i>Task Urgency:</i> If the tasks can afford slower processing times in exchange for energy savings, then lower clock frequencies is fine.
+
+- <b>Energy vs. Performance Priorities:</b>
+1. <i>Minimizing Energy Consumption:</i> If energy efficiency is a priority, a governor like ‘powersave’ may be suitable as it sets the CPU statically to the lowest frequency within operational limits.
+2. <i>Maximizing Performance:</i> If performance is critical, the ‘performance’ governor may be more appropriate as it sets the CPU statically to the highest frequency within the scaling range.
+
