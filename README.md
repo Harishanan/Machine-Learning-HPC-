@@ -31,6 +31,7 @@
     - [5.1.2 Network File System (NFS)](#512-network-file-system-nfs)
   - [5.2. Power on and off function in HPC](#52-power-on-and-off-function-in-hpc)
   - [5.3. CPU frequency scaling](#53-cpu-frequency-scaling)
+  - [5.4 CPU Overclocking](#54-cpu-overclocking)
 - [6.Software Installation](#6software-installation)
   - [6.1. PXE Server Configuration on Ubuntu](#61-pxe-server-configuration-on-ubuntu)
   - [6.2. Cluster Package Management Script](#62-cluster-package-management-script)
@@ -389,6 +390,14 @@ The Linux kernel offers CPU performance scaling via the CPUFreq subsystem, which
 A script is written to control the cpu frequency scaling which can be found [here](CPU_Scaling_Governor) 
 
 CPU performance scaling enables the operating system to scale the CPU frequency up or down in order to save power or improve performance. Scaling can be done automatically in response to system load, adjust itself in response to ACPI events, or be manually changed by user space programs.
+
+## 5.4 CPU Overclocking 
+
+Overclocking involves increaing the CPU's clock speed beyond its predefined limits set by the manufacturer. Typically utilized to enhance performance and processing capabilities, this technique increases the frequency at which the CPU operates, measured in cycles per second (Hertz). With increased clock speeds, the CPU executes operations at a quicker pace than its standard rate, resulting in improved performance for tasks such as gaming, video editing, and handling intensive computational workloads. 
+
+However, Overclocking also causes some issues which should be calculated in the beginning. Increased clock speed may cause more heat, which leds CPU to higher temperatures, which might damage the component if not handeled properly. For this project overclocking might not be needed but there will be an option to enable the overclocking if needed.
+
+The Steps which can be followed to overclock the CPU can be found [here!](overclock.md)
 
 # 6.Software Installation
 
