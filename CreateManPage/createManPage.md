@@ -1,26 +1,25 @@
 # HPC Guide Man Page Installation
-This document outlines the steps to build and install the man page for managing HPC compute nodes and running applications in an HPC environment.
+
+This file outlines the steps to build and install the man page for managing HPC compute nodes and running applications in an HPC environment.
+
 
 ## Prerequisites
 The groff package installed for viewing man pages (usually pre-installed on most Linux distributions).
 
-## Step 1: Creating the Man Page
 
-1. Start by creating a file named HPC_GUIDE.1 with the below content provided. The file contains the man page source code written in the troff markup language, which is used for formatting man pages.
-   
-```sh                                                                                                                  
+### Step 1: Creating the Man Page
+- Start by creating a file named HPC_GUIDE.1 with the below content (This file contains the man page source code written in the troff markup language, which is used for formatting man page):
+
+```sh   
+
 .TH HPC_GUIDE 1 "30 March 2024"
 .SH NAME
 hpc_guide \- guide for managing HPC compute nodes and running applications
 .SH SYNOPSIS
-.B ./wakeup.sh
+
+.B wakeup.sh
 .RB [ \-on ]
 .RB [ \-off ]
-.br
-.B ./packageManager.sh
-.RB [ \-i]
-.RB [ \-u ]
-.RB [ \-Package Name ]
 .br
 .B sudo apptainer build
 .I imagename.squashfs allApplicationPackages.def
@@ -38,16 +37,6 @@ To turn compute nodes off, use:
 .nf
 \fB./wakeup.sh -off\fP
 .fi
-.SH "INSTALLING AND UNINSTALLING PACKAGES ACROSS ALL NODES"
-To install package, use:
-.nf
-\fB./packageManager.sh -i [Package Name]\fP
-.fi
-To uninstall package, use:
-.nf
-\fB./packageManager.sh -u [Package Name]\fP
-.fi
-
 .SH "CREATING APPTAINER IMAGE"
 To create an Apptainer image, run:
 .nf
@@ -91,7 +80,9 @@ sudo cp HPC_GUIDE.1 /usr/local/share/man/man1/
     sudo mandb
 ```
 The above command will display
-![Output of the Man Page](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/documentation/Create-Man-Page-for-HPC---Taufique/CreateManPage/Screenshot%20from%202024-03-30%2002-37-32.png)
+
+![Output of the Man Page](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/documentation/Create-Man-Page-for-HPC---Taufique/CreateManPage/Screenshot%20from%202024-03-30%2001-08-20.png)
+
 ## Step 3: Viewing the Man Page
 To view the man page, use the man command followed by the name of the man page without the section number:
 
