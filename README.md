@@ -30,6 +30,7 @@
     - [5.1.1. Open-SSH connection](#511-open-ssh-connection)
     - [5.1.2 Network File System (NFS)](#512-network-file-system-nfs)
   - [5.2. Power on and off function in HPC](#52-power-on-and-off-function-in-hpc)
+  - [5.3. CPU frequency scaling](#53-cpu-frequency-scaling)
 - [6.Software Installation](#6software-installation)
   - [6.1. PXE Server Configuration on Ubuntu](#61-pxe-server-configuration-on-ubuntu)
   - [6.2. Cluster Package Management Script](#62-cluster-package-management-script)
@@ -337,7 +338,7 @@ Due to failures experienced with the power-on button for the entire HPC system, 
 
 [Step by Step Configuration File Can be Found Here](power-on-off.md)
 
-## 5.3. CPU frequency scaling (Add them in Software Conf after Grafana)
+## 5.3. CPU frequency scaling 
 The Linux kernel offers CPU performance scaling via the CPUFreq subsystem, which defines two layers of abstraction:
 
 - Scaling governors implement the algorithms to compute the desired CPU frequency, potentially based off of the system's needs.
