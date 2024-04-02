@@ -54,8 +54,20 @@
 The provided documentation outlines the comprehensive process undertaken by Team 0 for the design of a High Performance Computing (HPC) system as part of the Advanced Computer Engineering Module for the Computer Engineering Program at the University of Greenwich for the academic year 2023/24. This report guides the reader through a detailed step-by-step procedure encompassing both hardware and software aspects of the project. By following this documentation, readers will gain insights into the systematic approach employed by the team, enabling them to replicate and create their own HPC systems.  
 
 # II. Built With
-- [JavaScript](https://www.javascript.com/)
-- [VueJS](https://vuejs.org/)
+- [Ubuntu](https://ubuntu.com/)
+- [OpenSSH Server](https://ubuntu.com/server/docs/service-openssh)
+- [Netwrok File Storage](https://ubuntu.com/server/docs/service-nfs#:~:text=NFS%20allows%20a%20system%20to,if%20they%20were%20local%20files.)
+- [Slurm](https://slurm.schedmd.com/documentation.html)
+- [Apptainer](https://apptainer.org/)
+- [Grafana](https://grafana.com/)
+- [Prometheus](https://prometheus.io/)
+- [Python](https://www.python.org/)
+- [Keras](https://keras.io/)
+- [Scikit-learn](https://scikit-learn.org/stable/)
+- [Pandas](https://pandas.pydata.org/)
+- [Numpy](https://numpy.org/)
+- [Yahoo Finance](https://finance.yahoo.com/quote/ORGN/?guccounter=1&guce_referrer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8&guce_referrer_sig=AQAAAMMlh1WRJFSvhLwklRkllY4pF1bpIJDdzQW2RgzNQdXT9UneK7NrRyRfjRJjhlIqbXDo1fI8VZPe85jaJblPOzyxqJAUwbFIsEzwMxvuVRmiYa3RKBUCLKCt_m06g9hC8rNy5_lFaXcNjSt4hr4b0dFH7SEKdNbcdpUGrOiApW0R)
+  
 
 # III. Introduction
 
