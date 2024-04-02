@@ -26,3 +26,17 @@ A script is written that outputs the sensor data in a Prometheus-friendly format
 
 ### 2.2. Serve the Script Output Over HTTP
 To make the data accessible to Prometheus, the script is served it over HTTP. The simple solution is to use Python's HTTP server functionality. [See here](http_sensor_exporter.py) basic wrapper script that serves exporter's output.
+
+### 2.3. Configure Prometheus to Scrape the Custom Exporter
+
+Add a new job to Prometheus configuration (prometheus.yml) to scrape this custom exporter:
+
+```sh
+scrape_configs:
+  - job_name: 'sensors'
+    static_configs:
+      - targets: ['your_server_ip:8000']
+```
+
+###2.4. Restart
+Restart HTTP server script and Prometheus to apply the changes.
