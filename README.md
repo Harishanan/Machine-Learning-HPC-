@@ -300,9 +300,13 @@ The case we ordered was a 21U tall server racking system which was perfect for t
 
 The 1U brackets were 3d printed in order to hold the acrylic shelves that were laser cut. They were mounted in the holes that were ment for the racking system of the case. An extension cord was placed at the back and mounted to the top of the case. Whis acted as a way to limit the amount of cables that would exit the case. Instead, we could power each of the motherboards power sources internally 
 
+<div align="center">
+  
 ![Push button](brackets.jpeg)<br>
 <b>Figure 9:3D printed brakets </b>
 <br><br>
+
+</div>
 
 The front and back of the case was laser cut in acrylic with 120x120 fan holes at the base and the top in order to mount the fan to then in a way that allowed them to get a strong enough air pull. Hence the small circles that fill the 120x120 frame. the back panel was made to be slightly smaller to allow room for the extension cord 
 
