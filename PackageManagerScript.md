@@ -6,19 +6,19 @@
 
 ![image](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/85470428/aa28cc31-584c-4d2c-832c-fbcab50bfabd)
 
-This function provides the user with information on how to use the script correctly. It is called when the script is run without arguments or with invalid options.
+&nbsp; This function provides the user with information on how to use the script correctly. It is called when the script is run without arguments or &nbsp;with invalid options.
 
 2. Parse Command-Line Options
 
 ![image](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/85470428/fdfd4e44-7990-4ed6-b65e-09d985b36082)
 
-This snippet processes the command-line options passed to the script, determining whether the user wishes to install or uninstall a package. It calls the usage function if an invalid option is provided.
+&nbsp;This snippet processes the command-line options passed to the script, determining whether the user wishes to install or uninstall a package. It &nbsp;calls the usage function if an invalid option is provided.
 
 3. Check for Package Name Argument
 
 ![image](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/85470428/c4cd04ec-e28a-4595-9580-d242c32ff763)
 
-After option parsing, the script checks if the package name has been specified. If not, it displays the usage information.
+&nbsp; After option parsing, the script checks if the package name has been specified. If not, it displays the usage information.
 
 4. Perform Action on the Host
 
