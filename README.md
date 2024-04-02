@@ -298,9 +298,16 @@ Evaluation metrics are crucial for assessing a model's performance and its suita
 
 
 
+## CPU frequency scaling (Add them in Software Conf after Grafana)
 
+CPU performance scaling enables the operating system to scale the CPU frequency up or down in order to save power or improve performance. Scaling can be done automatically in response to system load, adjust itself in response to ACPI events, or be manually changed by user space programs.
 
+The Linux kernel offers CPU performance scaling via the CPUFreq subsystem, which defines two layers of abstraction:
 
+- Scaling governors implement the algorithms to compute the desired CPU frequency, potentially based off of the system's needs.
+- Scaling drivers interact with the CPU directly, enacting the desired frequencies that the current governor is requesting (wiki.archlinux.org, n.d.). 
+
+A script is written to control the cpu frequency scaling which can be found [here](CPU_Scaling_Governor) 
 
 
 
@@ -318,9 +325,14 @@ Evaluation metrics are crucial for assessing a model's performance and its suita
 4. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
 5. https://hpc.uni.lu/infrastructure/network
 6. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
+7. wiki.archlinux.org. (n.d.). CPU frequency scaling - ArchWiki. [online] Available at: https://wiki.archlinux.org/title/CPU_frequency_scaling [Accessed 2 Apr. 2024].
 
 
 
 
 ## Authors
+
+
+
+
 
