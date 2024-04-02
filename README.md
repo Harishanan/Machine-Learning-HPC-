@@ -113,7 +113,6 @@ Once the basic structure of the HPC was conceptualized, technical research was i
 
 # 2. Technology Research: 
 
-
 ## 2.1 Operating System Selection: 
 
 Initially, an attempt was made to determine which operating system the ASUS CS-B motherboard supports. However, the information available suggests that the ASUS CS-B is only compatible with Ubuntu 13.10, as indicated in the provided image.
@@ -522,18 +521,16 @@ Energy efficiency is pivotal for both environmental sustainability and reducing 
 
 An explanation is written of how Node Exporter and lm_sensors are utilized for monitoring energy consumption ([See here](Monitor_Energy_Consumption.md))
 
-
 # 7. Task Implementation:
 
 ## 7.1. How to Create Machine Learning for Predict Crypto Currencies
 
 To predict cryptocurrency prices with machine learning, start by fetching historical data (prices, volumes, timestamps) using Yahoo Finance. Process this data, compute technical indicators (RSI, EMA, SMA), and normalize to ensure uniformity. Split the data into training, validation, and testing sets for model development and evaluation. Consider machine learning models such as LSTM for capturing long-term dependencies, and GRU for efficient sequential data handling. Fine-tune models using the validation set and assess their performance with metrics like RMSE and MAE on the test set, aiming to select the model that best captures cryptocurrency market dynamics. (<b>This needs to be rewritten</b>)
 
+
 [Access the detailed step-by-step guide here](Predicting_Cryptocurrency_Prices_with_ML.md)
 
-
 ## 7.2. Implementation of Cryptocurrency Price Prediction Application
-<b>Write a introduction of this topic</b>
 
 [Access the detailed step-by-step guide here](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/Implementation_of_ML.md)
 
@@ -560,6 +557,7 @@ Maintenance of the operating system is equally important in HPC environments. Th
 Maintenance activities also play a pivotal role in managing software complexity, which in turn affects the ease and cost of future maintenance efforts. Implementing best practices in software development and maintenance can reduce complexity, making software easier to update and maintain. This is crucial in HPC environments where the complexity of tasks and the volume of data can be very high (R. Banker, G. Davis, & S. Slaughter, 1998).
 
 Thus, effective software and OS maintenance in HPC environments is pivotal for ensuring that these complex systems operate at their peak efficiency, remain secure, and continue to support the evolving needs of high-performance computing tasks. The maintenance process, while often resource-intensive, is essential for the long-term success and reliability of HPC systems.
+
 
 ## 9.2. Setting Up a System for Software and Operating System Updates Using Cron and Git
 
@@ -631,8 +629,6 @@ The creation of manual pages, or "man pages," serves as a cornerstone in documen
 3. [Juan David Gallego](https://github.com/jjuanda19)
 4. [Taufique Azad](https://github.com/taufique-06)
 5. [Samir Shrestha](https://github.com/sameyr)  
-
-
 
 
 
