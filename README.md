@@ -423,6 +423,11 @@ Below, you can find details on how Apptainers function with images and how they 
 
 [Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
 
+## 6.5. Monitoring Energy Consumption and Efficiency with Prometheus
+
+Energy efficiency is pivotal for both environmental sustainability and reducing operational costs in IT environments. By accurately monitoring energy use, organizations can identify inefficiencies, optimize power usage, and contribute to a more sustainable future. This documentation guides the integration of hardware sensor data with Prometheus to monitor energy consumption indirectly through temperature metrics, offering a path towards achieving these goals.
+
+An explanation is written of how Node Exporter and lm_sensors are utilized for monitoring energy consumption ([See here](Monitor_Energy_Consumption.md) 
 # 7. Task Implementation:
 
 ## 7.1. How to Create Machine Learning for Predict Crypto Currencies
