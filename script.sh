@@ -1,4 +1,4 @@
-!/bin/bash
+#! /usr/bin/env bash
 
 # Usage function to display help text
 usage() {
