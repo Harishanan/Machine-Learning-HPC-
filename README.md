@@ -190,11 +190,9 @@ The process of installing the operating system on a compute node is similar to t
         Total Output Capacity: 220W
         Maximum Wattage: 60W
 
-* Conclusion:
+Therefore, a single PSU in our system will be connected to one motherboard, one SSD, and one graphics card. The total power consumption of the system should not exceed the PSU capacity.
 
-    The single PSU in our system will be connected to one motherboard, one SSD, and one graphics card. The total power consumption of the system should not exceed the PSU capacity.
-    
-    The system is expected to consume between 73W - 88W during active use and between 25.05W - 40.05W when idle. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
+The system is expected to consume between 73W - 88W during active use and between 25.05W - 40.05W when idle. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
 
 ## 2.3 Network Interconnect:
 
@@ -531,6 +529,8 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 [Access the detailed step-by-step guide here](Predicting_Cryptocurrency_Prices_with_ML.md)
 
 ## 7.2. Implementation of Cryptocurrency Price Prediction Application
+
+After initially testing the application on a laptop, the outcomes met expectations. However, upon uploading the application to the HPC, issues arose with task distribution across all nodes equally. Fortunately, these issues were addressed and resolved through the utilization of Prometheus, Grafana, and Slurm. Subsequently, the system began functioning smoothly. For detailed implementation information, please refer to the provided link below.
 
 [Access the detailed step-by-step guide here](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/Implementation_of_ML.md)
 
