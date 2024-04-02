@@ -64,6 +64,30 @@ This documentation outlines the procedures undertaken to construct a comprehensi
 
 Before commencing the project design process, a comprehensive file containing all specifications was compiled. This file proved invaluable throughout the project, aiding in power and cooling calculations and enhancing our understanding of the system. [Specification of all the components can be found here!](hardware.md)
 
+Initially, a design concept was developed, featuring two cases where motherboards were stacked vertically, each housing five motherboards. These motherboards would be powered by a 750W Power Supply Unit (PSU). Additionally, this design would be connected to a Single Board Computer (SBC), serving as the head node. Figure 1 illustrates the initial design idea.
+
+<div align="center">
+
+![Initial_Design_Sketch](pictures/initialDesign.png)<br>
+      <b>Figure 1: Initial Design Sketch</b>
+      <br>
+
+</div>
+
+But the initial idea was dropped, as it was realised that single board computer is not required, as motherboard with a wifi adapter was powerful than a single board to work as a head node. because of the time constraint, only one case was designed with 5 motherboards, and PSU was also changed because of technical issues. Therefore the ised was finalised which is similar to the initial idea but only one case with five motherboard were used and the position of fans were moved to the side  which is much efficient place which will be discussed below. The final design is depicted in figure 2.
+
+However, the initial concept was abandoned upon the realization that a single motherboard with a Wi-Fi adapter was more powerful compared to a single board computer for serving as the head node. Due to time constraints, only one case was designed to accommodate five motherboards, and the PSU was replaced due to technical challenges. Consequently, the finalized design closely resembled the initial idea, with a single case housing five motherboards. Additionally, the positioning of fans was relocated to the side, which was deemed more efficient. The final design is depicted in Figure 2.
+
+<div align="center">
+
+![Final_Design_Sketch](pictures/finalDesignSketch.PNG)<br>
+      <b>Figure 1: Final Design Sketch</b>
+      <br>
+
+</div>
+
+Once the basic structure of the HPC was conceptualized, technical research was initiated to gather essential information and conduct necessary calculations.
+
 # 2. Technology Research: 
 ***Conduct comprehensive research on HPC technologies, power management, non-volatile storage, and RAM. Justify technology choices based on problem domain appropriateness.*** 
 
