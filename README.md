@@ -570,6 +570,14 @@ The creation of manual pages, or "man pages," serves as a cornerstone in documen
 [Step-By-Step Guide can be found here](CreateManPage/createManPage.md)
 
 
+# 10. Conclusion 
+
+This comprehensive documentation outlines the meticulous process of designing, constructing and deploying a High-Performance Computing (HPC) system tailored for cryptocurrency price prediction. This project not only highlights the technical process required to integrate multiple components into a cohesive and efficient computing cluster but also underscores the importance of software and operating system maintenance in sustaining system performance and security. Through the strategic use of open-source tools like Prometheus and Grafana for monitoring, along with detailed configurations for networking and power management, team 0 has successfully demonstrated the system's superior performance over conventional computing solutions. 
+
+The reflections on design choices and the iterative improvements made throughout the project provide valuable insights into the complexities of building an HPC system from the ground up. Ultimately, this documentation serves as a valuable resource for anyone looking to venture into the realm of high-performance computing, offering a blend of technical guidance, performance evaluation strategies and maintenance practices essential for the successful operation of an HPC system.
+
+Finally, a great thanks to our module leader, Sebastian Blair, and the University of Greenwich technical team. Special thanks to Mr. Josh from Team 0.
+ 
 # IV. References
 
 1. The button can be find here: https://uk.rs-online.com/web/p/push-button-switches/2099127?cm_mmc=UK-PLA-DS3A-_-google-_-CSS_UK_EN_PMAX_RS+PRO-_--_-2099127&matchtype=&&gad_source=1&gclid=EAIaIQobChMIpP3xg7-mhAMVFAUGAB0t5QD5EAQYByABEgIy1_D_BwE&gclsrc=aw.ds
