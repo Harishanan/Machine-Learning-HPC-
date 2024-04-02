@@ -521,6 +521,8 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 
 
 # 8. Performance Evaluation: Develop a strategy for evaluating HPC system performance. 
+  As the HPC system was built for this project, a series of tests were conducted to evaluate its performance. The steps and guidelines described above, including networking, power on/off functions, prometheus, Grafana, the justification for choosing operating systems and designs’ tests have demonstrated that the specific tasks or designs function very well. Due to time constraints and technical challenges, screenshots were not captured for testing purposes. However, sufficient evidence has been provided throughout this documentation to demonstrate the full functionality of the HPC system. Live demonstrations will be conducted during the VIVA session to validate the operational integrity of the HPC system. More proff has been provided in this following [link.](performance.md).
+
 
 # 9. Software and OS Maintenance: 
 
