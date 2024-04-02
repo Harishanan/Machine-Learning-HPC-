@@ -316,6 +316,7 @@ The front and back of the case was laser cut in acrylic with 120x120 fan holes a
 <br><br>
 
 </div>
+
 ## 4.4. Other alterations
 Rubber feet will be used on the motherboards and the SSDs to limit the directs contact onto the shelves to allow air underneath the boards when necessary. The extension cable will run down the side of the case into an outlet. The power button will drill through the roof of the case to allow Instant power to the application we have also decided to cover the back of the case to limit the light inside the case to utilize the led fans. All power supply will plug directly into the extension cord build into the case
 
