@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # Function to show current CPU scaling governor
 show_current_governor() {
