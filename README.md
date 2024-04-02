@@ -1,4 +1,4 @@
-<h3 align="center">High-Performance Computing System</h3>
+<h1 align="center">High-Performance Computing System</h1>
 
 ## Table Of Contents
 - [I. About The Project](#i-about-the-project)
@@ -256,7 +256,7 @@ Following the completion of all technical research, a preliminary outline for th
 
 Each motherboard was equipped with a 500 GB SSD and 2 * 8 GB RAM, providing sufficient resources for efficient task execution. With four compute nodes in use, this configuration ensures optimal performance. Additionally, the head node can leverage the resources of all nodes simultaneously when executing tasks.
 
-During the layout creation process, careful consideration was given to various requirements such as cooling, power supply, placement dimensions, and more. All calculations pertaining to these requirements have been documented in detailed below.
+During the layout creation process, careful consideration was given to various requirements such as cooling, power supply, placement dimensions, and more. All calculations pertaining to these requirements have been documented in detail below.
 
 # 4. Housing and Cooling Solutions: 
 
