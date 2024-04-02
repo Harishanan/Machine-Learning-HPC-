@@ -22,4 +22,7 @@ To integrate hardware sensor data from tools like lm_sensors, with Prometheus fo
 
 ### 2.1. Script to Expose lm_sensors Data
 
-A script is written that outputs the sensor data in a Prometheus-friendly format ([See File Here]()). 
+A script is written that outputs the sensor data in a Prometheus-friendly format ([See File Here](sensor_exporter.py)). 
+
+### 2.2. Serve the Script Output Over HTTP
+To make the data accessible to Prometheus, the script is served it over HTTP. The simple solution is to use Python's HTTP server functionality. [See here](http_sensor_exporter.py) basic wrapper script that serves exporter's output.
