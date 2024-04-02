@@ -562,7 +562,7 @@ Thus, effective software and OS maintenance in HPC environments is pivotal for e
 
 ## 9.2. Setting Up a System for Software and Operating System Updates Using Cron and Git
 
-[A Detailed Guide: Step-by-Step Instructions Available Here]()
+[A Detailed Guide: Step-by-Step Instructions Available Here](UpdateSytem&OS.md)
    
 ## 9.3. Create Man Page
 
