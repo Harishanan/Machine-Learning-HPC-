@@ -369,6 +369,7 @@ Due to failures experienced with the power-on button for the entire HPC system, 
 
 # 5.Software Installation
 
+## 5.1 Install/Uninstrall Package acroos all nodes with bash script
 ## 5.1 SLURM Configuration
 
 SLURM, an acronym for Simple Linux Utility for Resource Management, is an open-source workload manager developed for supercomputers and Linux-based cluster systems. It offers three primary functions: 
