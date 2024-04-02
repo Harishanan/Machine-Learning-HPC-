@@ -10,9 +10,9 @@
     - [2.1.1 Install Operating System in Head Node](#211-install-operating-system-in-head-node)
     - [2.1.2 Install Operating System in Compute Node](#212-install-operating-system-in-compute-node)
   - [2.2 Power Management](#22-power-management)
-  - [2.3 Cooling Calculations](#23-cooling-calculations)
-    - [2.3.1.	3D Model](#2313d-model)
-  - [2.4 Network Interconnect:](#24-network-interconnect)
+  - [2.3 Network Interconnect:](#23-network-interconnect)
+  - [2.4 Cooling Calculations](#24-cooling-calculations)
+    - [2.4.1.	3D Model](#2413d-model)
 - [3. System Construction:](#3-system-construction)
 - [4. Housing and Cooling Solutions:](#4-housing-and-cooling-solutions)
   - [4.1. Original Design For The HPC Case](#41-original-design-for-the-hpc-case)
@@ -28,10 +28,14 @@
 - [5. System Configuration](#5-system-configuration)
   - [5.1. Networking](#51-networking)
     - [5.1.1. **Open-SSH connection**](#511-open-ssh-connection)
+    - [5.1.2 Network File System (NFS)](#512-network-file-system-nfs)
   - [5.2. Background for power on and off function in HPC](#52-background-for-power-on-and-off-function-in-hpc)
 - [6.Software Installation](#6software-installation)
-  - [6.1 SLURM Configuration](#61-slurm-configuration)
-  - [6.2. Configure Prometheus and Grafana](#62-configure-prometheus-and-grafana)
+  - [6.1. PXE Server Configuration on Ubuntu](#61-pxe-server-configuration-on-ubuntu)
+  - [6.2. SLURM Configuration](#62-slurm-configuration)
+  - [6.3. Apptainer Configuration](#63-apptainer-configuration)
+  - [6.3.1. Reasons for Using Apptainer](#631-reasons-for-using-apptainer)
+  - [6.4. Configure Prometheus and Grafana](#64-configure-prometheus-and-grafana)
 - [7. Task Implementation:](#7-task-implementation)
   - [7.1. How to Create Machine Learning for Predict Crypto Currencies](#71-how-to-create-machine-learning-for-predict-crypto-currencies)
   - [7.2. Implementation of Cryptocurrency Price Prediction Application](#72-implementation-of-cryptocurrency-price-prediction-application)
@@ -48,73 +52,11 @@ The provided documentation outlines the comprehensive process undertaken by Team
 - [JavaScript](https://www.javascript.com/)
 - [VueJS](https://vuejs.org/)
 
-## Introduction
-
-
-## 1. System Design And Architecture ## 4. Housing and Cooling Solutions: 
-***Design and implement housing/structure using laser cutting or additive manufacturing. Discuss convection principles (natural and forced) for cooling.***
-
-
-[Specification of all the components can be found here!](hardware.md)
-
-***Design the architecture, integrating 14 ASUS CS-8 motherboards and single-board computers. Provide critical reflections on the chosen design.***
-
-# Original Design For The HPC Case
-The original design for the case consisted of 3D printing of all components needed. This included the shelves, floor, roof, and side/back panels of the case. Multiple aspects have to be considered when designing the case such as the components requirements, ventilation, and accessibility. All original shelf and case piece that have been uploaded were designed to be durable and well ventilated and were easily connected together using a pin system
-
-## Problems Encountered
-While waiting to receive the initial components from 3d printing I was informed that it would take to long to 3d print all my required components as there were many other students looking to 3d print components at this time Aswell. To solve this issue, we decided to order the shell of our case and print the brackets and laser cut the shelves as well as the front and back panels in stead of printing all the components
-
-# Chosen Shell  
-The case we ordered was a 21U tall server racking system which was perfect for the purpose of our projects. It came with slots all down the left and ride side of the case which ensured enough ventilation for the fans to disperse the heat 
-
-![Shell](case.jpeg)<br>
-<b>Figure 1:Case</b>
-<br><br>
-
-The 1U brackets were 3d printed in order to hold the acrylic shelves that were laser cut. They were mounted in the holes that were ment for the racking system of the case. An extension cord was placed at the back and mounted to the top of the case. Whis acted as a way to limit the amount of cables that would exit the case. Instead, we could power each of the motherboards power sources internally 
-
-![Push button](brackets.jpeg)<br>
-<b>Figure 1:3D printed brakets </b>
-<br><br>
-
-The front and back of the case was laser cut in acrylic with 120x120 fan holes at the base and the top in order to mount the fan to then in a way that allowed them to get a strong enough air pull. Hence the small circles that fill the 120x120 frame. the back panel was made to be slightly smaller to allow room for the extension cord 
-
-
-![Push button](panels.jpeg)<br>
-<b>Figure 1:3D back panel of case  </b>
-<br><br>
-
-# Other alterations
-Rubber feet will be used on the motherboards and the SSDs to limit the directs contact onto the shelves to allow air underneath the boards when necessary. The extension cable will run down the side of the case into an outlet. The power button will drill through the roof of the case to allow Instant power to the application we have also decided to cover the back of the case to limit the light inside the case to utilize the led fans. All power supply will plug directly into the extension cord build into the case
-
-# Design reflection and future improvements 
-During the course of this assignment there have been a few development problems and issues that arose in regard to the specific design of the case such as the time impairment, material acquisition, ventilation and change in requirements. In this report I will discuss how each of these problems were analyzed and resolved to display a design that fit the requirements of the projects while also remaining affordable and simple to construct.
-
-# Time impairment 
-The first and possible largest issue we faced in constructing the case was time. As we had a fixed amount of time to build and submit the Hpc the case had to be completed in about a month and a half. My first idea was 3D printing the part required to build the frame/shelfing unit. After sending my designs of to be printed I was told that all part would take over 80 das as there was over 65 pieces to print along with other student needing to use the printing facilities as well.to work around this problem I decided that purchasing a frame could be cheaper and less time consuming as well as having more stability. This way I could focus more on altering the internal of the case as well as making a front and rear for the frame. This cut the time to create a case by at least a month allowing more time for alterations if need be 
-
-# Material acquisition 
-An issue arose with the materials as some materials were ordered before the time issues were realized. This issue was fixed by ordering the correct components and altering the lengths of some of the cables needed like the ethernet cable and the power cable along with some cable management. I mention these issues as it highlighted the need to double-check the design before ordering any components as well as communicating with my teams to avoid these mistakes happening in the future.
-
-# Ventilation
-The ventilation of the case was considered from the very beginning as it essential to keep the system cool under prolonged periods of time.  With 5 motherboards being used in sync I decided to go with a 2 in 2 out fans system. 2 fans would take air in at the top front of the case and 2 would blow air out of the case at the bottom rear. This would allow decent air flow that would keep a steady current around the case. Temperature sensors inside the case can monitor how hot the components get and alert the user if the temperature exceeds the recommended limit.
-
-# Change in requirements 
-Throughout the course pf this project there were a number of alterations that needed to be made to counter errors in judgement as well as new components that needed to be added to achieve complete networking between the boards. By altering the size of the shelves and by utilizing the space in the side of the case for storing the wires, all new components and power sources fit as needed 
-
-# Reflection 
-If I were to design this case again, I believe there are a few changes that could be made. I think the biggest change I would make is I would have made holes across the laser cut shelves as it would increase the ventilation in the case however if I did this, I would make the shelf out of wood as with to many holes cut the structural integrity would be compromised and they may not be able to hold the components at the current thickness. By changing the material to wood and increasing the thickness of the shelves, adding the holes will not impair the performance. It is important to keep in mind the ultimate stress point and the fracture point of the material used as well as the elastic point. The brackets that were built were perfectly fit for purpose so I will utilize them for similar case frames in the future and if given the opportunity to improve this case
-
-   
-   
-## 2. Technology Research: 
-***Conduct comprehensive research on HPC technologies, power management, non-volatile storage, and RAM. Justify technology choices based on problem domain appropriateness.*** 
-
-### 2.1 Operating System Selection: 
-
 # III. Introduction
 
+HPC (High Performance Computing) involves combining the computational capabilities of multiple computers to achieve significantly greater performance than individual systems. It can be referred as Cluster Computing, where a network of two or more computing devices collaborates towards a shared computing objective. This network operates on the principle of parallel processing, which entails distributing complex tasks among two or more processors (CPUs) to expedite their execution.
+
+This documentation outlines the procedures undertaken to construct a comprehensive HPC system utilizing five motherboards, with one serving as the head node and four as compute nodes. The HPC is intended to run a cryptocurrency prediction application capable of forecasting Bitcoin, Ethereum, and Binance Coin (BNB) prices using its datasets. Additionally, it provides a detailed, step-by-step guide for configuring services and necessary configuration files to facilitate parallel processing and establish connections between nodes.
 
 # 1. System Design And Architecture 
 
@@ -122,8 +64,32 @@ If I were to design this case again, I believe there are a few changes that coul
 
 Before commencing the project design process, a comprehensive file containing all specifications was compiled. This file proved invaluable throughout the project, aiding in power and cooling calculations and enhancing our understanding of the system. [Specification of all the components can be found here!](hardware.md)
 
+Initially, a design concept was developed, featuring two cases where motherboards were stacked vertically, each housing five motherboards. These motherboards would be powered by a 750W Power Supply Unit (PSU). Additionally, this design would be connected to a Single Board Computer (SBC), serving as the head node. Figure 1 illustrates the initial design idea.
+
+<div align="center">
+
+![Initial_Design_Sketch](pictures/initialDesign.png)<br>
+      <b>Figure 1: Initial Design Sketch</b>
+      <br>
+
+</div>
+
+But the initial idea was dropped, as it was realised that single board computer is not required, as motherboard with a wifi adapter was powerful than a single board to work as a head node. because of the time constraint, only one case was designed with 5 motherboards, and PSU was also changed because of technical issues. Therefore the design was finalised which is similar to the initial idea but only one case with five motherboard were used and the position of fans were moved to the side  which is much efficient place which will be discussed below. The final design is depicted in figure 2.
+
+However, the initial concept was abandoned upon the realization that a single motherboard with a Wi-Fi adapter was more powerful compared to a single board computer for serving as the head node. Due to time constraints, only one case was designed to accommodate five motherboards, and the PSU was replaced due to technical challenges. Consequently, the finalized design closely resembled the initial idea, with a single case housing five motherboards. Additionally, the positioning of fans was relocated to the side, which was deemed more efficient. The final design is depicted in Figure 2.
+
+<div align="center">
+
+![Final_Design_Sketch](pictures/finalDesignSketch.PNG)<br>
+      <b>Figure 1: Final Design Sketch</b>
+      <br>
+
+</div>
+
+Once the basic structure of the HPC was conceptualized, technical research was initiated to gather essential information and conduct necessary calculations.
+
 # 2. Technology Research: 
-***Conduct comprehensive research on HPC technologies, power management, non-volatile storage, and RAM. Justify technology choices based on problem domain appropriateness.*** 
+
 
 ## 2.1 Operating System Selection: 
 
@@ -131,9 +97,6 @@ Initially, an attempt was made to determine which operating system the ASUS CS-B
 
 ![Os](https://github.com/TeachingMaterial/ace-2023_-team-0/assets/85470428/3f1fbdae-3522-4e26-841c-ef19f4888d5a)
 Figure: OS Compatibility of Asus CS-B 
-
-
-#### 2.1.1 Install Operating System in Head Node
 
 ### 2.1.1 Install Operating System in Head Node
 
@@ -158,13 +121,6 @@ operating system ran on the system very well, with no noticeable glitches. This 
 Although documentation indicates otherwise, one plausible explanation for Ubuntu 24.04's successful running on the ASUS CS-B motherboard could be the hardware compatibility enhancements included in later Ubuntu editions. The Ubuntu operating system is continuously improved and optimised by its developers throughout time to improve compatibility with a wider variety of hardware setups. Because of this, more recent versions of Ubuntu might by nature support a greater range of motherboards, including the ASUS CS-B. Moreover, improvements in system libraries, kernel updates, and device drivers in Ubuntu 24.04 can also be responsible for its smooth operation on the ASUS CS-B motherboard. These updates might take care of any compatibility problems that earlier motherboard models might have had, making it possible to use current Ubuntu editions more smoothly.
 
 After noticing that Ubuntu 24.04 operated steadily on the ASUS CS-B motherboard, the group chose to switch from Ubuntu 13.10 to this more recent version. This choice was driven by the goal of utilising Ubuntu 24.04's most recent software features, security updates, and hardware compatibility changes to provide the best possible computing environment for the team's activities.
-
-
-#### 2.1.2 Install Operating System in Compute Node
-
-The process of installing the operating system on a compute node is similar to that of the head node, with the exception that it is not required the installation of Ubuntu Server specifically.
-
-### 2.2 Power Management
 
 ### 2.1.2 Install Operating System in Compute Node
 
@@ -219,12 +175,9 @@ The process of installing the operating system on a compute node is similar to t
     
     The system is expected to consume between 73W - 88W during active use and between 25.05W - 40.05W when idle. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
 
+## 2.3 Network Interconnect:
 
-### 2.3 Network Interconnect:
-   
-***Cluster Network is two or more computing device working together for a common computing purpose. This Network follows the principle of the parallel processing. Parallel processing is the method of using two or more processors(CPUs) to handle seperate chuncks of a same complex tasks.*** 
-
-There are several interconnect technologies available with their own strength and specefic use-cases. Some of them are :
+There are several interconnect technologies available for establishing connection in a cluster computing with their own strength and specefic use-cases. Some of them are :
 
 1. **Infiniband** : Computer Networking communication standard used in high-performance computing that features high throughput and very low latency. It supports Remote Direct Memory Access(RDMA), which means the ability to access host memory directly without CPU intervention. Infiniband is widely used in supercomputer clusters and it is preferred network interconnection technology for GPU servers.
 2. **NVIDIA NVLink** : World's first high-speed GPU interconnect technology that can connect two graphics card , with low latency, and high bandwidth. It is ideal for the system that uses NVIDIA graphics card, such as those in deep-learning and GPU accelerated computing. It is not best option for our project,as it is only compatible with NVIDIA graphics card and we will be using intel graphics card for our HPC.
@@ -255,7 +208,6 @@ Once the steps are followed and both interfaces are activated, users can proceed
 
 Ethernet cables were manually crimped for this project, adhering to the Registered Jack 45 (RJ-45) standard. The figure below illustrates the color standard for RJ-45 cables..
 
-
 ![RJ-45 Standard](pictures/rj45_standard.PNG)<br>
       <b>Figure 1: RJ-45 Standard</b>
       <br>
@@ -266,23 +218,13 @@ Step wise Step  process is shown in figure 2 below:
       <b>Figure 2: Step by Step Ethernet Cimp</b>
       <br>
 
-* Power Supply Unit (PSU) Capacity:
+ystem is expected to consume between 73W - 88W during active use and between 25.05W - 40.05W when idle. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
 
-        Total Output Capacity: 220W
-        Maximum Wattage: 60W
-
-* Conclusion:
-
-    The single PSU in our system will be connected to one motherboard, one SSD, and one graphics card. The total power consumption of the system should not exceed the PSU capacity.
-    
-    The system is expected to consume between 73W - 88W during active use and between 25.05W - 40.05W when idle. Although a single 220W PSU could theoretically handle the load for two motherboards, practical constraints like cable and port limitations restrict each PSU to power only one motherboard in our setup
-
-## 2.3 Cooling Calculations
+## 2.4 Cooling Calculations
 
 Cooling calculations were conducted to determine the necessary airflow for ordering the appropriate fan. This involved performing a simple arithmetic calculation, the details of which can be found in the [this file here.](coolingcalculation.md). 
 
-
-### 2.3.1.	3D Model 
+### 2.4.1.	3D Model 
  The selection of the fan was made with careful consideration of various factors, and a dual-fan system was chosen. Two fans are positioned at the front of the case to intake cool air, while another two are situated at the back to expel hot air as depicted in Figure 1. This configuration creates an airflow pattern that helps maintain optimal temperatures for all components.
 
    Additionally, the CPU fan, which is attached to the motherboard, provides active cooling for the CPU. Moreover, the GPU and power supply unit also have built-in fans for additional cooling.
@@ -291,132 +233,9 @@ Cooling calculations were conducted to determine the necessary airflow for order
    <b>Figure 1: 3D Model of Case with the fan where a) represents the front 3D view and b) represent the back 3D view </b>
    <br>
 
-## 2.4 Network Interconnect:
-   
-***Cluster Network is two or more computing device working together for a common computing purpose. This Network follows the principle of the parallel processing. Parallel processing is the method of using two or more processors(CPUs) to handle seperate chuncks of a same complex tasks.*** 
-
-There are several interconnect technologies available with their own strength and specefic use-cases. Some of them are :
-
-1. **Infiniband** : Computer Networking communication standard used in high-performance computing that features high throughput and very low latency. It supports Remote Direct Memory Access(RDMA), which means the ability to access host memory directly without CPU intervention. Infiniband is widely used in supercomputer clusters and it is preferred network interconnection technology for GPU servers.
-2. **NVIDIA NVLink** : World's first high-speed GPU interconnect technology that can connect two graphics card , with low latency, and high bandwidth. It is ideal for the system that uses NVIDIA graphics card, such as those in deep-learning and GPU accelerated computing. It is not best option for our project,as it is only compatible with NVIDIA graphics card and we will be using intel graphics card for our HPC.
-3. **Intel Omni-Path Architecture(OPA)** : OPA is communication architecture developed by intel which aims for low communication latency, low power consumption and a high throughput. It is often used for HPC application with Intel processor. OPA directly competes with infiniband.
-4. **Ethernet** : Ethernet is one of the commonly used interconnect technology because of its versatility, scalability and compatibility.It migh not provide same low-latency level as specialised interconnect like infiniband but it provides various speed, ranging from 10 megabyte to 100 gigabyte per second.    
-
-The type of interconnect technology one needs lies on what kind of system they are building and what kind of interconnect is compatible with the system. For our system, specefication and hardware is given above.
-
-For this project, Ethernet cables will be utilized due to their accessibility and sufficient speed for project requirements. These cables will serve dual purposes: data transfer and network bridging. The motherboard provided includes two Ethernet ports, both of which will be utilized for interconnecting nodes.
-
-The head node will establish connections with all other nodes via a switch. Two switches will be employed: one for interconnecting all nodes to facilitate data transfer, and the other to distribute internet connectivity from the head node to all compute nodes. 
-
-By default, one of the ports is enabled. However, to activate the second port, users must adhere to the following steps:
-
-            Reboot the motherboard 
-
-            Press the 'F2' or 'Del' button to access the BIOS settings 
-
-            Navigate to Advanced settings using arrow keys.
-
-            Proceed to Network Interface Stack Setting
-
-            Enable the Second Interface named "Retalke Interface" (most of the cases, name may vary)
-
-            Esure that your "Intel Interface" is also enabled.
-
-Once the steps are followed and both interfaces are activated, users can proceed to configure each interface to perform specific tasks. Detailed instructions can be found in the following link: [Configuring Interface using Nm-Connection-Editor](https://github.com/TeachingMaterial/ace-2023_-team-0/tree/documentation/nm-connection-editor-Harishanan)
-
-Ethernet cables were manually crimped for this project, adhering to the Registered Jack 45 (RJ-45) standard. The figure below illustrates the color standard for RJ-45 cables..
-
-
-![RJ-45 Standard](pictures/rj45_standard.PNG)<br>
-      <b>Figure 1: RJ-45 Standard</b>
-      <br>
-
-Step wise Step  process is shown in figure 2 below:
-
-![Ethernet-Crimp](pictures/stepwisestepcrimp.PNG)<br>
-      <b>Figure 2: Step by Step Ethernet Cimp</b>
-      <br>
-
 # 3. System Construction:
 ***Assemble the HPC system, implementing power management and resource-efficient configurations. Configure non-volatile storage and RAM to meet performance requirements.***
 
-
-## 4. System Configuration
-
-### 4.1. Networking
-To enable parallelisation in HPC, networking must be established between the head node and compute nodes. Therefore, this section will discuss how the network is established in this project's HPC and will also discuss components such as IP address configuration, network topology, and network bridging in more detail. As an introduction, for this networking setup, a star networking topology, static IP configuration and nm-connection editor have been used and will be discussed in more detail below. Note: In the HPC, the operating system is downloaded separately on each node.
-
-[Step by Step Configuration File Can be Found Here](nm-connection-editor.md)
-
-Through this successful networking implementation, future works such as SLURM configuration, Wake On LAN, OpenSSH and many more can be enabled.
-
-
-### **Open-SSH connection**
-
-OpenSSH, or Open Secure Shell, is an open-source implementation of the SSH protocol. It provides secure communication between two or more computers over an unsecured network, ensuring data exchange confidentiality and integrity. OpenSSH is widely used in Linux and other Unix-like operating systems as the standard SSH implementation for remote administration, secure file transfer, and tunnelling other network services.
-
-In this project, Secure Shell (SSH) is employed to establish secure connections between all nodes. The OpenSSH server facilitates access from one node to another, enabling seamless communication and interaction between systems. OpenSSH is an essential component in configuring servers such as NFS and SLURM, ensuring secure and encrypted communication channels for data transfer and remote management tasks.
-
-[Step by step configuration guide available here!](openssh.md)
-
-
-### 4.2. Background for power on and off function in HPC
-
-Due to failures experienced with the power-on button for the entire HPC system, the strategy was changed to power the HPC on and off. In this project, a bash script was created using Wake-on-LAN communication and OpenSSH. Initially, the HPC's head node will be turned on using the power-on button. Afterwards, to turn on the compute nodes, a bash script will be run, which turns on the other compute nodes at intervals. Through this method, the compute nodes can be successfully powered on, allowing the whole HPC system to function. Then, to turn off all the compute nodes, the OpenSSH function was incorporated into the script, with the sudo shutdown command for all compute nodes. Through this, it is possible to turn off the entire compute nodes. Finally, to turn off the head node, one can press the power button or enter a separate sudo shutdown command for the head node.
-
-[Step by Step Configuration File Can be Found Here](power-on-off.md)
-
-
-# 5.Software Installation
-
-## 5.1 Install/Uninstrall Package acroos all nodes with bash script
-## 5.1 SLURM Configuration
-
-SLURM, an acronym for Simple Linux Utility for Resource Management, is an open-source workload manager developed for supercomputers and Linux-based cluster systems. It offers three primary functions: 
-
-1. It allocates both exclusive and non-exclusive access to compute node resources from a central head node, allowing tasks to be executed efficiently.
-2. It furnishes a structured framework for initiating, executing, and overseeing tasks across a designated set of allocated nodes.
-3. It resolves resource contention by administering a queue of pending work, ensuring fair access to resources among multiple users or processes.  
-
-The primary commands for submitting, allocating, and monitoring jobs in SLURM are outlined as follows:
-
-1. **sbatch**: Employed to submit batch jobs, allowing users to send job requests to the SLURM scheduler. Job parameters and requirements are defined within a job script, and SLURM schedules and executes the job accordingly.
-
-2. **salloc**: Facilitates interactive resource allocation, enabling users to acquire compute resources in real-time. Once resources are allocated, users can execute commands within this dedicated resource environment.
-
-
-3. **srun**: Used to execute parallel tasks within allocated resource environments, whether obtained interactively through `salloc` or as part of a batch job submitted with `sbatch`. It manages the execution of parallel tasks across specified nodes.
-
-4. **squeue**: Utilized for monitoring the status of jobs in the SLURM job queue, providing details such as job ID, user, status, and resource utilization. This allows users to monitor job progress and identify queued or running jobs.
-
-5. **scancel**: Enables users to terminate running or queued jobs within the SLURM job queue by specifying the job ID(s) of the targeted jobs to be canceled.
-
-6. **scontrol**: Used for modifying or querying the configuration and state of the SLURM cluster, granting users the ability to manage SLURM resources by configuring nodes, partitions, and accounts, as well as accessing information about jobs and nodes.
-
-These commands serve as essential tools for effectively interacting with SLURM and managing job execution on high-performance computing clusters.
-
-[Step by Step Configuration File Can be Found Here!](slurm.md)
-
-## 5.2. Apptainer Configuration
-
-Apptainer, formerly known as Singularity, is a containerization platform designed to bring containers and reproducibility to scientific computing and the high-performance computing (HPC) environment. Apptainer is specifically optimized for HPC systems, providing a seamless way to package entire scientific workflows, software, libraries, and even data into a single file (Kurtzer et al., 2017).
-
-## 5.2.1. Reasons for Using Apptainer
-
-| Benefit         | Description                                                                                                                     | Reference             |
-|-----------------|---------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| **Portability** | Apptainer containers can be executed across different computing environments consistently, ensuring that workflows are reproducible across different HPC systems. | Muster et al., 2018   |
-| **Compatibility** | Designed with HPC environments in mind, Apptainer does not require root privileges, aligning with the security policies of most HPC centers.                  | Doe, 2019             |
-| **Efficiency**    | Containers encapsulate all dependencies, streamlining installations and avoiding software version conflicts.                                                | Smith, 2020           |
-| **Reproducibility** | Packaging software with its dependencies ensures computational work is reproducible, crucial for scientific research validation.                              | Lee and Thompson, 2021|
-
-Below, you can find details on how Apptainers function with images and how they can be configured:
-
-[Learn More about Apptainer and How to Configure apptainer](configure_apptainer.md)
-
-## 5.4. Prometheus and Grafana Configuration
-
-[Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
 
 # 4. Housing and Cooling Solutions: 
 
@@ -480,7 +299,7 @@ To enable parallelisation in HPC, networking must be established between the hea
 Through this successful networking implementation, future works such as SLURM configuration, Wake On LAN, OpenSSH and many more can be enabled.
 
 
-### 5.1.1. **Open-SSH connection**
+### 5.1.1. Open-SSH connection
 
 OpenSSH, or Open Secure Shell, is an open-source implementation of the SSH protocol. It provides secure communication between two or more computers over an unsecured network, ensuring data exchange confidentiality and integrity. OpenSSH is widely used in Linux and other Unix-like operating systems as the standard SSH implementation for remote administration, secure file transfer, and tunnelling other network services.
 
@@ -510,7 +329,7 @@ In this representation:
 Step by Step NFS configuration Guide Can be found here: [NFS Configuration](NFS.md)
            
 
-## 5.2. Background for power on and off function in HPC
+## 5.2. Power on and off function in HPC
 
 Due to failures experienced with the power-on button for the entire HPC system, the strategy was changed to power the HPC on and off. In this project, a bash script was created using Wake-on-LAN communication and OpenSSH. Initially, the HPC's head node will be turned on using the power-on button. Afterwards, to turn on the compute nodes, a bash script will be run, which turns on the other compute nodes at intervals. Through this method, the compute nodes can be successfully powered on, allowing the whole HPC system to function. Then, to turn off all the compute nodes, the OpenSSH function was incorporated into the script, with the sudo shutdown command for all compute nodes. Through this, it is possible to turn off the entire compute nodes. Finally, to turn off the head node, one can press the power button or enter a separate sudo shutdown command for the head node.
 
@@ -519,7 +338,51 @@ Due to failures experienced with the power-on button for the entire HPC system, 
 
 # 6.Software Installation
 
-## 6.1 SLURM Configuration
+## 6.1. PXE Server Configuration on Ubuntu 
+
+PXE stands for Preboot Execution Environment is a set of guidelines that allow a computer to boot an operating system (OS) via a network connection. In this project, the PXE Server was initially considered but ultimately not utilized due to technical challenges. Despite multiple attempts to configure PXE, the plan had to be abandoned due to technical issues. Instead, the group opted for a Static Interface Configuration approach for data sharing. Even though PXE booting was unsuccessful, the configuration details of the PXE Server were documented for future reference.
+
+The basic topology for PXE Server is shown below:
+
+![access SSH](topology.png)<br>
+<b>Figure 1: Basic Topology for PXE</b>
+<br><br>
+
+The packages used for the configuration are given below in table:
+
+|   Protocol    |   Package Name    |   Description |
+|---------------|-------------------|-------------- |
+|  DHCP server  | dnsmasq           | DHCPD stands for Dynamic Host Configuration Protocol whcich allocates IP address to Client Node from a predefined pool. This ensures that the client nodes can communicate and access network resources.
+|  TFTP server  | tftpd-hpa         | TFTP stands for Trivial File Transfer Protocol which is used for transfering files between devices on a network. It is a lightweight protocol which lacks advanced features like authentication and directory listing. 
+|  FTP Server   | vsftpd            | File Transfer Protocol is similar to TFTP which supports various commands for navigating directories, uploading, downloading, renaming, and deleting files on the server. 
+|   HTTP        | apache2           |HTTP is a flexible and extensively used protocol that offers a convenient way to communicate and transfer data within cluster computing setups.
+|   NFS         | nfs-kernel-server | [NFS Configuration](NFS.md)
+
+
+[Step by Step Configuration Guide is provided here!](pxeconfig.md)
+
+## 6.2. Cluster Package Management Script
+A bash script is written to automate the process of synchronizing software package installations across a distributed computing environment. It addresses the operational challenge of maintaining consistent software versions across all nodes within a cluster. 
+
+### 6.2.1. Setup
+Ensure that SSH keys are configured for password-less access to all client nodes. This is a prerequisite for the script to execute commands remotely without manual intervention.
+
+### 6.2.2. Usage
+The script supports two primary operations: installation and uninstallation of software packages. It is invoked from the command line as follows:
+
+```sh
+
+./packageManager.sh -i|-u <package_name>
+Options:
+
+-i: Install the specified package across all nodes.
+-u: Uninstall the specified package across all nodes.
+
+```
+The script can be seen [here](PackageManagerScript.md) with explanation
+
+
+## 6.3. SLURM Configuration
 
 SLURM, an acronym for Simple Linux Utility for Resource Management, is an open-source workload manager developed for supercomputers and Linux-based cluster systems. It offers three primary functions: 
 
@@ -546,23 +409,38 @@ These commands serve as essential tools for effectively interacting with SLURM a
 
 [Step by Step Configuration File Can be Found Here!](slurm.md)
 
-## 6.2. Configure Prometheus and Grafana
+
+## 6.4. Apptainer Configuration
+
+Apptainer, formerly known as Singularity, is a containerization platform designed to bring containers and reproducibility to scientific computing and the high-performance computing (HPC) environment. Apptainer is specifically optimized for HPC systems, providing a seamless way to package entire scientific workflows, software, libraries, and even data into a single file (Kurtzer et al., 2017).
+
+## 6.4.1. Reasons for Using Apptainer
+
+| Benefit         | Description                                                                                                                     | Reference             |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| **Portability** | Apptainer containers can be executed across different computing environments consistently, ensuring that workflows are reproducible across different HPC systems. | Muster et al., 2018   |
+| **Compatibility** | Designed with HPC environments in mind, Apptainer does not require root privileges, aligning with the security policies of most HPC centers.                  | Doe, 2019             |
+| **Efficiency**    | Containers encapsulate all dependencies, streamlining installations and avoiding software version conflicts.                                                | Smith, 2020           |
+| **Reproducibility** | Packaging software with its dependencies ensures computational work is reproducible, crucial for scientific research validation.                              | Lee and Thompson, 2021|
+
+Below, you can find details on how Apptainers function with images and how they can be configured:
+
+[Learn More about Apptainer and How to Configure apptainer](configure_apptainer.md)
+
+
+## 6.5. Configure Prometheus and Grafana
 
 [Configure Prometheus and Grafana](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/configure_Prometheus_Grafana.md)
 
+
 # 7. Task Implementation:
+
 ## 7.1. How to Create Machine Learning for Predict Crypto Currencies
 
-To predict cryptocurrency prices with machine learning, start by fetching historical data (prices, volumes, timestamps) using APIs like Alpha Vantage. Process this data, compute technical indicators (RSI, EMA, SMA), and normalize to ensure uniformity. Split the data into training, validation, and testing sets for model development and evaluation. Consider machine learning models such as Random Forest for its robustness, Gradient Boosting for error minimization, LSTM for capturing long-term dependencies, and GRU for efficient sequential data handling. Fine-tune models using the validation set and assess their performance with metrics like RMSE and MAE on the test set, aiming to select the model that best captures cryptocurrency market dynamics. (<b>This needs to be rewritten</b>)
+To predict cryptocurrency prices with machine learning, start by fetching historical data (prices, volumes, timestamps) using Yahoo Finance. Process this data, compute technical indicators (RSI, EMA, SMA), and normalize to ensure uniformity. Split the data into training, validation, and testing sets for model development and evaluation. Consider machine learning models such as LSTM for capturing long-term dependencies, and GRU for efficient sequential data handling. Fine-tune models using the validation set and assess their performance with metrics like RMSE and MAE on the test set, aiming to select the model that best captures cryptocurrency market dynamics. (<b>This needs to be rewritten</b>)
 
 [Access the detailed step-by-step guide here](Predicting_Cryptocurrency_Prices_with_ML.md)
 
-
-### 6.2. Implementation of Cryptocurrency Price Prediction Application
-<b>Write a introduction of this topic</b>
-
-[Access the detailed step-by-step guide here](https://github.com/TeachingMaterial/ace-2023_-team-0/blob/dev/Implementation_of_ML.md)
-## 7. Performance Evaluation: Develop a strategy for evaluating HPC system performance. 
 
 ## 7.2. Implementation of Cryptocurrency Price Prediction Application
 <b>Write a introduction of this topic</b>
@@ -575,25 +453,8 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 # 9. Software and OS Maintenance: 
 ***Implement a system for updating software and the operating system using cron and Git. • Reflect on the importance of software and OS maintenance in an HPC environment.***
 
-## Cluster Package Management Script
-A bash script is written to automate the process of synchronizing software package installations across a distributed computing environment. It addresses the operational challenge of maintaining consistent software versions across all nodes within a cluster. 
 
-## Setup
-Ensure that SSH keys are configured for password-less access to all client nodes. This is a prerequisite for the script to execute commands remotely without manual intervention.
 
-## Usage
-The script supports two primary operations: installation and uninstallation of software packages. It is invoked from the command line as follows:
-
-```sh
-
-./packageManager.sh -i|-u <package_name>
-Options:
-
--i: Install the specified package across all nodes.
--u: Uninstall the specified package across all nodes.
-
-```
-The script can be seen [here](PackageManagerScript.md) with explanation
 # IV. References
 
 1. The button can be find here: https://uk.rs-online.com/web/p/push-button-switches/2099127?cm_mmc=UK-PLA-DS3A-_-google-_-CSS_UK_EN_PMAX_RS+PRO-_--_-2099127&matchtype=&&gad_source=1&gclid=EAIaIQobChMIpP3xg7-mhAMVFAUGAB0t5QD5EAQYByABEgIy1_D_BwE&gclsrc=aw.ds
@@ -603,17 +464,31 @@ The script can be seen [here](PackageManagerScript.md) with explanation
 3. Power button and Front panel connections : https://www.pcinq.com/how-to-connect-motherboard-front-panel-headers/
                             https://www.electronicshub.org/power-button-on-motherboard/#:~:text=Ans%3A%20The%20power%20switch%20on,for%20the%2020-pin%20header
 
-1. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
-2. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
-3. https://scikit-learn.org/stable/index.html
-4. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
-5. https://hpc.uni.lu/infrastructure/network
-6. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
-7. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
-8. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
-9. https://scikit-learn.org/stable/index.html
-10. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
-11. https://hpc.uni.lu/infrastructure/network
+4. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
+5. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
+6. https://scikit-learn.org/stable/index.html
+7. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
+8. https://hpc.uni.lu/infrastructure/network
+9. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
+10. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
+11. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
+12. https://scikit-learn.org/stable/index.html
+13. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
+14. https://hpc.uni.lu/infrastructure/network
+15. https://hpc.uni.lu/infrastructure/network
+16. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
+17. https://medium.com/jacklee26/set-up-pxe-server-on-ubuntu20-04-and-window-10-e69733c1de87
+18. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
+19. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
+20. https://scikit-learn.org/stable/index.html
+21. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
+22. https://hpc.uni.lu/infrastructure/network
+23. https://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
+24. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
+25. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
+26. https://scikit-learn.org/stable/index.html
+27. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
+28. https://hpc.uni.lu/infrastructure/network
 
 
 # V. Authors
