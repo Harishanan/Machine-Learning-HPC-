@@ -143,7 +143,6 @@ The process of installing the operating system on a compute node is similar to t
    |---|---|---|
    |FSP220-50LC|220W (total output) | This PSU has a maximum wattage of 60W. And the sum of the power requirements for all the components connected to the PSU should not exceed 220W. |
 
-
 * Active Power Consumption:
 
         CPU: 25W - 40W
@@ -338,6 +337,15 @@ Due to failures experienced with the power-on button for the entire HPC system, 
 
 [Step by Step Configuration File Can be Found Here](power-on-off.md)
 
+## 5.3. CPU frequency scaling (Add them in Software Conf after Grafana)
+The Linux kernel offers CPU performance scaling via the CPUFreq subsystem, which defines two layers of abstraction:
+
+- Scaling governors implement the algorithms to compute the desired CPU frequency, potentially based off of the system's needs.
+- Scaling drivers interact with the CPU directly, enacting the desired frequencies that the current governor is requesting (wiki.archlinux.org, n.d.). 
+
+A script is written to control the cpu frequency scaling which can be found [here](CPU_Scaling_Governor) 
+
+CPU performance scaling enables the operating system to scale the CPU frequency up or down in order to save power or improve performance. Scaling can be done automatically in response to system load, adjust itself in response to ACPI events, or be manually changed by user space programs.
 
 # 6.Software Installation
 
@@ -466,7 +474,6 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 
 3. Power button and Front panel connections : https://www.pcinq.com/how-to-connect-motherboard-front-panel-headers/
                             https://www.electronicshub.org/power-button-on-motherboard/#:~:text=Ans%3A%20The%20power%20switch%20on,for%20the%2020-pin%20header
-
 4. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
 5. https://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
 6. https://scikit-learn.org/stable/index.html
@@ -492,9 +499,22 @@ To predict cryptocurrency prices with machine learning, start by fetching histor
 26. https://scikit-learn.org/stable/index.html
 27. https://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
 28. https://hpc.uni.lu/infrastructure/network
+29. https://www.diva-portal.org/smash/get/diva2:1778251/FULLTEXT03
+30. tps://www.sharpsightlabs.com/blog/machine-learning-hyperparameters-explained/
+31.https://scikit-learn.org/stable/index.html
+32. tps://www.warse.org/IJATCSE/static/pdf/file/ijatcse351942020.pdf
+33. tps://hpc.uni.lu/infrastructure/network
+34. tps://dlcdnimgs.asus.com/websites/global/aboutASUS/OS/Linux_Status_report_202312.pdf
+35. ki.archlinux.org. (n.d.). CPU frequency scaling - ArchWiki. [online] Available at: https://wiki.archlinux.org/title/CPU_frequency_scaling [Accessed 2 Apr. 2024].
+
 
 
 # V. Authors
+
+
+
+
+
 
 
 
